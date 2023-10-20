@@ -1,29 +1,72 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
-import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { interval, firstValueFrom, lastValueFrom } from 'rxjs';
+import { Create, Read, Update, Delete } from 'src/app/models/http/interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
 
-  private API: string = environment.baseUrl;
+  protected BASE_URL: string = environment.baseUrl;
 
-  constructor(private httpCliente: HttpClient) { }
+  constructor(protected httpClient: HttpClient) { }
 
   /**
-   * Simulação de solicitação GET para a API
+   * Realiza uma requisição de leitura assíncrona
+   * @param id recurso a ser lido
+   * @returns uma Promise 
    */
-  testeGet(): any {
-    return this.httpCliente.get(`${this.API}/teste`);
+  public async read(id: number): Promise<Read> {
+    try {
+      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}`));
+    } catch (erro) {
+      console.error(erro);
+      throw erro;
+    }
   }
 
   /**
-   * Simulaçãp de solicitação POST para a API
-   * @param info informações a serem enviadas para a API
+   * Realiza uma operação de criação assíncrona
+   * @param dados dados a serem criados
+   * @returns uma Promise
    */
-  testePost(info: any): Observable<any> {
-    return this.httpCliente.post<any>(`${this.API}/teste`, info);
+  public async create(dados: Create): Promise<Create> {
+    try {
+      return await lastValueFrom(this.httpClient.post<Create>(`${this.BASE_URL}/`, dados));
+    } catch (erro) {
+      console.error(erro);
+      throw erro;
+    }
+  }
+
+  /**
+   * Realiza uma operação de atualização assíncrona
+   * @param id id do objeto a ser atualizado
+   * @param dados a serem atualizados
+   * @returns uma Promise
+   */
+  public async update(id: number, dados: Update): Promise<Update> {
+    try {
+      return await lastValueFrom(this.httpClient.put<Update>(`${this.BASE_URL}/${id}`, dados));
+    } catch (erro) {
+      console.error(erro);
+      throw erro;
+    }
+  }
+
+  /**
+   * Realiza uma operação de exclusão assíncrona
+   * @param id id do objeto a ser excluído
+   * @returns uma Promise
+   */
+  public async delete(id: number): Promise<Delete> {
+    try {
+      return await lastValueFrom(this.httpClient.delete<Delete>(`${this.BASE_URL}/${id}`));
+    } catch (erro) {
+      console.error(erro);
+      throw erro;
+    }
   }
 }
