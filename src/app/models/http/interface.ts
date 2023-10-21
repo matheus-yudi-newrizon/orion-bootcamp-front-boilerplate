@@ -8,7 +8,7 @@ export interface Create {
 
 export interface Read {
     id: number;
-    user: string;
+    email: string;
 }
 
 export interface Update {

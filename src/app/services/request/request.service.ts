@@ -18,9 +18,9 @@ export class RequestService {
    * @param id recurso a ser lido
    * @returns uma Promise 
    */
-  public async read(id: number): Promise<Read> {
+  public async read(id: number, email: string): Promise<Read> {
     try {
-      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}`));
+      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}/${email}`));
     } catch (error) {
       console.error(error);
       throw error;
