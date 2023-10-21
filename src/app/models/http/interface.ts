@@ -3,17 +3,17 @@
  */
 export interface Create {
     email: string;
-    senha: string;
+    password: string;
 }
 
 export interface Read {
     id: number;
-    usuario: string;
+    user: string;
 }
 
 export interface Update {
     email: string;
-    senha: string;
+    password: string;
 }
 
 export interface Delete {
