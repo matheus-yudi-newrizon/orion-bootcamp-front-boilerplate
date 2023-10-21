@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CommonModule } from '@angular/common';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,8 +15,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    CommonModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
