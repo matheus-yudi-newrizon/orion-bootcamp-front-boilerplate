@@ -7,11 +7,11 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   styleUrls: ['./password-requirement.component.scss']
 })
 export class PasswordRequirementComponent {
-  password: string = '';
-  upperCase: boolean = false;
-  specialChar: boolean = false;
-  passwordSize: boolean = false;
-  samePassword: boolean = true;
+  password = '';
+  upperCase = false;
+  specialChar = false;
+  passwordSize = false;
+  samePassword = true;
 
   constructor(private passwordValidationService: PasswordValidationService) { }
 
