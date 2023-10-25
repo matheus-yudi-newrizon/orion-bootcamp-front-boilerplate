@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PasswordValidationService } from 'src/app/services/password-validation/password-validation.service';
 
 @Component({
@@ -7,12 +7,14 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   styleUrls: ['./password-requirement.component.scss']
 })
 export class PasswordRequirementComponent {
-  password = '';
-  upperCase = false;
-  specialChar = false;
-  passwordSize = false;
-  samePassword = true;
+  @Input() password: string = '';
+  upperCase: boolean = false;
+  specialChar: boolean = false;
+  passwordSize: boolean = false;
+  samePassword: boolean = true;
   hide = true;
+
+  @Output() passwordValueChanged = new EventEmitter<string>();
 
   constructor(private passwordValidationService: PasswordValidationService) { }
 
