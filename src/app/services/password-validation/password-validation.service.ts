@@ -31,7 +31,7 @@ export class PasswordValidationService {
    * @returns valor booleano indicando se o críterio foi atendido
    */
   public specialChar(password: string): boolean {
-    const character = /[!@#$%^&*(),.?":{}|<>]/;
+    const character = /[#?!@$%^&*-]/;
     return character.test(password);
   }
 
