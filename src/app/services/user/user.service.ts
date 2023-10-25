@@ -11,7 +11,7 @@ export class UserService extends RequestService {
 
   constructor(protected httpCliente: HttpClient) {
     super(httpCliente);
-    
+
     this.BASE_URL += '/signup/';
   }
 
@@ -25,7 +25,7 @@ export class UserService extends RequestService {
       return await lastValueFrom(this.httpClient.post<ReturnCreate>(this.BASE_URL, data))
     } catch (error) {
       const errorResponse: ErrorResponse = {
-        sucess: false,
+        success: false,
         message: "The user with email" + data.email + "already exists."
       }
       return errorResponse;

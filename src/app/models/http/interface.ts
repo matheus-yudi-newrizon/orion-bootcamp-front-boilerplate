@@ -23,7 +23,7 @@ export interface Delete {
 
 /** Interfaces de saída */
 export interface ReturnCreate {
-  sucess: boolean;
+  success: boolean;
   data: {
     id: number;
     email: string;
@@ -31,7 +31,7 @@ export interface ReturnCreate {
 }
 
 export interface ReturnRead {
-  sucess: boolean;
+  success: boolean;
   data: {
     id: number;
     email: string;
@@ -39,7 +39,7 @@ export interface ReturnRead {
 }
 
 export interface ReturnUpdate {
-  sucess: boolean;
+  success: boolean;
   data: {
     id: number;
     email: string;
@@ -47,12 +47,12 @@ export interface ReturnUpdate {
 }
 
 export interface ReturnDelete {
-  sucess: boolean;
+  success: boolean;
   idItemDeleted: number;
 }
 
 /** Interface de erro */
 export interface ErrorResponse {
-  sucess: boolean;
+  success: boolean;
   message: string;
 }
