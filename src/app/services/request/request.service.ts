@@ -18,41 +18,41 @@ export class RequestService {
    * @param id recurso a ser lido
    * @returns uma Promise
    */
-  public async read(id: number): Promise<Read> {
+  public async read(id: number, email: string): Promise<Read> {
     try {
-      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}`));
-    } catch (erro) {
-      console.error(erro);
-      throw erro;
+      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}/${email}`));
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 
   /**
    * Realiza uma operação de criação assíncrona
-   * @param dados dados a serem criados
+   * @param data dados a serem criados
    * @returns uma Promise
    */
-  public async create(dados: Create): Promise<Create> {
+  public async create(data: Create): Promise<Create> {
     try {
-      return await lastValueFrom(this.httpClient.post<Create>(`${this.BASE_URL}/`, dados));
-    } catch (erro) {
-      console.error(erro);
-      throw erro;
+      return await lastValueFrom(this.httpClient.post<Create>(`${this.BASE_URL}/`, data));
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 
   /**
    * Realiza uma operação de atualização assíncrona
    * @param id id do objeto a ser atualizado
-   * @param dados a serem atualizados
+   * @param data a serem atualizados
    * @returns uma Promise
    */
-  public async update(id: number, dados: Update): Promise<Update> {
+  public async update(id: number, data: Update): Promise<Update> {
     try {
-      return await lastValueFrom(this.httpClient.put<Update>(`${this.BASE_URL}/${id}`, dados));
-    } catch (erro) {
-      console.error(erro);
-      throw erro;
+      return await lastValueFrom(this.httpClient.put<Update>(`${this.BASE_URL}/${id}`, data));
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 
@@ -64,9 +64,9 @@ export class RequestService {
   public async delete(id: number): Promise<Delete> {
     try {
       return await lastValueFrom(this.httpClient.delete<Delete>(`${this.BASE_URL}/${id}`));
-    } catch (erro) {
-      console.error(erro);
-      throw erro;
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 }
