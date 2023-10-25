@@ -10,7 +10,7 @@ export class PasswordValidationService {
    * @param password senha inserida a ser validada
    * @returns valor booleano indicando se o críterio foi atendido
    */
-  passwordSize(password: string): boolean {
+  public passwordSize(password: string): boolean {
     const size = password.length >= 8;
     return size;
   }
@@ -20,7 +20,7 @@ export class PasswordValidationService {
    * @param password a senha inserida a ser validada
    * @returns valor booleano indicando se o críterio foi atendido
    */
-  upperCase(password: string): boolean {
+  public upperCase(password: string): boolean {
     const alphabet = /[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/;
     return alphabet.test(password);
   }
@@ -30,7 +30,7 @@ export class PasswordValidationService {
    * @param password a senha inserida a ser validada
    * @returns valor booleano indicando se o críterio foi atendido
    */
-  specialChar(password: string): boolean {
+  public specialChar(password: string): boolean {
     const character = /[!@#$%^&*(),.?":{}|<>]/;
     return character.test(password);
   }
@@ -40,7 +40,7 @@ export class PasswordValidationService {
    * @param password a senha inserida a ser validada
    * @returns valor booleano indicando se a senha atende a todos os requisitos
    */
-  validatePassword(password: string): boolean {
+  public validatePassword(password: string): boolean {
     const passwordSize = this.passwordSize(password);
     const upperCase = this.upperCase(password);
     const specialChar = this.specialChar(password);

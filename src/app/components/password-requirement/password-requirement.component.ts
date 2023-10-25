@@ -12,6 +12,7 @@ export class PasswordRequirementComponent {
   specialChar = false;
   passwordSize = false;
   samePassword = true;
+  hide = true;
 
   constructor(private passwordValidationService: PasswordValidationService) { }
 
@@ -19,7 +20,7 @@ export class PasswordRequirementComponent {
    * Valida a senha inserida baseada no tamanho, letras maiúsculas e caracteres especiais
    * @param passwordValue a senha a ser validada pelo service
    */
-  validatePassword(passwordValue: string): void {
+  public validatePassword(passwordValue: string): void {
 
     if (passwordValue) {
       this.password = passwordValue;
@@ -35,13 +36,7 @@ export class PasswordRequirementComponent {
    * @param confirmPassword senha de confirmação inserida pelo usuário
    * @returns valor booleano indicando se as senhas são iguais
    */
-  comparePassword(password: string, confirmPassword: string): boolean {
-
-    if (password === confirmPassword) {
-      this.samePassword = true;
-    } else {
-      this.samePassword = false;
-    }
-    return this.samePassword;
+  public comparePassword(password: string, confirmPassword: string): boolean {
+    return this.samePassword = password === confirmPassword;
   }
 }
