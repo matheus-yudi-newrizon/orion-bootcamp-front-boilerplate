@@ -1,0 +1,12 @@
+@use "@angular/material" as mat;
+@include mat.core();
+// @import '../../../colors';
+@import '../../../theme.scss';
+
+p {
+  color: mat.get-color-from-palette($primary-palette, 300);
+}
+
+h1 {
+  color: $accent-color;
+}
