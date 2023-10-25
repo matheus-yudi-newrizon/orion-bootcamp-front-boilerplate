@@ -13,12 +13,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { RegisterSuccessComponent } from './components/register-success/register-success.component';
+import { RegisterFailedComponent } from './components/register-failed/register-failed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    PasswordRequirementComponent
+    PasswordRequirementComponent,
+    RegisterSuccessComponent,
+    RegisterFailedComponent
   ],
   imports: [
     BrowserModule,

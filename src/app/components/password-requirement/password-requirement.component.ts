@@ -7,11 +7,11 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   styleUrls: ['./password-requirement.component.scss']
 })
 export class PasswordRequirementComponent {
-  @Input() password: string = '';
-  upperCase: boolean = false;
-  specialChar: boolean = false;
-  passwordSize: boolean = false;
-  samePassword: boolean = true;
+  @Input() password = '';
+  upperCase = false;
+  specialChar = false;
+  passwordSize = false;
+  samePassword = true;
   hide = true;
 
   @Output() passwordValueChanged = new EventEmitter<string>();
