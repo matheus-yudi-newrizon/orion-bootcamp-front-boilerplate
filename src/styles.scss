@@ -1,4 +1,183 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto,"Helvetica Neue", sans-serif;
+  // opacity: 0.2;
+  background: url(../src/assets/background/background.svg), #0f1620 50% / cover no-repeat;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  margin: 42px 0 0 40px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 155px;
+  height: 50px;
+  margin: 40px 40px 0 0;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 0 8px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 114.286% */
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+
+button img {
+  margin-right: 6px;
+}
+
+
+
+.mat-typography h1 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 32px;
+  font-family: Roboto, sans-serif;
+  letter-spacing: normal;
+  margin: 257px 0 16px;
+}
+
+.mat-typography p {
+  color: white;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 39px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+input {
+  width: 491px;
+  height: 40px;
+  padding: 8px 16px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  align-self: stretch;
+  outline: none;
+  border-right: transparent;
+  border-bottom: 2px solid #6200EE;
+}
+
+input::placeholder {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.15px;
+  color: #fff;
+}
+
+#remember {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+label {
+  color: white;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 39px;
+}
+
+a {
+  color: white;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 39px;
+}
+
+#remember input {
+  display: none;
+}
+
+#remember input + label::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: solid 2px #6200EE;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+#remember input:checked + label::before {
+
+  background-image: url(../src/assets/icons/check-mark-2.svg);
+  background-color: #6200EE;
+  background-position: center;
+  border: none;
+  padding: 2px;
+}
+
+
+#password {
+  display: flex;
+  margin-top: 39px;
+  gap: 120px;
+}
+
+#primary {
+  width: 526px;
+  height: 40px;
+  background-color: #6200EE;
+  border: none;
+  margin: 0 auto;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer  {
+  margin-top: 238px;
+  display: flex;
+  gap: 16px;
+}
+
+footer button {
+  margin: -10px 0 0 0;
+  padding: 0;
+  height: 35px;
+}
