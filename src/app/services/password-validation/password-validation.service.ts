@@ -34,16 +34,4 @@ export class PasswordValidationService {
     const character = /[#?!@$%^&*-]/;
     return character.test(password);
   }
-
-  /**
-   * Valida os requisitos da senha com base no tamanho, presença de letras maiúsculas e caracteres especiais
-   * @param password a senha inserida a ser validada
-   * @returns valor booleano indicando se a senha atende a todos os requisitos
-   */
-  public validatePassword(password: string): boolean {
-    const passwordSize = this.passwordSize(password);
-    const upperCase = this.upperCase(password);
-    const specialChar = this.specialChar(password);
-    return passwordSize && upperCase && specialChar;
-  }
 }

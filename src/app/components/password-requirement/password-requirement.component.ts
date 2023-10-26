@@ -12,6 +12,7 @@ export class PasswordRequirementComponent {
   specialChar = false;
   passwordSize = false;
   samePassword = true;
+  validPassword = false;
   hide = true;
 
   @Output() passwordValueChanged = new EventEmitter<string>();
@@ -29,6 +30,8 @@ export class PasswordRequirementComponent {
       this.passwordSize = this.passwordValidationService.passwordSize(this.password);
       this.upperCase = this.passwordValidationService.upperCase(this.password);
       this.specialChar = this.passwordValidationService.specialChar(this.password);
+
+      this.validPassword = (this.passwordSize && this.upperCase && this.specialChar);
     }
   }
 
@@ -38,7 +41,12 @@ export class PasswordRequirementComponent {
    * @param confirmPassword senha de confirmação inserida pelo usuário
    * @returns valor booleano indicando se as senhas são iguais
    */
-  public comparePassword(password: string, confirmPassword: string): boolean {
-    return this.samePassword = password === confirmPassword;
+  public comparePassword(password: string, confirmPassword: string): void {
+    this.samePassword = password === confirmPassword;
+
+    if (this.samePassword && this.validPassword) {
+      this.passwordValueChanged.emit(password);
+    }
+
   }
 }
