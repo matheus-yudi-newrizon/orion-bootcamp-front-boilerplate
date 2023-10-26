@@ -1,9 +1,10 @@
 /**
- * Interfaces para a criação, leitura, atualização e exclusão de um objeto
+ * Interfaces de entrada para a criação, leitura, atualização e exclusão de um objeto
  */
 export interface Create {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 export interface Read {
@@ -18,4 +19,40 @@ export interface Update {
 
 export interface Delete {
   id: number;
+}
+
+/** Interfaces de saída */
+export interface ReturnCreate {
+  success: boolean;
+  data: {
+    id: number;
+    email: string;
+  }
+}
+
+export interface ReturnRead {
+  success: boolean;
+  data: {
+    id: number;
+    email: string;
+  }
+}
+
+export interface ReturnUpdate {
+  success: boolean;
+  data: {
+    id: number;
+    email: string;
+  }
+}
+
+export interface ReturnDelete {
+  success: boolean;
+  idItemDeleted: number;
+}
+
+/** Interface de erro */
+export interface ErrorResponse {
+  success: boolean;
+  message: string;
 }
