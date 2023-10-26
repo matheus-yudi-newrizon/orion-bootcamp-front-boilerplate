@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PasswordValidationService } from 'src/app/services/password-validation/password-validation.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   styleUrls: ['./password-requirement.component.scss']
 })
 export class PasswordRequirementComponent {
-  @Input() password = '';
+  password = '';
   upperCase = false;
   specialChar = false;
   passwordSize = false;
