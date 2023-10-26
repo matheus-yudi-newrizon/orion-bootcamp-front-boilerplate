@@ -3,5 +3,5 @@
 @import "../src/theme.scss";
 
 
-html, body { height: 100%; background-color: white;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; background-color: $background-color;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}

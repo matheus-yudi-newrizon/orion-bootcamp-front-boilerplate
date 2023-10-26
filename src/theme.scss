@@ -97,13 +97,3 @@ $review-reveal-theme: mat.define-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($review-reveal-theme);
-
-// html,
-// body {
-//   height: 100%;
-//   background-color: $background-color;
-//   margin: 0;
-//   font-family: Roboto, "Helvetica Neue", sans-serif;
-//   --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08);
-//   --mdc-filled-text-field-label-text-color: white;
-// }
