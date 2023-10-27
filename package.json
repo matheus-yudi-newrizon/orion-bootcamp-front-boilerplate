@@ -9,7 +9,7 @@
     "test": "npm run lint",
     "prepare": "husky install",
     "lint": "ng lint",
-    "deploy": "ng deploy"
+    "deploy": "ng deploy --no-silent"
   },
   "private": true,
   "dependencies": {
