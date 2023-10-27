@@ -2,6 +2,8 @@
 
 name: angular-ghpages-build-and-deploy
 
+permissions: write-all
+
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "develop" branch
@@ -20,6 +22,9 @@ jobs:
     strategy:
       matrix:
         node-version: ['18']
+
+    env:
+      TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
 
     steps:
       - uses: actions/checkout@v3
@@ -76,3 +81,5 @@ jobs:
       - name: Deploy
         run: |
           npm run deploy
+        env:
+          TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
