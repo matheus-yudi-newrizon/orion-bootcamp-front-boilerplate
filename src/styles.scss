@@ -2,6 +2,9 @@
 
 @import "../src/theme.scss";
 
+:root {
+  --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08); /* Defina a cor de fundo desejada aqui */
+}
 
 html, body { height: 100%; background-color: $background-color;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}

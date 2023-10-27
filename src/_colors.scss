@@ -5,3 +5,12 @@ $error-text-color: #EE0056;
 $text-color: #fff;
 $background-color: #25252F;
 $secondary-background-color: #373744;
+
+:root {
+  --accent-color: $accent-color;
+  --success-text-color: $success-text-color;
+  --error-text-color: $error-text-color;
+  --text-color: $text-color;
+  --background-color: $background-color;
+  --secondary-background-color: $secondary-background-color;
+}
