@@ -1,0 +1,32 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.custom-btn {
+
+  button {
+    display: table-cell;
+    width: 523px;
+    padding: 6px 6px 6px 8px;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 4px;
+    background: var(--Primary-500, #6200EE);
+    color: var(--03-on-primary-high-emphasis, #FFF);
+
+    /* Button */
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+  }
+}
