@@ -88,6 +88,16 @@ jobs:
       - name: chave do github
         run:  echo "A chave do github é ${{ env.TOKEN }}"
 
+      - name: chave do github
+        run: |
+          git config --global --unset credential.helper
+          git config --system --unset credential.helper
+          git config --global user.name "Hernandez Giordano"
+          git config --global user.email "hernangior@gmail.com"
+          git config -l
+          git config --global credential.helper cache
+          git remote set-url origin https://github.com/hernangior/orion-review.git
+
       - name: Deploy
         run: |
           npm run deploy
