@@ -1,3 +1,5 @@
+@import "../../../colors";
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -6,27 +8,45 @@
 
 .example-full-width {
   width: 100%;
+
+  mat-label {
+    color: var(--Gray-500, #6B6B83);
+  }
+
+  input {
+    color: rgba(255, 255, 255, 0.87);
+  }
 }
 
-.custom-btn {
+.panel-form {
+  text-align: center;
+}
 
-  button {
-    display: table-cell;
-    width: 523px;
-    padding: 6px 6px 6px 8px;
-    justify-content: center;
-    align-items: flex-start;
-    border-radius: 4px;
-    background: var(--Primary-500, #6200EE);
-    color: var(--03-on-primary-high-emphasis, #FFF);
+.title-form {
 
-    /* Button */
+  // text-align: center;
+  h4 {
+    color: var(--foundation-gray-scale-white, #FFF);
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 500;
-    line-height: 16px;
-    letter-spacing: 1.25px;
-    text-transform: uppercase;
+    line-height: normal;
+    letter-spacing: 0.12px;
   }
+
+  p {
+    color: var(--foundation-gray-scale-white, #FFF);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
