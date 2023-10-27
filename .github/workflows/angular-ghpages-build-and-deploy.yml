@@ -38,6 +38,12 @@ jobs:
     - name: Executar validação do TypeScript
       run: npm run build
 
+    - name: Atribuição de email para Hernandez
+      run: git config --global user.email "hernangior@gmail.com"
+
+    - name: Atribuição de Nome para Hernandez
+      run: git config --global user.name "Hernandez Giordano"
+
     - name: Deploy
       run: |
         npm run deploy
