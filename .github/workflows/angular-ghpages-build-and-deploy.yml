@@ -46,3 +46,28 @@ jobs:
 
     - name: Executar validação do TypeScript
       run: npm run build
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Conventional Changelog Action
+      id: changelog
+      uses: TriPSs/conventional-changelog-action@v3
+      with:
+        github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+        output-file: "false"
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      if: ${{ steps.changelog.outputs.skipped == 'false' }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+      with:
+        tag_name: ${{ steps.changelog.outputs.tag }}
+        release_name: ${{ steps.changelog.outputs.tag }}
+        body: ${{ steps.changelog.outputs.clean_changelog }}
+
+    - name: Deploy
+      run: |
+        npm run deploy
+

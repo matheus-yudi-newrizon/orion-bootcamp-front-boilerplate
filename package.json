@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "npm run lint",
     "prepare": "husky install",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {
