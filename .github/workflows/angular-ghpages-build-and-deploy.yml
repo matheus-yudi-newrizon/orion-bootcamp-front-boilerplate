@@ -33,4 +33,6 @@ jobs:
         npm install
         npm run lint
         npm run build
+        git config --global user.email "hernangior@gmail.com"
+        git config --global user.name "Hernandez Giordano"
         npm run deploy
