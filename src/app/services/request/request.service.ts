@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { interval, firstValueFrom, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { Create, Read, Update, Delete } from 'src/app/models/http/interface';
 
 @Injectable({
@@ -16,11 +16,11 @@ export class RequestService {
   /**
    * Realiza uma requisição de leitura assíncrona
    * @param id recurso a ser lido
-   * @returns uma Promise 
+   * @returns uma Promise
    */
-  public async read(id: number, email: string): Promise<Read> {
+  public async read(id: number): Promise<Read> {
     try {
-      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}/${email}`));
+      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}`));
     } catch (error) {
       console.error(error);
       throw error;
