@@ -88,11 +88,9 @@ jobs:
       - name: chave do github
         run:  echo "A chave do github é ${{ env.TOKEN }}"
 
-      - name: chave do github
+      - name: Setup credentials to access private repositories
         run: |
-          git config --global user.name "Hernandez Giordano"
-          git config --global user.email "hernangior@gmail.com"
-          git remote set-url origin https://github.com/hernangior/orion-review.git
+          git config --global url.https://github.com/hernangior/orion-review.git@github.com/.insteadOf https://github.com/
 
       - name: Deploy
         run: |
