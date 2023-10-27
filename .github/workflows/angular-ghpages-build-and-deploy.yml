@@ -85,6 +85,9 @@ jobs:
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
+      - name: chave do github
+        run:  echo "A chave do github é ${{ env.TOKEN }}"
+
       - name: Deploy
         run: |
           npm run deploy
