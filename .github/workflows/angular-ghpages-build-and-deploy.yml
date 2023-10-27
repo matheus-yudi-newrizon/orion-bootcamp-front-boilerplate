@@ -13,38 +13,62 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  ci:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
     steps:
+      - uses: actions/checkout@v2
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - uses: actions/checkout@v3
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # caching node_modules
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+      - name: Build
+        run: |
+          npm run build -- --prod
+      - name: Lint
+        run: |
+          npm run lint
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          output-file: "false"
 
-    - name: Configurar o Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
 
-    - name: Instalar dependências
-      run: npm install
-
-    - name: Executar validação do TypeScript
-      run: npm run build
-
-    - name: Atribuição de email para Hernandez
-      run: git config --global user.email "hernangior@gmail.com"
-
-    - name: Atribuição de Nome para Hernandez
-      run: git config --global user.name "Hernandez Giordano"
-
-    - name: Deploy
-      run: |
-        npm run deploy
-
+      - name: Deploy
+        run: |
+          npm run deploy
