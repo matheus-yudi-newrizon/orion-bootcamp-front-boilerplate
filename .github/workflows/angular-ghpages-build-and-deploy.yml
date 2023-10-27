@@ -88,10 +88,6 @@ jobs:
       - name: chave do github
         run:  echo "A chave do github é ${{ env.TOKEN }}"
 
-      - name: Setup credentials to access private repositories
-        run: |
-          git config --global url.https://github.com/hernangior/orion-review.git@github.com/.insteadOf https://github.com/
-
       - name: Deploy
         run: |
           npm run deploy
