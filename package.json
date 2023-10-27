@@ -9,7 +9,7 @@
     "test": "npm run lint",
     "prepare": "husky install",
     "lint": "ng lint",
-    "deploy": "ng deploy --repo=https://github.com/hernangior/orion-review.git --no-silent"
+    "deploy": "ng deploy --base-href=/orion-review/ --repo=https://github.com/hernangior/orion-review.git --no-silent"
   },
   "private": true,
   "dependencies": {
