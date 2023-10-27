@@ -39,4 +39,4 @@ jobs:
         # npm run webdriver-update-ci
         # npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js --webdriver-update=false
         ####
-        npm run ng -- deploy --base-href=/orion-review/ --name="Hernandez Giordano" --email=hernangior@gmail.com
+        npm run ng -- deploy --base-href=/orion-review/ --name="Hernandez Giordano" --email=hernangior@gmail.com --no-sillent
