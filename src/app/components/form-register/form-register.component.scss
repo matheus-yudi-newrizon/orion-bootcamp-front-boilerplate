@@ -23,8 +23,6 @@
 }
 
 .title-form {
-
-  // text-align: center;
   h4 {
     color: var(--foundation-gray-scale-white, #FFF);
     font-family: Roboto;
@@ -49,4 +47,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.custom-btn {
+  width: 500px;
+  padding: 6px 6px 6px 8px;
 }
