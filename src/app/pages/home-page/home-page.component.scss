@@ -2,17 +2,6 @@
 @include mat.core();
 @import '../../../theme.scss';
 
-nav {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 68px;
-}
-
-.logo {
-  margin: 120px 0 0 0px;
-}
-
 .primary-button {
   width: 529px;
   text-transform: uppercase;
