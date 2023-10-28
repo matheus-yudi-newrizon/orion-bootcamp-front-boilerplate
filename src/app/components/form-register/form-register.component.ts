@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class FormRegisterComponent implements OnInit {
   emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   registerForm!: FormGroup;
-  isLoading: boolean = false;
+  isLoading = false;
 
   constructor(private formBuilder: FormBuilder,
     private userService: UserService, private router: Router) { }

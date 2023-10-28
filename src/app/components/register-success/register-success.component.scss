@@ -38,3 +38,9 @@
   justify-content: center;
   align-items: flex-start;
 }
+
+@media screen and (max-width: 425px) {
+  .btn-play {
+    width: 90%;
+  }
+}
