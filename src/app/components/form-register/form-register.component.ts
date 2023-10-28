@@ -62,20 +62,22 @@ export class FormRegisterComponent implements OnInit {
    * @throws {Error} Se houver algum problema durante o processo de criação da conta
    */
   public async createAccount(): Promise<void> {
-    try {
-      this.isLoading = true;
+    if (this.registerForm.valid) {
+      try {
+        this.isLoading = true;
 
-      const value = await this.userService.signUp(this.registerForm.value);
-      const { success } = value;
+        const value = await this.userService.signUp(this.registerForm.value);
+        const { success } = value;
 
-      const router = success ? '/registrationSuccess' : '/registrationFailure';
-      this.router.navigate([router]);
-    } catch (error) {
-      console.log("error: ", error);
-      this.router.navigate(['/registrationFailure']);
-      throw error;
-    } finally {
-      this.isLoading = false;
+        const router = success ? '/registrationSuccess' : '/registrationFailure';
+        this.router.navigate([router]);
+      } catch (error) {
+        console.log("error: ", error);
+        this.router.navigate(['/registrationFailure']);
+        throw error;
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 }
