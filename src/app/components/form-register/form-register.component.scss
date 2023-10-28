@@ -8,14 +8,6 @@
 
 .example-full-width {
   width: 100%;
-
-  mat-label {
-    color: var(--Gray-500, #6B6B83);
-  }
-
-  input {
-    color: rgba(255, 255, 255, 0.87);
-  }
 }
 
 .panel-form {
@@ -53,6 +45,7 @@
 .custom-btn {
   width: 500px;
   padding: 6px 6px 6px 8px;
+  margin-top: 24px;
 }
 
 .panel-loading {
