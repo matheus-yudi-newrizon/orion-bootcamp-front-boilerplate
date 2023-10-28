@@ -20,11 +20,11 @@
         </mat-error>
       </mat-form-field>
 
-      <app-password-requirement (passwordValueChanged)="getPassword($event)"></app-password-requirement>
+      <app-password-requirement (passwordValueChanged)="getPassword($event, $event)"></app-password-requirement>
     </form>
 
   </div>
 
-  <button class="custom-btn" mat-raised-button color="primary" type="submit">CREATE MY ACCOUNT</button>
+  <button (click)="createAccount()" [disabled]="!registerForm.valid" class="custom-btn" mat-raised-button color="primary" type="submit">CREATE MY ACCOUNT</button>
 
 </section>
