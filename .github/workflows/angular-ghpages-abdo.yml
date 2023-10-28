@@ -1,0 +1,95 @@
+# This is a basic workflow to help you get started with Actions
+
+name: angular-ghpages-abdo
+
+permissions: write-all
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "develop" branch
+  push:
+    branches: [ "RR-266-front-integrar-a-tela-de-cadastro-de-usuário" ]
+  pull_request:
+    branches: [ "RR-266-front-integrar-a-tela-de-cadastro-de-usuário" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    strategy:
+      matrix:
+        node-version: ['18']
+
+    env:
+      TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # caching node_modules
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: |
+          npm ci
+
+      - name: Build
+        run: |
+          npm run build
+
+      - name: Lint
+        run: |
+          npm run lint
+
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN   }}
+          output-file: "false"
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN   }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+
+      - name: github key verification
+        run:  echo "the github key is ${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Deploy
+        run: |
+          npm run deploy
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
