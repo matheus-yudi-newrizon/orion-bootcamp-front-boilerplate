@@ -1,7 +1,10 @@
-
-
 @import "../src/theme.scss";
 
 
-html, body { height: 100%; background-color: $background-color;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto,"Helvetica Neue", sans-serif;
+  // opacity: 0.2;
+  background: url(../src/assets/background/background.svg), #0f1620 50% / cover no-repeat;
+}
