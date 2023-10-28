@@ -36,3 +36,4 @@ jobs:
         git config --global user.email "hernangior@gmail.com"
         git config --global user.name "Hernandez Giordano"
         npm run deploy
+
