@@ -17,3 +17,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: url(../src/assets/background/background.svg), #0f1620 50% / cover no-repeat;
 }
+
+@media screen and (max-width: 425px) {
+  body {
+    padding: 30px;
+  }
+
+  main {
+    margin-bottom: 30px;
+  }
+}
