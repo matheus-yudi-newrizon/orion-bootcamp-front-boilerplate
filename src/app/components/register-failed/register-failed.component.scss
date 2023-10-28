@@ -1,0 +1,37 @@
+.failed-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+}
+
+.txt-failed {
+  h4 {
+    color: var(--foundation-gray-scale-white, #FFF);
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.12px;
+  }
+
+  p {
+    color: var(--foundation-gray-scale-white, #FFF);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.btn-return {
+  display: flex;
+  width: 523px;
+  padding: 6px 6px 6px 8px;
+  justify-content: center;
+  align-items: flex-start;
+}
