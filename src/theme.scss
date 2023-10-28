@@ -41,8 +41,7 @@ $primary-palette: (
   700: #3d00e0,
   800: #1c00db,
   900: #0000d6,
-  contrast: (
-    50: rgba(black, 0.87),
+  contrast: (50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: rgb(255, 255, 255),
@@ -63,8 +62,7 @@ $accent-palette: (
   500: white,
   700: white,
   900: white,
-  contrast: (
-    50: rgba(black, 0.87),
+  contrast: (50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: white,
@@ -74,24 +72,45 @@ $accent-palette: (
   ),
 );
 
+$warn-palette: (
+  50: #FCE4EC,
+  100: #F8BBD0,
+  200: #F48FB1,
+  300: #F06292,
+  400: #EC407A,
+  500: #EE0056,
+  600: #D81B60,
+  700: #C2185B,
+  800: #AD1457,
+  900: #880E4F,
+  contrast: (50: #FFFFFF,
+    100: #FFFFFF,
+    200: #FFFFFF,
+    300: #FFFFFF,
+    400: #FFFFFF,
+    500: #FFFFFF,
+    600: #FFFFFF,
+    700: #FFFFFF,
+    800: #FFFFFF,
+    900: #FFFFFF,
+  ),
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
 $review-reveal-primary: mat.define-palette($primary-palette);
 $review-reveal-accent: mat.define-palette($accent-palette);
+$review-reveal-warn: mat.define-palette($warn-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 
-$review-reveal-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $review-reveal-primary,
-      accent: $review-reveal-accent,
-    ),
-  )
-);
+$review-reveal-theme: mat.define-light-theme((color: (primary: $review-reveal-primary,
+        accent: $review-reveal-accent, warn: $review-reveal-warn,
+      ),
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

@@ -1,13 +1,28 @@
-.success-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 32px;
+@import "../../../colors";
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.txt-success {
+.example-full-width {
+  width: 100%;
+
+  mat-label {
+    color: var(--Gray-500, #6B6B83);
+  }
+
+  input {
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
+
+.panel-form {
+  text-align: center;
+}
+
+.title-form {
   h4 {
     color: var(--foundation-gray-scale-white, #FFF);
     font-family: Roboto;
@@ -28,10 +43,13 @@
   }
 }
 
-.btn-play {
+.form-container {
   display: flex;
-  width: 523px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-btn {
+  width: 500px;
   padding: 6px 6px 6px 8px;
-  justify-content: center;
-  align-items: flex-start;
 }

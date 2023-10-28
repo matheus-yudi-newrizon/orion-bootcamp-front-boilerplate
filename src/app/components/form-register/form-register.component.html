@@ -1,0 +1,30 @@
+<section class="panel-form">
+  <div class="title-form">
+    <h4>Create your account</h4>
+    <p>Fill the requested field to create your account:</p>
+  </div>
+
+  <div class="form-container">
+
+    <form class="example-form" [formGroup]="registerForm" (submit)="submit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail</mat-label>
+
+        <input type="email" matInput color="primary" formControlName="email" required>
+        <mat-error *ngIf="email?.errors?.['pattern']">
+          Please enter a valid email address
+        </mat-error>
+
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <app-password-requirement (passwordValueChanged)="getPassword($event)"></app-password-requirement>
+    </form>
+
+  </div>
+
+  <button class="custom-btn" mat-raised-button color="primary" type="submit">CREATE MY ACCOUNT</button>
+
+</section>
