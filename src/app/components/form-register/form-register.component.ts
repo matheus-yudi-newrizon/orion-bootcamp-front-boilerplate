@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class FormRegisterComponent implements OnInit {
   emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   registerForm!: FormGroup;
+  isLoading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private userService: UserService, private router: Router) { }
@@ -62,6 +63,8 @@ export class FormRegisterComponent implements OnInit {
    */
   public async createAccount(): Promise<void> {
     try {
+      this.isLoading = true;
+
       const value = await this.userService.signUp(this.registerForm.value);
       const { success } = value;
 
@@ -71,6 +74,8 @@ export class FormRegisterComponent implements OnInit {
       console.log("error: ", error);
       this.router.navigate(['/registrationFailure']);
       throw error;
+    } finally {
+      this.isLoading = false;
     }
   }
 }

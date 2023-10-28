@@ -54,3 +54,20 @@
   width: 500px;
   padding: 6px 6px 6px 8px;
 }
+
+.panel-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .custom-btn {
+    width: 100%;
+  }
+}

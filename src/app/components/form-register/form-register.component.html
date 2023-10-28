@@ -1,4 +1,7 @@
-<section class="panel-form">
+<section class="panel-loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+<section class="panel-form" *ngIf="!isLoading">
   <div class="title-form">
     <h4>Create your account</h4>
     <p>Fill the requested field to create your account:</p>
@@ -6,7 +9,7 @@
 
   <div class="form-container">
 
-    <form class="example-form" [formGroup]="registerForm" (submit)="submit()">
+    <form class="example-form" [formGroup]="registerForm" #content (submit)="submit()">
       <mat-form-field class="example-full-width">
         <mat-label>E-mail</mat-label>
 
@@ -25,6 +28,6 @@
 
   </div>
 
-  <button (click)="createAccount()" [disabled]="!registerForm.valid" class="custom-btn" mat-raised-button color="primary" type="submit">CREATE MY ACCOUNT</button>
+  <button (click)="createAccount()"  class="custom-btn" mat-raised-button color="primary" type="submit">CREATE MY ACCOUNT</button>
 
 </section>
