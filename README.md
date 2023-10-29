@@ -14,7 +14,7 @@ Navegue até `http://localhost:4200/`. A aplicação será recarregada automatic
 
 Execute `ng generate component component-name` para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Ajuda adicional
+## Ajuda adiciona
 
 Para obter mais ajuda sobre o Angular CLI, use `ng help` ou consulte a página [Angular CLI Overview and Command Reference](https://angular.io/cli).
 
