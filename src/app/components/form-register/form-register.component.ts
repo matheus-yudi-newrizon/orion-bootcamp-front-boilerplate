@@ -21,7 +21,7 @@ export class FormRegisterComponent implements OnInit {
      * FormGroup contendo os campos do formulário de cadastro
      */
     this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      email: [sessionStorage.getItem('email') || '', [Validators.required, Validators.pattern(this.emailPattern)]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     });
@@ -35,7 +35,6 @@ export class FormRegisterComponent implements OnInit {
     if (!this.registerForm.valid) {
       return;
     }
-    console.log(this.registerForm.value);
   }
 
   /**
@@ -52,8 +51,6 @@ export class FormRegisterComponent implements OnInit {
   public getPassword(password: string, confirmPassword: string) {
     this.registerForm.patchValue({ password: password });
     this.registerForm.patchValue({ confirmPassword: confirmPassword });
-
-    console.log("aaa", this.registerForm.value)
   }
 
   /**
@@ -62,6 +59,7 @@ export class FormRegisterComponent implements OnInit {
    * @throws {Error} Se houver algum problema durante o processo de criação da conta
    */
   public async createAccount(): Promise<void> {
+
     if (this.registerForm.valid) {
       try {
         this.isLoading = true;
@@ -72,12 +70,20 @@ export class FormRegisterComponent implements OnInit {
         const router = success ? '/registrationSuccess' : '/registrationFailure';
         this.router.navigate([router]);
       } catch (error) {
-        console.log("error: ", error);
+
+        console.error("error: ", error);
         this.router.navigate(['/registrationFailure']);
         throw error;
       } finally {
         this.isLoading = false;
       }
     }
+  }
+
+  /**
+   * Mantém o valor de email inserido pelo usuário na seção atual
+   */
+  public formValue(): void {
+    sessionStorage.setItem('email', this.registerForm.value.email);
   }
 }
