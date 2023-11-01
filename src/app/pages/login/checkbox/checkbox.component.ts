@@ -31,7 +31,7 @@ export class CheckboxComponent {
     ],
   };
 
-  allComplete: boolean = false;
+  allComplete = false;
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
