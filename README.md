@@ -1,4 +1,4 @@
-# BoilerplateFrontendOrionBootcamp
+# ReviewFrontendOrionBootcamp
 
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 16.2.6.
 

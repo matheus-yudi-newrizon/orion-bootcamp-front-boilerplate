@@ -38,3 +38,33 @@ form {
   flex-direction: column;
   gap: 32px;
 }
+
+.form__menu {
+  animation: slideToLoad 1s linear;
+}
+
+.navbar {
+  animation: slide 1.2s linear;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideToLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

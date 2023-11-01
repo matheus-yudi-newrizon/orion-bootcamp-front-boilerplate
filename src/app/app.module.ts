@@ -1,6 +1,6 @@
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { PasswordRequirementComponent } from './components/password-requirement/password-requirement.component';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { RegisterFailedComponent } from './components/register-failed/register-failed.component';
@@ -24,7 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    RegisterPageComponent,
     PasswordRequirementComponent,
     RegisterSuccessComponent,
     RegisterFailedComponent,
