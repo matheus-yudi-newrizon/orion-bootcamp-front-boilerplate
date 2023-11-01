@@ -46,7 +46,7 @@ import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     LoginComponent,
     CheckboxComponent
