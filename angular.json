@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "boilerplate-frontend-orion-bootcamp": {
+    "review-reveal-frontend-orion-bootcamp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/boilerplate-frontend-orion-bootcamp",
+            "outputPath": "dist/review-reveal-frontend-orion-bootcamp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "boilerplate-frontend-orion-bootcamp:build:production"
+              "browserTarget": "review-reveal-frontend-orion-bootcamp:build:production"
             },
             "development": {
-              "browserTarget": "boilerplate-frontend-orion-bootcamp:build:development"
+              "browserTarget": "review-reveal-frontend-orion-bootcamp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "boilerplate-frontend-orion-bootcamp:build"
+            "browserTarget": "review-reveal-frontend-orion-bootcamp:build"
           }
         },
         "test": {

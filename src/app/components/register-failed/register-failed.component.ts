@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-failed',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class RegisterFailedComponent {
 
+  constructor(private router: Router) { }
+
+  /**
+   * Retorna para a tela de cadastro em caso de erro.
+   */
+  public returnToHome(): void {
+    this.router.navigate(['/sign-up']);
+  }
 }

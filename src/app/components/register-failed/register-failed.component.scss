@@ -1,4 +1,4 @@
-.failed-screen {
+.section__failed {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,10 +30,16 @@
   }
 }
 
-.btn-return {
+.failed__button__return {
   display: flex;
   width: 523px;
   padding: 6px 6px 6px 8px;
   justify-content: center;
   align-items: flex-start;
+}
+
+@media screen and (max-width: 425px) {
+  .failed__button__return {
+    width: 90%;
+  }
 }

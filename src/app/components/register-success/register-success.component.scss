@@ -1,4 +1,4 @@
-.success-screen {
+.section__success {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,10 +31,16 @@
   }
 }
 
-.btn-play {
+.success_button__play {
   display: flex;
   width: 523px;
   padding: 6px 6px 6px 8px;
   justify-content: center;
   align-items: flex-start;
+}
+
+@media screen and (max-width: 425px) {
+  .success_button__play {
+    width: 90%;
+  }
 }
