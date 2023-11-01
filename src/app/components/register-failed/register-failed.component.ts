@@ -14,6 +14,6 @@ export class RegisterFailedComponent {
    * Retorna para a tela de cadastro em caso de erro.
    */
   public returnToHome(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/sign-up']);
   }
 }
