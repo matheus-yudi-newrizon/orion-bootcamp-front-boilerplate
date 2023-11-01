@@ -19,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar/navbar.component';
     RegisterSuccessComponent,
     RegisterFailedComponent,
     FormRegisterComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,9 @@ import { NavbarComponent } from './components/navbar/navbar/navbar.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoginComponent,
+    CheckboxComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

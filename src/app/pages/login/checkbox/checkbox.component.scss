@@ -1,0 +1,79 @@
+@import '../../../../colors';
+@import '../../../../spacing';
+
+.checkbox-page {
+  margin: 18px -8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 223px;
+
+  &__checkbox {
+
+    // Cores do checkbox forçadas para sobrescrever o tema
+
+  // Cores do checkbox no estado não selecionado
+  --mdc-checkbox-unselected-icon-color: #6200EE;
+  --mdc-checkbox-unselected-pressed-icon-color: #5300e8;
+  --mdc-checkbox-unselected-hover-icon-color: #5300e8;
+  --mdc-checkbox-unselected-focus-icon-color: #6200EE;
+  --mdc-checkbox-unselected-focus-state-layer-color: #6200EE;
+  --mdc-checkbox-unselected-hover-state-layer-color: #6200EE;
+  --mdc-checkbox-unselected-pressed-state-layer-color: #6200EE;
+
+  // Cor do checkmark
+  --mdc-checkbox-selected-checkmark-color: #ffffff;
+
+  // Coresdo checkbox no estado selecionado
+  --mdc-checkbox-selected-icon-color: #6002ee;
+  --mdc-checkbox-selected-focus-icon-color: #6002ee;
+  --mdc-checkbox-selected-pressed-icon-color: #5300e8;
+
+  // Cor do remember me
+  --mdc-theme-text-primary-on-background: rgb(255, 255, 255);
+
+  }
+
+  &__password-recovery {
+
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: $text-color;
+    margin-right: 8px;
+    cursor: url('../../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+
+  &__checkbox:hover {
+    cursor: url('../../../../assets/icons/mini-pointer-2.png'), auto !important;
+    border-radius: 10px !important;
+  }
+
+  ::ng-deep {
+
+    .mdc-checkbox__background {
+      border-radius: 0px !important;
+    }
+
+    .mdc-label {
+      font-weight: 500 !important;
+      font-size: 16px;
+      cursor: url('../../../../assets/icons/mini-pointer-2.png'), auto !important;
+    }
+
+    .mdc-checkbox {
+      cursor: url('../../../../assets/icons/mini-pointer-2.png'), auto !important;
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+
+  .checkbox-page {
+    display: flex;
+    gap: 23px;
+  }
+
+}
