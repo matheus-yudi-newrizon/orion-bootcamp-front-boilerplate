@@ -16,6 +16,7 @@ export class PasswordRequirementComponent {
   hide = true;
 
   @Output() passwordValueChanged = new EventEmitter<string>();
+  @Output() confirmPasswordValueChanged = new EventEmitter<string>();
 
   constructor(private passwordValidationService: PasswordValidationService) { }
 
@@ -46,6 +47,7 @@ export class PasswordRequirementComponent {
 
     if (this.samePassword && this.validPassword) {
       this.passwordValueChanged.emit(password);
+      this.confirmPasswordValueChanged.emit(confirmPassword);
     }
 
   }
