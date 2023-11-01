@@ -1,22 +1,23 @@
 @import "../../../colors";
+@import "../../../styles.scss";
 
-.example-form {
+.form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
 }
 
-.example-full-width {
+.form__item {
   width: 100%;
 }
 
-.panel-form {
+.panel__form {
   text-align: center;
 }
 
-.title-form {
+.form__title {
   h4 {
-    color: var(--foundation-gray-scale-white, #FFF);
+    color: $text-color;
     font-family: Roboto;
     font-size: 24px;
     font-style: normal;
@@ -26,7 +27,7 @@
   }
 
   p {
-    color: var(--foundation-gray-scale-white, #FFF);
+    color: $text-color;
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
@@ -35,17 +36,23 @@
   }
 }
 
-.form-container {
+.form__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
 }
 
-.custom-btn {
+.form__button {
   width: 500px;
   padding: 6px 6px 6px 8px;
   margin-top: 24px;
+}
+
+.form__button--disabled:disabled {
+  opacity: 30%;
+  color: $text-color;
+  background-color: $accent-color;
 }
 
 .panel-loading {
@@ -60,7 +67,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .custom-btn {
+  .form__button {
     width: 100%;
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-frontend-orion-bootcamp",
+  "name": "review-reveal-frontend-orion-bootcamp",
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
@@ -10,6 +10,7 @@
     "prepare": "husky install",
     "lint": "ng lint",
     "deploy": "ng deploy --no-silent"
+
   },
   "private": true,
   "dependencies": {

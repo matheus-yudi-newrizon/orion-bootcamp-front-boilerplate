@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'boilerplate-frontend-orion-bootcamp'`, () => {
+  it(`should have as title 'review-reveal-frontend-orion-bootcamp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('boilerplate-frontend-orion-bootcamp');
+    expect(app.title).toEqual('review-reveal-frontend-orion-bootcamp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('boilerplate-frontend-orion-bootcamp app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('review-reveal-frontend-orion-bootcamp app is running!');
   });
 });
