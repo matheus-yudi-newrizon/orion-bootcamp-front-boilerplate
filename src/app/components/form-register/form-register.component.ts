@@ -73,7 +73,6 @@ export class FormRegisterComponent implements OnInit {
 
         console.error("error: ", error);
         this.router.navigate(['/registrationFailure']);
-        throw error;
       } finally {
         this.isLoading = false;
       }
@@ -83,7 +82,7 @@ export class FormRegisterComponent implements OnInit {
   /**
    * Mantém o valor de email inserido pelo usuário na seção atual
    */
-  public formValue(): void {
+  public storeFormValue(): void {
     sessionStorage.setItem('email', this.registerForm.value.email);
   }
 }
