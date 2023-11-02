@@ -9,7 +9,7 @@
     "test": "npm run lint",
     "prepare": "husky install",
     "lint": "ng lint",
-    "deploy": "ng deploy --no-silent"
+    "deploy": "ng deploy --base-href=/review-reveal-web/ --no-silent"
   },
   "private": true,
   "dependencies": {
