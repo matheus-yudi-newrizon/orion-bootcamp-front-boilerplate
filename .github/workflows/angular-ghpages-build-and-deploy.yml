@@ -26,7 +26,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ['16','17','18']
+        node-version: ['18']
 
     env:
       TOKEN: ${{ secrets.GITHUB_TOKEN  }}
