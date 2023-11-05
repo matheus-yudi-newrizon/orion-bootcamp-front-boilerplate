@@ -19,9 +19,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
     RegisterFailedComponent,
     FormRegisterComponent,
     NavbarComponent,
+    LoginComponent,
+    CheckboxComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +52,7 @@ import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    LoginComponent,
-    CheckboxComponent
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

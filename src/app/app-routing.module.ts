@@ -3,8 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { RegisterFailedComponent } from './components/register-failed/register-failed.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'sign-up',
     component: RegisterPageComponent
@@ -19,7 +24,7 @@ const routes: Routes = [
   },
   // Rota para capturar caminhos não correspondentes
   {
-    path: '**', redirectTo: '/sign-up',
+    path: '**', redirectTo: '/login',
   },
 ];
 

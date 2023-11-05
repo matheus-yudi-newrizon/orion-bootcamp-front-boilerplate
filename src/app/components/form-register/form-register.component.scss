@@ -37,22 +37,10 @@
 }
 
 .form__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
   margin-top: 40px;
-}
-
-.form__button {
-  width: 500px;
-  padding: 6px 6px 6px 8px;
-  margin-top: 24px;
-}
-
-.form__button--disabled:disabled {
-  opacity: 30%;
-  color: $text-color;
-  background-color: $accent-color;
 }
 
 .panel-loading {
@@ -66,7 +54,18 @@
   height: 100%;
 }
 
-@media screen and (max-width: 425px) {
+::ng-deep .mat-mdc-form-field-error {
+  display: block;
+  position: absolute;
+  margin-top: -22px;
+  margin-left: 4px;
+}
+
+.form__button--disabled {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 575px) {
   .form__button {
     width: 100%;
   }

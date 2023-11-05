@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <form class="login-page">
 
   <mat-form-field class="login-page__width">
@@ -27,7 +29,10 @@
 
     <app-checkbox></app-checkbox>
 
-    <button class="login-page__width__button" mat-raised-button type="submit">LOG IN</button>
-
-
+    <button class="login-page__width__button form__button" mat-raised-button color="primary" [disabled]="emailFormControl.invalid" type="submit">LOG IN</button>
 </form>
+
+<footer>
+  <p>Don't have an account?</p>
+  <a routerLink="/sign-up">SIGN UP NOW</a>
+</footer>
