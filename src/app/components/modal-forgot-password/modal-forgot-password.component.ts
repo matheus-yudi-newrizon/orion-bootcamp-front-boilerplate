@@ -14,7 +14,10 @@ export class ModalForgotPasswordComponent {
 
   }
 
-  closeModal(): void {
+  /**
+   * Função responsável por fechar o modal quando o botão "cancel" for acionado.
+   */
+  public closeModal(): void {
     this.dialogRef.close();
   }
 }
