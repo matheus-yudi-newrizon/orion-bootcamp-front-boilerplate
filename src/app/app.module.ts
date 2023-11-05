@@ -20,6 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ModalForgotPasswordComponent } from './components/modal-forgot-password/modal-forgot-password.component';
+import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RegisterSuccessComponent,
     RegisterFailedComponent,
     FormRegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ModalForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
