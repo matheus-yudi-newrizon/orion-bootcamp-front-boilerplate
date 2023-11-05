@@ -5,7 +5,33 @@
   --mdc-filled-text-field-input-text-color: rgba(255, 255, 255, 0.87);
   --mdc-filled-text-field-input-text-placeholder-color: rgba(255, 255, 255, 0.87);
   --mdc-filled-text-field-label-text-color: var(--Gray-500, #6B6B83);
-  --mdc-filled-text-field-button-disabled-color: rgba(5, 5, 206, 0.356);
+}
+
+.custom__modal__forgotpassword {
+
+  .mat-mdc-dialog-container {
+
+    .mdc-dialog__container .mat-mdc-dialog-surface {
+      background-color: #25252F;
+    }
+
+    .mdc-dialog__title,
+    .mdc-dialog__content,
+    .mat-mdc-button:not(:disabled),
+    .mat-mdc-button:disabled {
+      color: $text-color;
+    }
+
+    .mat-mdc-button:not(:disabled) {
+      background-color: $accent-color;
+    }
+
+    .mat-mdc-button:disabled {
+      opacity: 30%;
+      background-color: $accent-color;
+    }
+  }
+
 }
 
 html,
