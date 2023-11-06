@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from 'src/app/pages/register-page/register-page.component';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-modal-forgot-password',
@@ -12,7 +14,7 @@ export class ModalForgotPasswordComponent {
   emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   forgotPasswordForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<ModalForgotPasswordComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, public dialogRef: MatDialogRef<ModalForgotPasswordComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
@@ -41,4 +43,19 @@ export class ModalForgotPasswordComponent {
   public get email(): FormControl {
     return this.forgotPasswordForm.get('email') as FormControl;
   }
+
+
+  /**
+   * Envia a solicitação de redefinição de senha para o e-mail fornecido
+   */
+  public async forgotPassword(): Promise<void> {
+    if (this.forgotPasswordForm.valid) {
+      try {
+        await this.userService.forgotPassword(this.forgotPasswordForm.value);
+      } catch (error) {
+        console.error("error: ", error);
+      }
+    }
+  }
+
 }
