@@ -1,4 +1,7 @@
-@import "../src/theme.scss";
+@import "theme";
+@import "colors";
+@import "fonts";
+@import "spacing";
 
 :root {
   --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08);
@@ -34,6 +37,22 @@
 
 }
 
+.form__button {
+  width: 500px;
+  height: 32px;
+  padding: 6px;
+  color: $text-color !important;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 229px;
+
+  &:disabled {
+    opacity: 30%;
+    background-color: rgba(5, 5, 206, 0.356) !important;
+    animation: slideToLoad 1s linear;
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -42,15 +61,50 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: url(../src/assets/background/background.svg), #0f1620 50% / cover no-repeat;
+  background: url(../src/assets/background/background.svg),
+    #0f1620 50% / cover no-repeat;
 }
 
-@media screen and (max-width: 425px) {
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideToLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes anotherSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(90%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 575px) {
   body {
-    padding: 30px;
+    padding: 0 30px;
   }
 
   main {
     margin-bottom: 30px;
   }
+
 }

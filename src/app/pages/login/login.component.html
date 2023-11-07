@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<form class="login-page">
+
+  <mat-form-field class="login-page__width">
+
+    <mat-label class="login-page__width__label">Email</mat-label>
+
+    <input class="email login-page__width__email-input" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+
+    <mat-error class="login-page__-width__error" *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+
+    <mat-error class="login-page__-width__error" *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+
+  </mat-form-field>
+
+
+  <mat-form-field class="login-page__width">
+
+    <input class="login-page__width__password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+
+    <mat-icon class="login-page__width__icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+    </mat-form-field>
+
+    <app-checkbox></app-checkbox>
+
+    <button class="login-page__width__button form__button" mat-raised-button color="primary" [disabled]="emailFormControl.invalid" type="submit">LOG IN</button>
+</form>
+
+<footer>
+  <p>Don't have an account?</p>
+  <a routerLink="/sign-up">SIGN UP NOW</a>
+</footer>

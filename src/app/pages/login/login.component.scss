@@ -1,0 +1,109 @@
+@use "@angular/material" as mat;
+@include mat.core();
+@import "../../../theme.scss";
+@import "../../../colors";
+@import "../../../spacing";
+
+
+app-navbar {
+  animation: slide 1.2s linear;
+}
+
+.login-page {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+
+
+  &__width {
+    width: 100%;
+    animation: slideToLoad 1s linear;
+    // tirei a animação da barrinha roxa embaixo do input, seguindo o figma, se quiser de volta é só coomentar as variáveis abaixo
+    --mdc-filled-text-field-active-indicator-color: #6002ee;
+    --mdc-filled-text-field-hover-active-indicator-color: #6002ee;
+
+    &__icon {
+      padding: 12px;
+      box-sizing: content-box;
+      color: $text-color;
+      cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+    }
+
+    &__label {
+      color: $text-color;
+    }
+
+    &__button:hover {
+      background-color: mat.get-color-from-palette($primary-palette, 800);
+    }
+
+    &__button:active {
+      background-color: mat.get-color-from-palette($primary-palette, 700);
+      border: 1px solid #767676;
+      height: 36px;
+    }
+  }
+
+  &__width:hover {
+    cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+  }
+
+  ::ng-deep {
+    .mdc-text-field--filled.mdc-text-field--invalid:not(
+        .mdc-text-field--disabled
+      )
+      .mdc-text-field__input {
+      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+    }
+
+    .mat-mdc-form-field:not(.mat-form-field-no-animations)
+      .mdc-text-field__input {
+      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+    }
+
+    .mat-mdc-raised-button {
+      border-radius: 0px;
+    }
+  }
+}
+
+footer {
+
+  display: flex;
+  gap: $spacing-unit;
+  justify-content: center;
+  align-items: center;
+  animation: slideToLoad 1s linear;
+
+  & p {
+    color: $text-color;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  & a {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: $text-color;
+    border: 1px solid $text-color;
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
+
+
+@media screen and (max-width: 575px) {
+  .login-page {
+    &__width {
+      width: 100%;
+
+      &__button {
+        width: 100%;
+        margin-bottom: 269px;
+      }
+    }
+  }
+
+}
