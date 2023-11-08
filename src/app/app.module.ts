@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { RedefinePasswordComponent } from './pages/redefine-password/redefine-password.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NavbarComponent,
     ModalForgotPasswordComponent,
     LoginComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    RedefinePasswordComponent
   ],
   imports: [
     BrowserModule,
