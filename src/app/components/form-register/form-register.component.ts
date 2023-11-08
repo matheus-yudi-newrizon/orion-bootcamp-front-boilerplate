@@ -3,13 +3,14 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 
+export const emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
 @Component({
   selector: 'app-form-register',
   templateUrl: './form-register.component.html',
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit {
-  emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   registerForm!: FormGroup;
   isLoading = false;
 
@@ -21,7 +22,7 @@ export class FormRegisterComponent implements OnInit {
      * FormGroup contendo os campos do formulário de cadastro
      */
     this.registerForm = this.formBuilder.group({
-      email: [sessionStorage.getItem('email') || '', [Validators.required, Validators.pattern(this.emailPattern)]],
+      email: [sessionStorage.getItem('email') || '', [Validators.required, Validators.pattern(emailPattern)]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     });
