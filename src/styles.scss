@@ -7,6 +7,7 @@
   --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08);
   --mdc-filled-text-field-input-text-color: rgba(255, 255, 255, 0.87);
   --mdc-filled-text-field-input-text-placeholder-color: rgba(255, 255, 255, 0.87);
+  --mdc-filled-text-field-active-indicator-color: #6002ee;
   --mdc-filled-text-field-label-text-color: var(--Gray-500, #6B6B83);
 }
 
@@ -35,6 +36,20 @@
     }
   }
 
+  animation: slideIn 0.6s forwards;
+  transform: translate(100%, -50%);
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
 .form__button {

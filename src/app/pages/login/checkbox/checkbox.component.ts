@@ -29,7 +29,7 @@ export class CheckboxComponent {
 
   allComplete = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
@@ -52,8 +52,8 @@ export class CheckboxComponent {
 
   openModalForgot(): void {
     const dialogRef = this.dialog.open(ModalForgotPasswordComponent, {
-      width: '404px',
-      height: '1000px',
+      width: '500px',
+      height: '100%',
       panelClass: 'custom__modal__forgotpassword',
       disableClose: false,
       position: {
