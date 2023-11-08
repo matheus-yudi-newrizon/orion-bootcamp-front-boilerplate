@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {ThemePalette} from '@angular/material/core';
-
+import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-password/modal-forgot-password.component';
 
 export interface Task {
   name: string;
@@ -20,13 +21,15 @@ export class CheckboxComponent {
     completed: false,
     color: 'primary',
     subtasks: [
-      {name: 'Primary', completed: false, color: 'primary'},
-      {name: 'Accent', completed: false, color: 'accent'},
-      {name: 'Warn', completed: false, color: 'warn'},
+      { name: 'Primary', completed: false, color: 'primary' },
+      { name: 'Accent', completed: false, color: 'accent' },
+      { name: 'Warn', completed: false, color: 'warn' },
     ],
   };
 
   allComplete = false;
+
+  constructor(public dialog: MatDialog) {}
 
   updateAllComplete() {
     this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
@@ -45,6 +48,22 @@ export class CheckboxComponent {
       return;
     }
     this.task.subtasks.forEach(t => (t.completed = completed));
+  }
+
+  openModalForgot(): void {
+    const dialogRef = this.dialog.open(ModalForgotPasswordComponent, {
+      width: '404px',
+      height: '1000px',
+      panelClass: 'custom__modal__forgotpassword',
+      disableClose: false,
+      position: {
+        right: '0'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

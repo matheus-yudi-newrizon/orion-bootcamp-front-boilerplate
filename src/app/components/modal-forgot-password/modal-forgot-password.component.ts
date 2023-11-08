@@ -1,7 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from 'src/app/pages/register-page/register-page.component';
+import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -11,10 +10,10 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 
 export class ModalForgotPasswordComponent {
-  emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  forgotPasswordForm!: FormGroup;
+  public emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  protected forgotPasswordForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, public dialogRef: MatDialogRef<ModalForgotPasswordComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, public dialogRef: MatDialogRef<ModalForgotPasswordComponent>) {
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
@@ -29,7 +28,6 @@ export class ModalForgotPasswordComponent {
 
   /**
    * Função responsável por submeter o formulário e, em caso de ser inválido, não retornar nada
-   * @returns
    */
   public submit(): void {
     if (!this.forgotPasswordForm.valid) {
@@ -53,7 +51,7 @@ export class ModalForgotPasswordComponent {
       try {
         await this.userService.forgotPassword(this.forgotPasswordForm.value);
       } catch (error) {
-        console.error("error: ", error);
+        console.error("Error requesting password reset:", error);
       }
     }
   }

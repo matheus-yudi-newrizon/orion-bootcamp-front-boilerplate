@@ -8,6 +8,7 @@ export interface Create {
 }
 
 export interface Read {
+  id?: number;
   email: string;
 }
 
@@ -31,7 +32,7 @@ export interface ReturnCreate {
 
 export interface ReturnRead {
   success: boolean;
-  message: string;
+  message?: string;
 }
 
 export interface ReturnUpdate {
@@ -50,5 +51,5 @@ export interface ReturnDelete {
 /** Interface de erro */
 export interface ErrorResponse {
   success: boolean;
-  message: string;
+  message?: string;
 }
