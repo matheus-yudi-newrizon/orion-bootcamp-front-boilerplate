@@ -4,6 +4,22 @@ import { HttpClient } from '@angular/common/http';
 import { Create, ErrorResponse, Read, ReturnCreate, ReturnRead } from 'src/app/models/http/interface';
 import { lastValueFrom } from 'rxjs';
 
+/* Interface para a solicitação de redefinição de senha */
+interface PasswordResetRequest extends Read {
+  email: string;
+}
+
+/* Interface para a resposta de sucesso do processo de solicitação da redefinição de senha */
+interface SuccessResponsePassword extends ReturnRead {
+  success: boolean;
+  message: string;
+}
+
+/* Interface para a resposta de erro do processo de solicitação da redefinição de senha */
+interface ErrorResponsePassword extends ErrorResponse {
+  success: boolean;
+  message: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +27,6 @@ export class UserService extends RequestService {
 
   constructor(protected httpCliente: HttpClient) {
     super(httpCliente);
-
-    this.BASE_URL += '/signup/';
   }
 
   /**
@@ -22,7 +36,7 @@ export class UserService extends RequestService {
    */
   public async signUp(data: Create): Promise<ReturnCreate | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<ReturnCreate>(this.BASE_URL, data))
+      return await lastValueFrom(this.httpClient.post<ReturnCreate>(this.BASE_URL + '/signup/', data))
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -37,13 +51,13 @@ export class UserService extends RequestService {
    * @param email endereço de e-mail para o qual enviar a solicitação de redefinição de senha
    * @returns Promise contendo os dados de retorno da solicitação de redefinição de senha ou um objeto ErrorResponse no caso de erro
    */
-  public async forgotPassword(email: Read): Promise<ReturnRead | ErrorResponse> {
+  public async forgotPassword(email: PasswordResetRequest): Promise<SuccessResponsePassword | ErrorResponsePassword> {
     try {
-      return await lastValueFrom(this.httpClient.post<ReturnRead>('/forgot-password/', email))
+      return await lastValueFrom(this.httpClient.post<SuccessResponsePassword>(this.BASE_URL + '/forgot-password/', email))
     } catch (error) {
-      const errorResponse: ErrorResponse = {
+      const errorResponse: ErrorResponsePassword = {
         success: false,
-        message: ""
+        message: "An error occurred while sending a password reset request. Please try again later."
       }
       return errorResponse;
     }
