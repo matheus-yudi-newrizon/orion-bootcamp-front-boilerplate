@@ -9,24 +9,14 @@ interface PasswordResetRequest extends Read {
   email: string;
 }
 
-/* Interface para a resposta de sucesso do processo de solicitação da redefinição de senha */
-interface SuccessResponsePassword extends ReturnRead {
-  success: boolean;
-  message: string;
-}
 
-/* Interface para a resposta de erro do processo de solicitação da redefinição de senha */
-interface ErrorResponsePassword extends ErrorResponse {
-  success: boolean;
-  message: string;
-}
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends RequestService {
 
-  constructor(protected httpCliente: HttpClient) {
-    super(httpCliente);
+  constructor(protected override httpClient: HttpClient) {
+    super(httpClient);
   }
 
   /**
@@ -51,11 +41,11 @@ export class UserService extends RequestService {
    * @param email endereço de e-mail para o qual enviar a solicitação de redefinição de senha
    * @returns Promise contendo os dados de retorno da solicitação de redefinição de senha ou um objeto ErrorResponse no caso de erro
    */
-  public async forgotPassword(email: PasswordResetRequest): Promise<SuccessResponsePassword | ErrorResponsePassword> {
+  public async forgotPassword(email: PasswordResetRequest): Promise<ReturnRead | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<SuccessResponsePassword>(this.BASE_URL + '/forgot-password/', email))
+      return await lastValueFrom(this.httpClient.post<ReturnRead>(this.BASE_URL + '/forgot-password/', email))
     } catch (error) {
-      const errorResponse: ErrorResponsePassword = {
+      const errorResponse: ErrorResponse = {
         success: false,
         message: "An error occurred while sending a password reset request. Please try again later."
       }

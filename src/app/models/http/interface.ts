@@ -53,3 +53,9 @@ export interface ErrorResponse {
   success: boolean;
   message?: string;
 }
+
+/** Interface de sucesso */
+export interface SuccessResponse<DataType extends Record<string, unknown>> {
+  success: boolean;
+  data?: DataType;
+}

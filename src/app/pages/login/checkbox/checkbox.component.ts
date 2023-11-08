@@ -50,19 +50,18 @@ export class CheckboxComponent {
     this.task.subtasks.forEach(t => (t.completed = completed));
   }
 
+  /**
+   * Função responsável por abrir o modal de forgotPassword
+   */
   openModalForgot(): void {
-    const dialogRef = this.dialog.open(ModalForgotPasswordComponent, {
+    this.dialog.open(ModalForgotPasswordComponent, {
       width: '500px',
       height: '100%',
-      panelClass: 'custom__modal__forgotpassword',
+      panelClass: 'custom__modal',
       disableClose: false,
       position: {
         right: '0'
       }
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
     });
   }
 
