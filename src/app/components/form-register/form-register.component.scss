@@ -1,5 +1,4 @@
 @import "../../../colors";
-@import "../../../styles.scss";
 
 .form {
   min-width: 150px;
@@ -37,9 +36,6 @@
 }
 
 .form__container {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
   margin-top: 40px;
 }
 
@@ -54,17 +50,29 @@
   height: 100%;
 }
 
-::ng-deep .mat-mdc-form-field-error {
-  display: block;
-  position: absolute;
-  margin-top: -22px;
-  margin-left: 4px;
-}
+::ng-deep {
+  .mat-mdc-form-field-error {
+    display: block;
+    position: absolute;
+    margin-top: -22px;
+    margin-left: 4px;
 
-
-
-::ng-deep .mat-mdc-form-field-error[_ngcontent-ng-c1679319657] {
-  margin-top: 0px;
+    &[_ngcontent-ng-c1679319657] {
+      margin-top: 0px;
+    }
+  }
+  .mat-mdc-icon-button .mat-mdc-button-touch-target {
+    cursor: url(../../../assets/icons/mini-pointer-2.png), auto;
+  }
+  .mat-mdc-raised-button .mat-mdc-button-touch-target {
+    cursor: url(../../../assets/icons/mini-pointer-2.png), auto;
+  }
+  .list__requirement[_ngcontent-ng-c2532552156] span[_ngcontent-ng-c2532552156] {
+    cursor: url(../../../assets/icons/mouse-hover.png), auto;
+  }
+  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+    cursor: url(../../../assets/icons/mouse-hover.png), auto;
+  }
 }
 
 .form__button--disabled {

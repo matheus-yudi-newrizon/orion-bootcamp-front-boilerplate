@@ -21,7 +21,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
-import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
@@ -36,7 +35,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormRegisterComponent,
     NavbarComponent,
     LoginComponent,
-    CheckboxComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,19 @@
+@use "@angular/material" as mat;
+@include mat.core();
 @import "theme";
 @import "colors";
 @import "fonts";
 @import "spacing";
 
+* {
+  cursor: url('../src/assets/icons/cursor.png'), auto;
+}
+
 :root {
   --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08);
   --mdc-filled-text-field-input-text-color: rgba(255, 255, 255, 0.87);
-  --mdc-filled-text-field-input-text-placeholder-color: rgba(
-    255,
-    255,
-    255,
-    0.87
-  );
-  --mdc-filled-text-field-label-text-color: var(--Gray-500, #6b6b83);
-
+  --mdc-filled-text-field-input-text-placeholder-color: rgba(255, 255, 255, 0.87);
+  --mdc-filled-text-field-label-text-color: #6b6b83;
   --mdc-filled-text-field-button-disabled-color: rgba(5, 5, 206, 0.356);
 }
 
@@ -26,10 +26,21 @@
   font-size: 14px;
   margin-bottom: 229px;
 
+
   &:disabled {
     opacity: 30%;
-    background-color: rgba(5, 5, 206, 0.356) !important;
+    background-color: $accent-color !important;
     animation: slideToLoad 1s linear;
+  }
+
+  &:hover {
+    background-color: mat.get-color-from-palette($primary-palette, 800);
+  }
+
+  &:active {
+    background-color: mat.get-color-from-palette($primary-palette, 700);
+    border: 1px solid #767676;
+    height: 36px;
   }
 }
 
@@ -41,8 +52,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: url(../src/assets/background/background.svg),
-    #0f1620 50% / cover no-repeat;
+  background: url(../src/assets/background/background.svg), #0f1620 50% / cover no-repeat;
 }
 
 @keyframes slide {
@@ -86,5 +96,8 @@ body {
   main {
     margin-bottom: 30px;
   }
+}
 
+a, ul:hover, span:hover, input[type="text"], textarea:hover, p:hover, h4:hover {
+  cursor: url(../src/assets/icons/mouse-hover.png), auto;
 }
