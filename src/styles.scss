@@ -54,6 +54,47 @@
 
 }
 
+.modal__closed {
+
+  .mat-mdc-dialog-container {
+
+    .mdc-dialog__container .mat-mdc-dialog-surface {
+      background-color: #25252F;
+    }
+
+    .mdc-dialog__title,
+    .mdc-dialog__content,
+    .mat-mdc-button:not(:disabled),
+    .mat-mdc-button:disabled {
+      color: $text-color;
+    }
+
+    .mat-mdc-button:not(:disabled) {
+      background-color: $accent-color;
+    }
+
+    .mat-mdc-button:disabled {
+      opacity: 30%;
+      background-color: $accent-color;
+    }
+
+  }
+  animation: slideOut 0.8s forwards;
+  transform: translate(100%, -50%);
+
+  @keyframes slideOut {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+}
+
 .form__button {
   width: 500px;
   height: 32px;
