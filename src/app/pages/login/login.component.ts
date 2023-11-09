@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+
+  constructor(private userService: UserService){}
 
   // Atributos públicos
   public hide = true;
@@ -36,5 +39,16 @@ export class LoginComponent {
    */
   public submit() {
     // Lógica de submissão do formulário
+  }
+
+  public async login(): Promise<void> {
+    if(this.signin.valid) {
+      try {
+        await this.userService.login(this.signin.value)
+      } catch (error) {
+        console.error('',error)
+      }
+
+    }
   }
 }

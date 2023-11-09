@@ -22,8 +22,10 @@
     <a href="#" class="checkbox-page__password-recovery">Forgot Password?</a>
   </section>
 
-  <button class="login-page__width__button form__button" mat-raised-button color="primary" [disabled]="emailFormControl.invalid" type="submit">LOG IN</button>
+  <button (click)="login()" class="login-page__width__button form__button" mat-raised-button color="primary" [disabled]="emailFormControl.invalid" type="submit">LOG IN</button>
 </form>
+
+<app-pop-up-how-to-play></app-pop-up-how-to-play>
 
 <footer>
   <p>Don't have an account?</p>

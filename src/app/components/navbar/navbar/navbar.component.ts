@@ -20,15 +20,16 @@ export class NavbarComponent implements OnInit {
  * Verifica se a página atual é a página de login.
  * @returns True se a página atual é a página de login, caso contrário, False.
  */
-isLoginPage() {
-  return this.currentRoute === '/login';
-}
+  isLoginPage() {
+    return this.currentRoute === '/login';
+  }
 
-/**
- * Verifica se a página atual é a página de cadastro.
- * @returns True se a página atual é a página de cadastro, caso contrário, False.
- */
-isSignUpPage() {
-  return this.currentRoute === '/sign-up';
-}
+  /**
+   * Verifica se a página atual é a página de cadastro.
+   * @returns True se a página atual é a página de cadastro, caso contrário, False.
+   */
+  isSignUpPage() {
+    return this.currentRoute === '/sign-up';
+  }
+
 }

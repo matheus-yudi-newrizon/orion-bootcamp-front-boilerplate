@@ -22,6 +22,7 @@ import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
 import { LoginComponent } from './pages/login/login.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
 
 
 
@@ -35,6 +36,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormRegisterComponent,
     NavbarComponent,
     LoginComponent,
+    PopUpHowToPlayComponent,
   ],
   imports: [
     BrowserModule,
