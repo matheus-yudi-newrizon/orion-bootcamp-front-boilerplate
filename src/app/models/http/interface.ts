@@ -8,7 +8,7 @@ export interface Create {
 }
 
 export interface Read {
-  id: number;
+  id?: number;
   email: string;
 }
 
@@ -32,10 +32,7 @@ export interface ReturnCreate {
 
 export interface ReturnRead {
   success: boolean;
-  data: {
-    id: number;
-    email: string;
-  }
+  message?: string;
 }
 
 export interface ReturnUpdate {
@@ -54,5 +51,11 @@ export interface ReturnDelete {
 /** Interface de erro */
 export interface ErrorResponse {
   success: boolean;
-  message: string;
+  message?: string;
+}
+
+/** Interface de sucesso */
+export interface SuccessResponse<DataType extends Record<string, unknown>> {
+  success: boolean;
+  data?: DataType;
 }

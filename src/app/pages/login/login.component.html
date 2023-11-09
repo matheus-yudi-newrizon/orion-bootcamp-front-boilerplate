@@ -19,7 +19,7 @@
 
   <section class="checkbox-page" id="check">
     <mat-checkbox class="checkbox-page__checkbox"> Remember me </mat-checkbox>
-    <a href="#" class="checkbox-page__password-recovery">Forgot Password?</a>
+    <button (click)="openModalForgot()" class="checkbox-page__password-recovery">Forgot Password?</button>
   </section>
 
   <button (click)="login()" class="login-page__width__button form__button" mat-raised-button color="primary" [disabled]="emailFormControl.invalid" type="submit">LOG IN</button>

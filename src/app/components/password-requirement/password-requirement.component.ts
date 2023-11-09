@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { PasswordValidationService } from 'src/app/services/password-validation/password-validation.service';
 
 @Component({
@@ -14,11 +15,19 @@ export class PasswordRequirementComponent {
   samePassword = true;
   validPassword = false;
   hide = true;
+  currentUrl = "";
+  labelPassword = "";
+  labelConfirmPassword = "";
 
   @Output() passwordValueChanged = new EventEmitter<string>();
   @Output() confirmPasswordValueChanged = new EventEmitter<string>();
 
-  constructor(private passwordValidationService: PasswordValidationService) { }
+  constructor(private passwordValidationService: PasswordValidationService, private router: Router) { }
+
+  ngOnInit() {
+    this.currentUrl = this.router.url;
+    this.changeLabelRoute();
+  }
 
   /**
    * Valida a senha inserida baseada no tamanho, letras maiúsculas e caracteres especiais
@@ -50,5 +59,18 @@ export class PasswordRequirementComponent {
       this.confirmPasswordValueChanged.emit(confirmPassword);
     }
 
+  }
+
+  /**
+   * Função responsável por alterar os labels dos campos de input a depender da página atual
+   */
+  public changeLabelRoute(): void {
+    if (this.currentUrl === "/password-reset") {
+      this.labelPassword = "Insert your new password";
+      this.labelConfirmPassword = "Confirm your new password";
+    } else {
+      this.labelPassword = "Insert your password";
+      this.labelConfirmPassword = "Confirm your password";
+    }
   }
 }
