@@ -9,6 +9,7 @@ import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { ModalForgotPasswordComponent } from './components/modal-forgot-password/modal-forgot-password.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
@@ -25,7 +26,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { RedefinePasswordComponent } from './pages/redefine-password/redefine-password.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { RedefinePasswordComponent } from './pages/redefine-password/redefine-pa
     ModalForgotPasswordComponent,
     LoginComponent,
     CheckboxComponent,
-    RedefinePasswordComponent
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
