@@ -1,9 +1,10 @@
 @use "@angular/material" as mat;
+
 @include mat.core();
+
 @import "../../../theme.scss";
 @import "../../../colors";
 @import "../../../spacing";
-
 
 app-navbar {
   animation: slide 1.2s linear;
@@ -15,11 +16,10 @@ app-navbar {
   width: 100%;
   margin: 0 auto;
 
-
   &__width {
     width: 100%;
     animation: slideToLoad 1s linear;
-    // tirei a animação da barrinha roxa embaixo do input, seguindo o figma, se quiser de volta é só coomentar as variáveis abaixo
+    // Cores personalizadas para o campo de entrada
     --mdc-filled-text-field-active-indicator-color: #6002ee;
     --mdc-filled-text-field-hover-active-indicator-color: #6002ee;
 
@@ -32,16 +32,8 @@ app-navbar {
 
     &__label {
       color: $text-color;
-    }
+      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
 
-    &__button:hover {
-      background-color: mat.get-color-from-palette($primary-palette, 800);
-    }
-
-    &__button:active {
-      background-color: mat.get-color-from-palette($primary-palette, 700);
-      border: 1px solid #767676;
-      height: 36px;
     }
   }
 
@@ -53,10 +45,7 @@ app-navbar {
     .mdc-text-field--filled.mdc-text-field--invalid:not(
         .mdc-text-field--disabled
       )
-      .mdc-text-field__input {
-      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
-    }
-
+      .mdc-text-field__input,
     .mat-mdc-form-field:not(.mat-form-field-no-animations)
       .mdc-text-field__input {
       cursor: url("../../../assets/icons/mouse-hover.png"), auto;
@@ -65,11 +54,84 @@ app-navbar {
     .mat-mdc-raised-button {
       border-radius: 0px;
     }
+
+    .mat-mdc-raised-button .mat-mdc-button-touch-target {
+      cursor: url(../../../assets/icons/mini-pointer-2.png), auto;
+    }
+
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      cursor: url(../../../assets/icons/mouse-hover.png), auto;
+    }
+
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    cursor: url(../../../assets/icons/mouse-hover.png), auto;
+    }
+  }
+}
+
+.checkbox-page {
+  margin: 18px -8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__checkbox {
+    // Cores do checkbox forçadas para sobrescrever o tema
+    // Cores do checkbox no estado não selecionado
+    --mdc-checkbox-unselected-icon-color: #6200ee;
+    --mdc-checkbox-unselected-pressed-icon-color: #5300e8;
+    --mdc-checkbox-unselected-hover-icon-color: #5300e8;
+    --mdc-checkbox-unselected-focus-icon-color: #6200ee;
+    --mdc-checkbox-unselected-focus-state-layer-color: #6200ee;
+    --mdc-checkbox-unselected-hover-state-layer-color: #6200ee;
+    --mdc-checkbox-unselected-pressed-state-layer-color: #6200ee;
+
+    // Cor do checkmark
+    --mdc-checkbox-selected-checkmark-color: #ffffff;
+
+    // Cores do checkbox no estado selecionado
+    --mdc-checkbox-selected-icon-color: #6002ee;
+    --mdc-checkbox-selected-focus-icon-color: #6002ee;
+    --mdc-checkbox-selected-pressed-icon-color: #5300e8;
+
+    // Cor do remember me
+    --mdc-theme-text-primary-on-background: rgb(255, 255, 255);
+  }
+
+  &__password-recovery {
+
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: $text-color;
+    margin-right: 8px;
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+
+  &__checkbox:hover {
+    cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
+    border-radius: 10px !important;
+  }
+
+  ::ng-deep {
+    .mdc-checkbox__background {
+      border-radius: 0px !important;
+    }
+
+    .mdc-label {
+      font-weight: 500 !important;
+      font-size: 16px;
+      cursor: url("../../../assets/icons/mouse-hover.png"), auto !important;
+    }
+
+    .mdc-checkbox {
+      cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
+    }
   }
 }
 
 footer {
-
   display: flex;
   gap: $spacing-unit;
   justify-content: center;
@@ -81,7 +143,9 @@ footer {
     margin-bottom: 0;
     font-size: 16px;
     font-weight: 500;
+    cursor: url("../../../assets/icons/mouse-hover.png"), auto;
   }
+
   & a {
     font-size: 14px;
     font-weight: 500;
@@ -90,15 +154,15 @@ footer {
     border: 1px solid $text-color;
     padding: 8px;
     border-radius: 4px;
+    cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
   }
 }
 
-
 @media screen and (max-width: 575px) {
+
   .login-page {
     &__width {
       width: 100%;
-
       &__button {
         width: 100%;
         margin-bottom: 269px;
@@ -106,4 +170,22 @@ footer {
     }
   }
 
+  .checkbox-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &__checkbox {
+      position: absolute;
+      top: 550px;
+      animation: anotherSlide 1s linear;
+    }
+  }
+
+  .checkbox-page a {
+    position: absolute;
+    display: flex;
+    top: 458px;
+    margin-left: 10px;
+    animation: anotherSlide 1s linear;
+  }
 }

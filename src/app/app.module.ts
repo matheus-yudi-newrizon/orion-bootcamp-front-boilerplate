@@ -5,7 +5,6 @@ import { PasswordRequirementComponent } from './components/password-requirement/
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { RegisterFailedComponent } from './components/register-failed/register-failed.component';
 import { LoginComponent } from './pages/login/login.component';
-import { CheckboxComponent } from './pages/login/checkbox/checkbox.component';
 import { NavbarComponent } from './components/navbar/navbar/navbar.component';
 import { ModalForgotPasswordComponent } from './components/modal-forgot-password/modal-forgot-password.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
@@ -38,7 +37,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NavbarComponent,
     ModalForgotPasswordComponent,
     LoginComponent,
-    CheckboxComponent,
     PasswordResetComponent
   ],
   imports: [

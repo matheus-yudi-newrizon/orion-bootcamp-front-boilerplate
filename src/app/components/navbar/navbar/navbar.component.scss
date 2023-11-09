@@ -3,7 +3,6 @@
 nav {
   display: flex;
   justify-content: space-between;
-  // align-items: flex-start;
   width: 100%;
   margin-top: 40px;
 }
@@ -28,6 +27,7 @@ nav {
   border: 1px solid $text-color;
   padding: 8px;
   border-radius: 4px;
+  cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
 }
 
 .logout {
@@ -38,7 +38,7 @@ nav {
 }
 
 .login-page-navbar {
-  .right-icons{
+  .right-icons {
     margin-bottom: 232.16px;
   }
 }
@@ -46,9 +46,9 @@ nav {
 .sign-up-page-navbar {
   margin-top: 120px;
   margin-bottom: 68px;
+
   .logout {
     display: none;
-
   }
 
   .navbar__logo {
@@ -66,5 +66,4 @@ nav {
       margin-left: 2px;
     }
   }
-
 }

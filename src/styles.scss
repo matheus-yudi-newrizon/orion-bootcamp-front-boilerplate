@@ -1,17 +1,63 @@
+@use "@angular/material" as mat;
+@include mat.core();
 @import "theme";
 @import "colors";
 @import "fonts";
 @import "spacing";
 
+* {
+  cursor: url("../src/assets/icons/cursor.png"), auto;
+}
+
 :root {
   --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08);
   --mdc-filled-text-field-input-text-color: rgba(255, 255, 255, 0.87);
-  --mdc-filled-text-field-input-text-placeholder-color: rgba(255, 255, 255, 0.87);
+  --mdc-filled-text-field-input-text-placeholder-color: rgba(255,255,255,0.87);
+  --mdc-filled-text-field-label-text-color: #6b6b83;
+  --mdc-filled-text-field-button-disabled-color: rgba(5, 5, 206, 0.356);
   --mdc-filled-text-field-active-indicator-color: #6002ee;
-  --mdc-filled-text-field-label-text-color: var(--Gray-500, #6B6B83);
 }
 
 .custom__modal {
+  .mat-mdc-dialog-container {
+    .mdc-dialog__container .mat-mdc-dialog-surface {
+      background-color: #25252f;
+    }
+
+    .mdc-dialog__title,
+    .mdc-dialog__content,
+    .mat-mdc-button:not(:disabled),
+    .mat-mdc-button:disabled {
+      color: $text-color;
+    }
+
+    .mat-mdc-button:not(:disabled) {
+      background-color: $accent-color;
+    }
+
+    .mat-mdc-button:disabled {
+      opacity: 30%;
+      background-color: $accent-color;
+    }
+  }
+
+  animation: slideIn 0.6s forwards;
+  transform: translate(100%, -50%);
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.modal__closed {
 
   .mat-mdc-dialog-container {
 
@@ -36,22 +82,20 @@
     }
 
   }
-
-  animation: slideIn 0.6s forwards;
+  animation: slideOut 0.8s forwards;
   transform: translate(100%, -50%);
 
-  @keyframes slideIn {
+  @keyframes slideOut {
     0% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-
-    100% {
       opacity: 1;
       transform: translateX(0);
     }
-  }
 
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
 }
 
 .form__button {
@@ -65,8 +109,18 @@
 
   &:disabled {
     opacity: 30%;
-    background-color: rgba(5, 5, 206, 0.356) !important;
+    background-color: $accent-color !important;
     animation: slideToLoad 1s linear;
+  }
+
+  &:hover {
+    background-color: mat.get-color-from-palette($primary-palette, 800);
+  }
+
+  &:active {
+    background-color: mat.get-color-from-palette($primary-palette, 700);
+    border: 1px solid #767676;
+    height: 36px;
   }
 }
 
@@ -123,5 +177,14 @@ body {
   main {
     margin-bottom: 30px;
   }
+}
 
+a,
+ul:hover,
+span:hover,
+input[type="text"],
+textarea:hover,
+p:hover,
+h4:hover {
+  cursor: url(../src/assets/icons/mouse-hover.png), auto;
 }
