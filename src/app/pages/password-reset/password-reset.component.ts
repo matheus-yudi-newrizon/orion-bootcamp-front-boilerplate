@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -13,14 +13,22 @@ export class PasswordResetComponent implements OnInit {
   protected resetPasswordForm!: FormGroup;
   public isLoading = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.resetPasswordForm = this.formBuilder.group({
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
-    })
+    this.route.queryParams.subscribe(params => {
+      const token = params['token'];
+      const id = params['id'];
+
+      this.resetPasswordForm = this.formBuilder.group({
+        token: [token, [Validators.required]],
+        id: [id, [Validators.required]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]]
+      })
+    });
+
   }
 
   /**
