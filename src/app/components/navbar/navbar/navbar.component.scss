@@ -59,6 +59,8 @@ nav {
 @media screen and (max-width: 575px) {
   .login-page-navbar {
     .play {
+      position: absolute;
+      top: 40px;
       font-size: 0;
       gap: 0;
     }

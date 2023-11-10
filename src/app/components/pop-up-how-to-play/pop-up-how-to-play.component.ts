@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
 
 @Component({
   selector: 'app-pop-up-how-to-play',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./pop-up-how-to-play.component.scss']
 })
 export class PopUpHowToPlayComponent {
-  
+
+  constructor(public myService: PopUpHowToPlayService) {}
+
+  mudarDeslocamento(): void {
+    const novoDeslocamento = this.myService.deslocamento + 450; // Ajuste conforme necessário
+    this.myService.alterarDeslocamento(novoDeslocamento);
+  }
+
 }

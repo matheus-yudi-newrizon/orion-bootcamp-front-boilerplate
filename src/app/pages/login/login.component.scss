@@ -161,6 +161,7 @@ footer {
 @media screen and (max-width: 575px) {
 
   .login-page {
+    margin-top: 50px;
     &__width {
       width: 100%;
       &__button {
@@ -181,11 +182,48 @@ footer {
     }
   }
 
-  .checkbox-page a {
+  .checkbox-page button {
     position: absolute;
     display: flex;
-    top: 458px;
-    margin-left: 10px;
+    top: 466px;
+    margin-left: 5px;
     animation: anotherSlide 1s linear;
   }
+}
+
+@media screen and (max-width: 375px) {
+
+  .login-page {
+    height: 370px;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-unit;
+    justify-content: center;
+    align-items: center;
+    animation: slideToLoad 1s linear;
+
+    & p {
+      color: $text-color;
+      text-align: center;
+      margin-bottom: 0;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+    }
+
+    & a {
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      color: $text-color;
+      border: 1px solid $text-color;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+    }
+  }
+
 }

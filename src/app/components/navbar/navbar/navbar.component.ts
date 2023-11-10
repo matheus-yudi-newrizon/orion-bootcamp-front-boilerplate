@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   private currentRoute = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public myService: PopUpHowToPlayService) {}
 
   ngOnInit() {
     this.currentRoute = this.router.url;
@@ -30,6 +31,11 @@ export class NavbarComponent implements OnInit {
    */
   isSignUpPage() {
     return this.currentRoute === '/sign-up';
+  }
+
+  moverParaEsquerda(): void {
+    const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
+    this.myService.alterarDeslocamento(novoDeslocamento);
   }
 
 }
