@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { lastValueFrom } from 'rxjs';
-import { Create, Read, Update, Delete } from 'src/app/models/http/interface';
+import { RequestData, SuccessResponse } from 'src/app/models/http/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,9 @@ export class RequestService {
    * @param id recurso a ser lido
    * @returns uma Promise
    */
-  public async read(id: number): Promise<Read> {
+  public async read(id: number): Promise<SuccessResponse> {
     try {
-      return await lastValueFrom(this.httpClient.get<Read>(`${this.BASE_URL}/${id}`));
+      return await lastValueFrom(this.httpClient.get<SuccessResponse>(`${this.BASE_URL}/${id}`));
     } catch (error) {
       console.error(error);
       throw error;
@@ -32,9 +32,9 @@ export class RequestService {
    * @param data dados a serem criados
    * @returns uma Promise
    */
-  public async create(data: Create): Promise<Create> {
+  public async create(data: RequestData): Promise<SuccessResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<Create>(`${this.BASE_URL}/`, data));
+      return await lastValueFrom(this.httpClient.post<SuccessResponse>(`${this.BASE_URL}/`, data));
     } catch (error) {
       console.error(error);
       throw error;
@@ -47,9 +47,9 @@ export class RequestService {
    * @param data a serem atualizados
    * @returns uma Promise
    */
-  public async update(id: number, data: Update): Promise<Update> {
+  public async update(id: number, data: RequestData): Promise<SuccessResponse> {
     try {
-      return await lastValueFrom(this.httpClient.put<Update>(`${this.BASE_URL}/${id}`, data));
+      return await lastValueFrom(this.httpClient.put<SuccessResponse>(`${this.BASE_URL}/${id}`, data));
     } catch (error) {
       console.error(error);
       throw error;
@@ -61,9 +61,9 @@ export class RequestService {
    * @param id id do objeto a ser excluído
    * @returns uma Promise
    */
-  public async delete(id: number): Promise<Delete> {
+  public async delete(id: number): Promise<SuccessResponse> {
     try {
-      return await lastValueFrom(this.httpClient.delete<Delete>(`${this.BASE_URL}/${id}`));
+      return await lastValueFrom(this.httpClient.delete<SuccessResponse>(`${this.BASE_URL}/${id}`));
     } catch (error) {
       console.error(error);
       throw error;

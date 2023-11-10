@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-password/modal-forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +9,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   // Atributos públicos
   public hide = true;
   public emailFormControl = new FormControl('', [
@@ -19,6 +20,8 @@ export class LoginComponent {
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required, Validators.min(3)]),
   });
+
+  constructor(public dialog: MatDialog) { }
 
   // Método público para obter o controle de email
   public get emailInput() {
@@ -36,5 +39,25 @@ export class LoginComponent {
    */
   public submit() {
     // Lógica de submissão do formulário
+  }
+
+  /**
+   * Função responsável por abrir o modal de forgotPassword
+   */
+  public openModalForgot(): void {
+    const dialogRef = this.dialog.open(ModalForgotPasswordComponent, {
+      width: '500px',
+      height: '100%',
+      panelClass: 'custom__modal',
+      disableClose: false,
+      position: {
+        right: '0',
+      },
+      exitAnimationDuration: 6000,
+    });
+
+    dialogRef.beforeClosed().subscribe(() => {
+      dialogRef.addPanelClass('modal__closed');
+    });
   }
 }

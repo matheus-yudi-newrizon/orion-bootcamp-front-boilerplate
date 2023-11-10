@@ -74,7 +74,6 @@ app-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 223px;
 
   &__checkbox {
     // Cores do checkbox forçadas para sobrescrever o tema
@@ -100,12 +99,14 @@ app-navbar {
   }
 
   &__password-recovery {
-    text-decoration: none;
-    font-weight: 500;
+
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
     font-size: 16px;
     color: $text-color;
     margin-right: 8px;
-    cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
   }
 
   &__checkbox:hover {
