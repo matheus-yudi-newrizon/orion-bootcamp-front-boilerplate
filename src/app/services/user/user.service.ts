@@ -23,6 +23,13 @@ interface PasswordResetResponse extends SuccessResponse {
   message: string;
 }
 
+interface ResetPasswordRequest {
+  token: string;
+  id: number;
+  password: string;
+  confirmPassword: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +42,7 @@ export class UserService extends RequestService {
   /**
    * Função responsável por realizar o cadastro de um novo usuário
    * @param data os dados do novo usuário a serem registrados
-   * @returns uma Promise contendo os dados do novo usuário ou um objeto ErrorResponse no caso de erro
+   * @returns Promise contendo os dados do novo usuário ou um objeto ErrorResponse no caso de erro
    */
   public async signUp(data: SignUpRequest): Promise<SignUpResponse | ErrorResponse> {
     try {
@@ -60,7 +67,24 @@ export class UserService extends RequestService {
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message: "An error occurred while sending a password reset request. Please try again later."
+        message: "An error occurred while sending a password reset request."
+      }
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por realizar a redefinição de senha para o usuário
+   * @param data um objeto contendo as informações necessárias para a redefinição, como token, id, password e confirmPassword
+   * @returns Promise contendo os dados redefinidos ou um objeto ErrorResponse no caso de erro
+   */
+  public async resetPassword(data: ResetPasswordRequest): Promise<PasswordResetResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<PasswordResetResponse>(this.BASE_URL + '/reset-password/', data))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: "An error occurred while resetting the password."
       }
       return errorResponse;
     }
