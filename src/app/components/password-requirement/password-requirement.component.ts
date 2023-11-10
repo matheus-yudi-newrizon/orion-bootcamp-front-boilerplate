@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { PasswordValidationService } from 'src/app/services/password-validation/password-validation.service';
 
@@ -7,7 +7,7 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   templateUrl: './password-requirement.component.html',
   styleUrls: ['./password-requirement.component.scss']
 })
-export class PasswordRequirementComponent {
+export class PasswordRequirementComponent implements OnInit {
   password = '';
   upperCase = false;
   specialChar = false;

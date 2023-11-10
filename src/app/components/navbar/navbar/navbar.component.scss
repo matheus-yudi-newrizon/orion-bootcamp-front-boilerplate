@@ -21,11 +21,14 @@ nav {
 
 .play {
   display: flex;
+  align-items: center;
+  font-size: 16px;
   text-decoration: none;
   color: $text-color;
-  gap: 5px;
+  background-color: transparent;
+  gap: 10px;
   border: 1px solid $text-color;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 4px;
   cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
 }

@@ -15,4 +15,10 @@ export class PopUpHowToPlayComponent {
     this.myService.alterarDeslocamento(novoDeslocamento);
   }
 
+  handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter' || event.key === 'Space') {
+      this.mudarDeslocamento();
+    }
+
+  }
 }
