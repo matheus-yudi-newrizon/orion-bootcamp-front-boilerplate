@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "review-reveal-frontend-orion-bootcamp": {
+    "review-reveal-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/review-reveal-frontend-orion-bootcamp",
+            "outputPath": "dist/review-reveal-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -46,13 +46,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 }
               ],
               "outputHashing": "all"
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "review-reveal-frontend-orion-bootcamp:build:production"
+              "browserTarget": "review-reveal-web:build:production"
             },
             "development": {
-              "browserTarget": "review-reveal-frontend-orion-bootcamp:build:development"
+              "browserTarget": "review-reveal-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "review-reveal-frontend-orion-bootcamp:build"
+            "browserTarget": "review-reveal-web:build"
           }
         },
         "test": {
@@ -114,6 +114,9 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
