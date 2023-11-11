@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
 
   private currentRoute = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.currentRoute = this.router.url;
@@ -20,15 +20,14 @@ export class NavbarComponent implements OnInit {
  * Verifica se a página atual é a página de login.
  * @returns True se a página atual é a página de login, caso contrário, False.
  */
-isLoginPage() {
-  return this.currentRoute === '/login';
-}
-
-/**
- * Verifica se a página atual é a página de cadastro.
- * @returns True se a página atual é a página de cadastro, caso contrário, False.
- */
-isSignUpPage() {
-  return this.currentRoute === '/sign-up';
-}
+  isLoginPage() {
+    return this.currentRoute === '/login';
+  }
+  /**
+  * Verifica se a página atual é a página de cadastro.
+  * @returns True se a página atual é a página de cadastro, caso contrário, False.
+  */
+  isSignUpPage() {
+    return this.currentRoute === '/sign-up' || '/reset-password';
+  }
 }

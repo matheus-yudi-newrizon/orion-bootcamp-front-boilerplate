@@ -19,7 +19,6 @@ export class PasswordRequirementComponent {
   @Output() confirmPasswordValueChanged = new EventEmitter<string>();
 
   constructor(private passwordValidationService: PasswordValidationService) { }
-
   /**
    * Valida a senha inserida baseada no tamanho, letras maiúsculas e caracteres especiais
    * @param passwordValue a senha a ser validada pelo service

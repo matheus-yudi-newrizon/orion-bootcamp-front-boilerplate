@@ -14,13 +14,13 @@ interface SignUpResponse
   extends SuccessResponse<{
     id: number;
     email: string;
-  }> {}
+  }> { }
 
-interface PasswordResetRequest {
+interface ForgotPasswordRequest {
   email: string;
 }
 
-interface PasswordResetResponse extends SuccessResponse {
+interface ForgotPasswordResponse extends SuccessResponse {
   message: string;
 }
 
@@ -35,7 +35,14 @@ interface LoginResponse
     id: number;
     email: string;
     token: string;
-  }> {}
+  }> { }
+
+interface ResetPasswordRequest {
+  token: string;
+  id: number;
+  password: string;
+  confirmPassword: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -72,11 +79,11 @@ export class UserService extends RequestService {
    * @returns Promise contendo os dados de retorno da solicitação de redefinição de senha
    */
   public async forgotPassword(
-    email: PasswordResetRequest
-  ): Promise<PasswordResetResponse> {
+    email: ForgotPasswordRequest
+  ): Promise<ForgotPasswordResponse> {
     try {
       return await lastValueFrom(
-        this.httpClient.post<PasswordResetResponse>(
+        this.httpClient.post<ForgotPasswordResponse>(
           this.BASE_URL + '/forgot-password/',
           email
         )
@@ -96,7 +103,7 @@ export class UserService extends RequestService {
    * @param data os dados do usuário qualquer
    * @returns uma Promise contendo os dados do novo usuário
    */
-  public async login (
+  public async login(
     data: LoginRequest
   ): Promise<LoginResponse> {
     try {
@@ -109,6 +116,23 @@ export class UserService extends RequestService {
         message: 'Email or password is invalid.',
       };
       throw errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por realizar a redefinição de senha para o usuário
+   * @param data um objeto contendo as informações necessárias para a redefinição, como token, id, password e confirmPassword
+   * @returns Promise contendo os dados redefinidos ou um objeto ErrorResponse no caso de erro
+   */
+  public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/reset-password/', data))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: "An error occurred while resetting the password."
+      }
+      return errorResponse;
     }
   }
 }

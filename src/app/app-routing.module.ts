@@ -4,6 +4,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { RegisterSuccessComponent } from './components/register-success/register-success.component';
 import { RegisterFailedComponent } from './components/register-failed/register-failed.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 
 const routes: Routes = [
   {
@@ -15,11 +16,23 @@ const routes: Routes = [
     component: RegisterPageComponent
   },
   {
-    path: 'registrationSuccess',
+    path: 'registration-success',
     component: RegisterSuccessComponent
   },
   {
-    path: 'registrationFailure',
+    path: 'registration-failure',
+    component: RegisterFailedComponent
+  },
+  {
+    path: 'reset-password',
+    component: PasswordResetComponent
+  },
+  {
+    path: 'reset-password-success',
+    component: RegisterSuccessComponent
+  },
+  {
+    path: 'reset-password-failure',
     component: RegisterFailedComponent
   },
   // Rota para capturar caminhos não correspondentes

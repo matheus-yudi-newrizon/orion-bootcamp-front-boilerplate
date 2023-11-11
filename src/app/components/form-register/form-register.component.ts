@@ -68,12 +68,12 @@ export class FormRegisterComponent implements OnInit {
         const value = await this.userService.signUp(this.registerForm.value);
         const { success } = value;
 
-        const router = success ? '/registrationSuccess' : '/registrationFailure';
+        const router = success ? '/registration-success' : '/registration-failure';
         this.router.navigate([router]);
       } catch (error) {
 
         console.error("error: ", error);
-        this.router.navigate(['/registrationFailure']);
+        this.router.navigate(['/registration-failure']);
       } finally {
         this.isLoading = false;
       }
