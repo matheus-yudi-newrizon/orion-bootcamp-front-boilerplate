@@ -28,6 +28,6 @@ export class NavbarComponent implements OnInit {
   * @returns True se a página atual é a página de cadastro, caso contrário, False.
   */
   isSignUpPage() {
-    return this.currentRoute === '/sign-up' || '/password-reset';
+    return this.currentRoute === '/sign-up' || '/reset-password';
   }
 }
