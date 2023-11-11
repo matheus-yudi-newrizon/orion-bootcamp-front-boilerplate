@@ -29,4 +29,13 @@ export class RegisterSuccessComponent implements OnInit {
       this.titlePageSuccess = "Password reset successfully";
     }
   }
+
+  /**
+ * Retorna para a tela de cadastro em caso de erro.
+ */
+  public returnToHome(): void {
+    if (this.currentUrl === '/registration-success' || this.currentUrl === '/reset-password-success') {
+      this.router.navigate(['/login']);
+    }
+  }
 }

@@ -24,7 +24,7 @@ const routes: Routes = [
     component: RegisterFailedComponent
   },
   {
-    path: 'password-reset',
+    path: 'reset-password',
     component: PasswordResetComponent
   },
   {
