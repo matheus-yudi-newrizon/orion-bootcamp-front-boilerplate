@@ -26,16 +26,15 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Verifica se a página atual é a página de cadastro.
-   * @returns True se a página atual é a página de cadastro, caso contrário, False.
-   */
+  * Verifica se a página atual é a página de cadastro.
+  * @returns True se a página atual é a página de cadastro, caso contrário, False.
+  */
   isSignUpPage() {
-    return this.currentRoute === '/sign-up';
+    return this.currentRoute === '/sign-up' || '/password-reset';
   }
 
   moverParaEsquerda(): void {
     const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
     this.myService.alterarDeslocamento(novoDeslocamento);
   }
-
 }

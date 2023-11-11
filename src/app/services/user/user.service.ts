@@ -1,12 +1,27 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
 import { HttpClient } from '@angular/common/http';
-import { Create, ErrorResponse, Read, ReturnCreate, ReturnRead } from 'src/app/models/http/interface';
+import { ErrorResponse, SuccessResponse } from 'src/app/models/http/interface';
 import { lastValueFrom } from 'rxjs';
 
-/* Interface para a solicitação de redefinição de senha */
-interface PasswordResetRequest extends Read {
+interface SignUpRequest {
   email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface SignUpResponse
+  extends SuccessResponse<{
+    id: number;
+    email: string;
+  }> { }
+
+interface ForgotPasswordRequest {
+  email: string;
+}
+
+interface ForgotPasswordResponse extends SuccessResponse {
+  message: string;
 }
 
 interface LoginRequest {
@@ -15,14 +30,18 @@ interface LoginRequest {
   rememberMe: boolean;
 }
 
-interface LoginResponse {
-  success: boolean;
-  message: string;
-  data: {
+interface LoginResponse
+  extends SuccessResponse<{
     id: number;
     email: string;
     token: string;
-  };
+  }> { }
+
+interface ResetPasswordRequest {
+  token: string;
+  id: number;
+  password: string;
+  confirmPassword: string;
 }
 
 @Injectable({
@@ -36,33 +55,35 @@ export class UserService extends RequestService {
   /**
    * Função responsável por realizar o cadastro de um novo usuário
    * @param data os dados do novo usuário a serem registrados
-   * @returns uma Promise contendo os dados do novo usuário ou um objeto ErrorResponse no caso de erro
+   * @returns uma Promise contendo os dados do novo usuário
    */
-  public async signUp(data: Create): Promise<ReturnCreate | ErrorResponse> {
+  public async signUp(
+    data: SignUpRequest
+  ): Promise<SignUpResponse> {
     try {
       return await lastValueFrom(
-        this.httpClient.post<ReturnCreate>(this.BASE_URL + '/signup/', data)
+        this.httpClient.post<SignUpResponse>(this.BASE_URL + '/signup/', data)
       );
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'The user with email' + data.email + 'already exists.',
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 
   /**
    * Função responsável por enviar uma solicitação de redefinição de senha para o e-mail fornecido
    * @param email endereço de e-mail para o qual enviar a solicitação de redefinição de senha
-   * @returns Promise contendo os dados de retorno da solicitação de redefinição de senha ou um objeto ErrorResponse no caso de erro
+   * @returns Promise contendo os dados de retorno da solicitação de redefinição de senha
    */
   public async forgotPassword(
-    email: PasswordResetRequest
-  ): Promise<ReturnRead | ErrorResponse> {
+    email: ForgotPasswordRequest
+  ): Promise<ForgotPasswordResponse> {
     try {
       return await lastValueFrom(
-        this.httpClient.post<ReturnRead>(
+        this.httpClient.post<ForgotPasswordResponse>(
           this.BASE_URL + '/forgot-password/',
           email
         )
@@ -73,22 +94,44 @@ export class UserService extends RequestService {
         message:
           'An error occurred while sending a password reset request. Please try again later.',
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 
+  /**
+   * Função responsável por realizar o login de usuário
+   * @param data os dados do usuário qualquer
+   * @returns uma Promise contendo os dados do novo usuário
+   */
   public async login(
     data: LoginRequest
-  ): Promise<LoginResponse | ErrorResponse> {
+  ): Promise<LoginResponse> {
     try {
       return await lastValueFrom(
-        this.httpClient.get<LoginResponse>(this.BASE_URL + '/login')
+        this.httpClient.post<LoginResponse>(this.BASE_URL + '/login/', data)
       );
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message: '',
+        message: 'Email or password is invalid.',
       };
+      throw errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por realizar a redefinição de senha para o usuário
+   * @param data um objeto contendo as informações necessárias para a redefinição, como token, id, password e confirmPassword
+   * @returns Promise contendo os dados redefinidos ou um objeto ErrorResponse no caso de erro
+   */
+  public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/reset-password/', data))
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: "An error occurred while resetting the password."
+      }
       return errorResponse;
     }
   }

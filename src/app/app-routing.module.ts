@@ -16,16 +16,24 @@ const routes: Routes = [
     component: RegisterPageComponent
   },
   {
-    path: 'registrationSuccess',
+    path: 'registration-success',
     component: RegisterSuccessComponent
   },
   {
-    path: 'registrationFailure',
+    path: 'registration-failure',
     component: RegisterFailedComponent
   },
   {
     path: 'password-reset',
     component: PasswordResetComponent
+  },
+  {
+    path: 'reset-password-success',
+    component: RegisterSuccessComponent
+  },
+  {
+    path: 'reset-password-failure',
+    component: RegisterFailedComponent
   },
   // Rota para capturar caminhos não correspondentes
   {

@@ -1,16 +1,16 @@
-version: '3.7'
+version: "3.7"
 
 services:
-    orion-bootcamp-front-end:
-        container_name: orion-bootcamp-front-end
-        image: orion-bootcamp-front-end
-        build:
-            context: .
-            dockerfile: Dockerfile
-        volumes:
-            - .:/app
-            - /app/node_modules
-        ports:
-            - 4200:4200
-            - 9876:9876
-        restart: unless-stopped
+  review-review-web:
+    container_name: review-review-web
+    image: review-review-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 4200:4200
+      - 9876:9876
+    restart: unless-stopped
