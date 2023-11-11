@@ -2,13 +2,12 @@
 
   <img class="navbar__logo" src="../../../../assets/icons/logotipo.svg" alt="logotipo">
 
-  <div class="right-icons">
+  <div class="right-icons" *ngIf="isLoginPage()">
 
-      <a href="#" *ngIf="isLoginPage()" class="play"><img src="../../../../assets/icons/icon-question-mark.svg" alt="how to play"> HOW TO PLAY </a>
+      <button  class="play" (click)="moverParaEsquerda()" ><img src="../../../../assets/icons/icon-question-mark.svg"  alt="how to play"> HOW TO PLAY </button>
 
       <a href="#" *ngIf="isSignUpPage()" class="logout"><img src="../../../../assets/icons/icon-out.svg" alt=""> </a>
 
   </div>
 
 </nav>
-

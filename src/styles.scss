@@ -159,6 +159,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: url(../src/assets/background/background.svg),
     #0f1620 50% / cover no-repeat;
+
 }
 
 @keyframes slide {
@@ -202,7 +203,13 @@ body {
   main {
     margin-bottom: 30px;
   }
+
+  footer {
+    padding-bottom: 30px;
+  }
 }
+
+
 
 a,
 ul:hover,
