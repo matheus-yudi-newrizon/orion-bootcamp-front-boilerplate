@@ -1,7 +1,11 @@
+import { UserService } from 'src/app/services/user/user.service';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-password/modal-forgot-password.component';
+import { emailPattern } from '../../components/form-register/form-register.component';
+import { ErrorResponse } from 'src/app/models/http/interface';
+
 
 @Component({
   selector: 'app-login',
@@ -11,34 +15,42 @@ import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-pa
 export class LoginComponent {
   // Atributos públicos
   public hide = true;
-  public emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
 
-  public signin: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.min(3)]),
-  });
+  public errorMessage = '';
 
-  constructor(public dialog: MatDialog) { }
+  public signInForm!: FormGroup;
+
+  constructor(public dialog: MatDialog, private userService: UserService, private formBuilder: FormBuilder) {
+    this.signInForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.pattern(emailPattern)]],
+      password: ['', [Validators.required, Validators.min(3)]],
+      rememberMe: [false],
+    })
+  }
 
   // Método público para obter o controle de email
   public get emailInput() {
-    return this.signin.get('email');
+    return this.signInForm.get('email');
   }
 
   // Método público para obter o controle de senha
   public get passwordInput() {
-    return this.signin.get('password');
+    return this.signInForm.get('password');
   }
 
   /**
    * Método público para realizar alguma ação quando o formulário é submetido.
    * Por exemplo, você pode adicionar aqui a lógica para o login.
    */
-  public submit() {
+  public async submit(): Promise<void> {
     // Lógica de submissão do formulário
+    if (this.signInForm.valid) {
+      try {
+        await this.userService.login(this.signInForm.value);
+      } catch (error) {
+        this.errorMessage = `Error on login: ${(error as ErrorResponse).message}`;
+      }
+    }
   }
 
   /**
