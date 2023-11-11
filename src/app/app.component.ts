@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'review-reveal-frontend-orion-bootcamp';
+  title = 'review-reveal-web';
 }

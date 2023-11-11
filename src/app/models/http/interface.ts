@@ -9,7 +9,7 @@ export interface RequestData {
 /** Interface de erro */
 export interface ErrorResponse {
   success: boolean;
-  message?: string;
+  message: string;
 }
 
 /** Interface de sucesso */

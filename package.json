@@ -1,6 +1,6 @@
 {
-  "name": "review-reveal-frontend-orion-bootcamp",
-  "version": "0.0.0",
+  "name": "review-reveal-web",
+  "version": "0.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
@@ -9,7 +9,7 @@
     "test": "npm run lint",
     "prepare": "husky install",
     "lint": "ng lint",
-    "deploy": "ng deploy --no-silent"
+    "deploy": "ng deploy --base-href=/review-reveal-web/ --no-silent"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "angular-cli-ghpages": "^1.0.6",
+    "angular-cli-ghpages": "1.0.6",
     "bootstrap": "^5.3.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
