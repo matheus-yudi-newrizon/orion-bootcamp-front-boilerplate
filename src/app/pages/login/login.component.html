@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="title-login">
+  <h1>Welcome to ReviewReveal</h1>
+  <p>Log in to discover new movies by playing</p>
+</div>
+
+<form [formGroup]="signInForm" class="login-page">
+
+  <mat-form-field class="login-page__width">
+    <mat-label class="login-page__width__label">Email</mat-label>
+    <input class="email login-page__width__email-input" type="email" matInput formControlName="email" required>
+    <mat-error class="login-page__width__error" *ngIf="emailInput?.errors?.['pattern']">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="login-page__width">
+    <input class="login-page__width__password" matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+    <mat-icon class="login-page__width__icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </mat-form-field>
+
+  <section class="checkbox-page" id="check">
+    <mat-checkbox class="checkbox-page__checkbox" formControlName="rememberMe"> Remember me </mat-checkbox>
+    <button (click)="openModalForgot()" class="checkbox-page__password-recovery">Forgot Password?</button>
+  </section>
+
+  <button class="login-page__width__button form__button" mat-raised-button color="primary" (click)="submit()" [disabled]="signInForm.invalid" type="submit">LOG IN</button>
+  <div class="login-page__width__login-error"> {{errorMessage}} </div>
+</form>
+
+<footer>
+  <p>Don't have an account?</p>
+  <a routerLink="/sign-up">SIGN UP NOW</a>
+</footer>
