@@ -1,4 +1,3 @@
-
 import { AppComponent } from './app.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { PasswordRequirementComponent } from './components/password-requirement/password-requirement.component';
@@ -22,8 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule} from '@angular/material/dialog';
-import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
 
@@ -39,7 +38,7 @@ import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-
     ModalForgotPasswordComponent,
     LoginComponent,
     PasswordResetComponent,
-    PopUpHowToPlayComponent,
+    PopUpHowToPlayComponent
   ],
   imports: [
     BrowserModule,
@@ -61,4 +60,4 @@ import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

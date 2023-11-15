@@ -11,13 +11,16 @@ export const emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit {
-  registerForm!: FormGroup;
-  isLoading = false;
+  public registerForm!: FormGroup;
+  public isLoading = false;
 
-  constructor(private formBuilder: FormBuilder,
-    private userService: UserService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     /**
      * FormGroup contendo os campos do formulário de cadastro
      */
@@ -49,7 +52,7 @@ export class FormRegisterComponent implements OnInit {
    * Obtém o valor da senha e atribui ao formulário
    * @param password
    */
-  public getPassword(password: string, confirmPassword: string) {
+  public getPassword(password: string, confirmPassword: string): void {
     this.registerForm.patchValue({ password: password });
     this.registerForm.patchValue({ confirmPassword: confirmPassword });
   }
@@ -60,7 +63,6 @@ export class FormRegisterComponent implements OnInit {
    * @throws {Error} Se houver algum problema durante o processo de criação da conta
    */
   public async createAccount(): Promise<void> {
-
     if (this.registerForm.valid) {
       try {
         this.isLoading = true;
@@ -71,8 +73,7 @@ export class FormRegisterComponent implements OnInit {
         const router = success ? '/registration-success' : '/registration-failure';
         this.router.navigate([router]);
       } catch (error) {
-
-        console.error("error: ", error);
+        console.error('error: ', error);
         this.router.navigate(['/registration-failure']);
       } finally {
         this.isLoading = false;

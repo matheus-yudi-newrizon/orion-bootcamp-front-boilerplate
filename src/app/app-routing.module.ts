@@ -37,12 +37,13 @@ const routes: Routes = [
   },
   // Rota para capturar caminhos não correspondentes
   {
-    path: '**', redirectTo: '/login',
-  },
+    path: '**',
+    redirectTo: '/login'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

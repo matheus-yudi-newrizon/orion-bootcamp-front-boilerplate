@@ -14,7 +14,7 @@ interface SignUpResponse
   extends SuccessResponse<{
     id: number;
     email: string;
-  }> { }
+  }> {}
 
 interface ForgotPasswordRequest {
   email: string;
@@ -35,7 +35,7 @@ interface LoginResponse
     id: number;
     email: string;
     token: string;
-  }> { }
+  }> {}
 
 interface ResetPasswordRequest {
   token: string;
@@ -45,7 +45,7 @@ interface ResetPasswordRequest {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UserService extends RequestService {
   constructor(protected override httpClient: HttpClient) {
@@ -57,17 +57,13 @@ export class UserService extends RequestService {
    * @param data os dados do novo usuário a serem registrados
    * @returns uma Promise contendo os dados do novo usuário
    */
-  public async signUp(
-    data: SignUpRequest
-  ): Promise<SignUpResponse> {
+  public async signUp(data: SignUpRequest): Promise<SignUpResponse> {
     try {
-      return await lastValueFrom(
-        this.httpClient.post<SignUpResponse>(this.BASE_URL + '/signup/', data)
-      );
+      return await lastValueFrom(this.httpClient.post<SignUpResponse>(this.BASE_URL + '/signup/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message: 'The user with email' + data.email + 'already exists.',
+        message: 'The user with email' + data.email + 'already exists.'
       };
       throw errorResponse;
     }
@@ -78,21 +74,13 @@ export class UserService extends RequestService {
    * @param email endereço de e-mail para o qual enviar a solicitação de redefinição de senha
    * @returns Promise contendo os dados de retorno da solicitação de redefinição de senha
    */
-  public async forgotPassword(
-    email: ForgotPasswordRequest
-  ): Promise<ForgotPasswordResponse> {
+  public async forgotPassword(email: ForgotPasswordRequest): Promise<ForgotPasswordResponse> {
     try {
-      return await lastValueFrom(
-        this.httpClient.post<ForgotPasswordResponse>(
-          this.BASE_URL + '/forgot-password/',
-          email
-        )
-      );
+      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/forgot-password/', email));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message:
-          'An error occurred while sending a password reset request. Please try again later.',
+        message: 'An error occurred while sending a password reset request. Please try again later.'
       };
       throw errorResponse;
     }
@@ -103,17 +91,13 @@ export class UserService extends RequestService {
    * @param data os dados do usuário qualquer
    * @returns uma Promise contendo os dados do novo usuário
    */
-  public async login(
-    data: LoginRequest
-  ): Promise<LoginResponse> {
+  public async login(data: LoginRequest): Promise<LoginResponse> {
     try {
-      return await lastValueFrom(
-        this.httpClient.post<LoginResponse>(this.BASE_URL + '/login/', data)
-      );
+      return await lastValueFrom(this.httpClient.post<LoginResponse>(this.BASE_URL + '/login/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message: 'Email or password is invalid.',
+        message: 'Email or password is invalid.'
       };
       throw errorResponse;
     }
@@ -126,12 +110,12 @@ export class UserService extends RequestService {
    */
   public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/reset-password/', data))
+      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/reset-password/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message: "An error occurred while resetting the password."
-      }
+        message: 'An error occurred while resetting the password.'
+      };
       return errorResponse;
     }
   }

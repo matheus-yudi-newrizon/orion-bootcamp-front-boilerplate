@@ -6,15 +6,15 @@ import { Router } from '@angular/router';
   templateUrl: './register-failed.component.html',
   styleUrls: ['./register-failed.component.scss']
 })
-export class RegisterFailedComponent implements OnInit{
-  public titlePageFailed = "";
-  public textPageFailed = "";
-  public textButtonFailed = "";
-  public currentUrl = "";
+export class RegisterFailedComponent implements OnInit {
+  public titlePageFailed = '';
+  public textPageFailed = '';
+  public textButtonFailed = '';
+  public currentUrl = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.currentUrl = this.router.url;
     this.changeWordsComponent();
   }
@@ -25,7 +25,6 @@ export class RegisterFailedComponent implements OnInit{
   public returnToHome(): void {
     if (this.currentUrl === '/registration-failure') {
       this.router.navigate(['/sign-up']);
-
     } else if (this.currentUrl === '/reset-password-failure') {
       this.router.navigate(['/login']);
     }
@@ -36,14 +35,13 @@ export class RegisterFailedComponent implements OnInit{
    */
   public changeWordsComponent(): void {
     if (this.currentUrl === '/registration-failure') {
-      this.titlePageFailed = "It was not possible to create your account"
-      this.textPageFailed = "Please return to the home page and try again.";
-      this.textButtonFailed = "RETURN";
-
+      this.titlePageFailed = 'It was not possible to create your account';
+      this.textPageFailed = 'Please return to the home page and try again.';
+      this.textButtonFailed = 'RETURN';
     } else if (this.currentUrl === '/reset-password-failure') {
-      this.titlePageFailed = "It was not possible to recover the password"
-      this.textPageFailed = "Please return to the home page and request again.";
-      this.textButtonFailed = "RETURN TO HOME";
+      this.titlePageFailed = 'It was not possible to recover the password';
+      this.textPageFailed = 'Please return to the home page and request again.';
+      this.textButtonFailed = 'RETURN TO HOME';
     }
   }
 }

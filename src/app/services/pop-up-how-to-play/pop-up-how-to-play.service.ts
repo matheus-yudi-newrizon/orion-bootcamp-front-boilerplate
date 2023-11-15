@@ -4,11 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PopUpHowToPlayService {
-
   public deslocamento = 0;
 
-  alterarDeslocamento(novoDeslocamento: number): void {
+  public alterarDeslocamento(novoDeslocamento: number): void {
     this.deslocamento = novoDeslocamento;
   }
-
 }

@@ -7,18 +7,16 @@ import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-u
   styleUrls: ['./pop-up-how-to-play.component.scss']
 })
 export class PopUpHowToPlayComponent {
-
   constructor(public myService: PopUpHowToPlayService) {}
 
-  mudarDeslocamento(): void {
+  public mudarDeslocamento(): void {
     const novoDeslocamento = this.myService.deslocamento + 450; // Ajuste conforme necessário
     this.myService.alterarDeslocamento(novoDeslocamento);
   }
 
-  handleKeyDown(event: KeyboardEvent): void {
+  public handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === 'Space') {
       this.mudarDeslocamento();
     }
-
   }
 }

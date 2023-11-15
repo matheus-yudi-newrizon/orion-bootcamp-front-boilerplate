@@ -1,16 +1,15 @@
 import { UserService } from 'src/app/services/user/user.service';
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-password/modal-forgot-password.component';
 import { emailPattern } from '../../components/form-register/form-register.component';
 import { ErrorResponse } from 'src/app/models/http/interface';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   // Atributos públicos
@@ -20,21 +19,25 @@ export class LoginComponent {
 
   public signInForm!: FormGroup;
 
-  constructor(public dialog: MatDialog, private userService: UserService, private formBuilder: FormBuilder) {
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService,
+    private formBuilder: FormBuilder
+  ) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(emailPattern)]],
       password: ['', [Validators.required, Validators.min(3)]],
-      rememberMe: [false],
-    })
+      rememberMe: [false]
+    });
   }
 
   // Método público para obter o controle de email
-  public get emailInput() {
+  public get emailInput(): AbstractControl | null {
     return this.signInForm.get('email');
   }
 
   // Método público para obter o controle de senha
-  public get passwordInput() {
+  public get passwordInput(): AbstractControl | null {
     return this.signInForm.get('password');
   }
 
@@ -63,9 +66,9 @@ export class LoginComponent {
       panelClass: 'custom__modal',
       disableClose: false,
       position: {
-        right: '0',
+        right: '0'
       },
-      exitAnimationDuration: 6000,
+      exitAnimationDuration: 6000
     });
 
     dialogRef.beforeClosed().subscribe(() => {

@@ -5,7 +5,7 @@ import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-u
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   private currentRoute = '';
@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
     public myService: PopUpHowToPlayService
   ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.currentRoute = this.router.url;
   }
 
@@ -23,25 +23,25 @@ export class NavbarComponent implements OnInit {
    * Verifica se a página atual é a página de login.
    * @returns True se a página atual é a página de login, caso contrário, False.
    */
-  isLoginPage() {
+  public isLoginPage(): boolean {
     return this.currentRoute === '/login';
   }
   /**
    * Verifica se a página atual é a página de cadastro.
    * @returns True se a página atual é a página de cadastro, caso contrário, False.
    */
-  isSignUpPage() {
+  public isSignUpPage(): boolean {
     return [
       '/sign-up',
       '/reset-password',
       '/registration-success',
       '/registration-failure',
       '/reset-password-success',
-      '/reset-password-failure',
+      '/reset-password-failure'
     ].includes(this.currentRoute);
   }
 
-  moverParaEsquerda(): void {
+  public moverParaEsquerda(): void {
     const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
     this.myService.alterarDeslocamento(novoDeslocamento);
   }
