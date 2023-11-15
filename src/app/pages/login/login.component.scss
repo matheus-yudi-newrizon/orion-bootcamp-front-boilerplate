@@ -79,11 +79,11 @@ app-navbar {
   }
 
   ::ng-deep {
+
     .mdc-text-field--filled.mdc-text-field--invalid:not(
         .mdc-text-field--disabled
-      )
-      .mdc-text-field__input, .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
-      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+      ).mdc-text-field__input, .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+    cursor: url("../../../assets/icons/mouse-hover.png"), auto;
     }
 
     .mat-mdc-raised-button {
