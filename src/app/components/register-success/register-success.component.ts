@@ -34,7 +34,7 @@ export class RegisterSuccessComponent implements OnInit {
    */
   public returnToHome(): void {
     if (this.currentUrl === '/registration-success' || this.currentUrl === '/reset-password-success') {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/start-game']);
     }
   }
 }

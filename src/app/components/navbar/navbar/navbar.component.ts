@@ -30,4 +30,12 @@ export class NavbarComponent implements OnInit {
   public isSignUpPage(): boolean {
     return this.currentRoute === '/sign-up' || this.currentRoute === '/reset-password';
   }
+
+  /**
+   * Função responsável por ocultar/exibir itens e aplicar classes no caso da página ser start-game.
+   * @returns
+   */
+  public isStarGamePage(): boolean {
+    return this.currentRoute === '/start-game';
+  }
 }

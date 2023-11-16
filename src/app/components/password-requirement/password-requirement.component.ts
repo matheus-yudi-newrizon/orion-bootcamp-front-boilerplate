@@ -8,12 +8,12 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
 })
 export class PasswordRequirementComponent {
   private password = '';
-  private upperCase = false;
-  private specialChar = false;
-  private passwordSize = false;
-  private samePassword = true;
-  private validPassword = false;
-  private hide = true;
+  public upperCase = false;
+  public specialChar = false;
+  public passwordSize = false;
+  public samePassword = true;
+  public validPassword = false;
+  public hide = true;
 
   @Output() public passwordValueChanged = new EventEmitter<string>();
   @Output() public confirmPasswordValueChanged = new EventEmitter<string>();

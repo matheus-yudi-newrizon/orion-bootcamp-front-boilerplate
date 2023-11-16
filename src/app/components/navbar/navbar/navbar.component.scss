@@ -56,14 +56,43 @@ nav {
   }
 }
 
+.start-game-page {
+  .right-icons {
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (max-width: 575px) {
   .login-page-navbar {
     .play {
       font-size: 0;
       gap: 0;
     }
+
     img {
       margin-left: 2px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .start-game-page {
+    .play {
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .start-game-page {
+    .navbar__logo {
+      margin: 0;
+    }
+
+    .right-icons {
+      margin-right: 0;
     }
   }
 }
