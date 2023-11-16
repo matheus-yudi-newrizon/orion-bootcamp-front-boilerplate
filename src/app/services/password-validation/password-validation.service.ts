@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PasswordValidationService {
-
   /**
    * Verifica se a senha atende ao tamanho mínimo esperado
    * @param password senha inserida a ser validada
