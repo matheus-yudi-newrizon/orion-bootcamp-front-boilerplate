@@ -1,0 +1,38 @@
+@import '../../../colors';
+
+.start__game__section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+
+  gap: 10px;
+
+  &__title {
+    color: $text-color;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 65.63px;
+  }
+
+  &__text {
+    color: $text-color;
+    font-size: 18px;
+    line-height: 23.44px;
+  }
+
+  &__text__end {
+    color: $text-color;
+    font-size: 18px;
+    line-height: 23.44px;
+    font-weight: 500;
+  }
+
+  &__button {
+    margin-top: 15px;
+  }
+}
