@@ -11,11 +11,14 @@ export const emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit {
-  registerForm!: FormGroup;
-  isLoading = false;
+  protected registerForm!: FormGroup;
+  public isLoading = false;
 
-  constructor(private formBuilder: FormBuilder,
-    private userService: UserService, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     /**

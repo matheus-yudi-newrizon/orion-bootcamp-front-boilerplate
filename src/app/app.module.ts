@@ -1,4 +1,3 @@
-
 import { AppComponent } from './app.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { PasswordRequirementComponent } from './components/password-requirement/password-requirement.component';
@@ -22,8 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule} from '@angular/material/dialog';
-import { MatProgressSpinnerModule}  from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
@@ -37,7 +36,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NavbarComponent,
     ModalForgotPasswordComponent,
     LoginComponent,
-    PasswordResetComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
@@ -59,4 +58,4 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
