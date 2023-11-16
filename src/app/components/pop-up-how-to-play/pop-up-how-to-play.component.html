@@ -1,10 +1,10 @@
 <div class="pop-up-body" [style.transform]="'translateX(' + myService.deslocamento + 'px)'">
-  <nav class="pop-up-nav">
+  <nav class="pop-up-body__nav">
     <h1>How to play?</h1>
     <img src="../../../assets/icons/icon-close.svg" (click)="mudarDeslocamento()" alt="" (keydown)="handleKeyDown($event)" tabindex="0">
   </nav>
 
-  <main class="pop-up-main">
+  <main class="pop-up-body__main">
   <p>
     Review Reveal is a game where you have to guess the movie based on user reviews.
   <br>
@@ -18,7 +18,7 @@
     Each correct guess earns you a new review to continue the game, you start with 5 lives, and every mistake costs you one life. <span>If you run out of lives, you lose the game.</span>
 </p>
   </main>
-  <footer class="pop-up-footer">
+  <footer class="pop-up-body__footer">
     <p>Lives:</p>
     <img src="../../../assets/icons/icon-filled-heart.svg" alt="vidas restantes">
     <img src="../../../assets/icons/icon-filled-heart.svg" alt="vidas restantes">
