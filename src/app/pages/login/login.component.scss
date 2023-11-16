@@ -12,7 +12,7 @@ app-navbar {
 
 .title-login {
 
-    h1 {
+    & h1 {
       font-size: 48px;
       font-weight: 500;
       text-align: center;
@@ -103,66 +103,66 @@ app-navbar {
     cursor: url(../../../assets/icons/mouse-hover.png), auto;
     }
   }
-}
+  &__checkbox-page {
+    margin: 18px -8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-.checkbox-page {
-  margin: 18px -8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    &__checkbox {
+      // Cores do checkbox forçadas para sobrescrever o tema
+      // Cores do checkbox no estado não selecionado
+      --mdc-checkbox-unselected-icon-color: #6200ee;
+      --mdc-checkbox-unselected-pressed-icon-color: #5300e8;
+      --mdc-checkbox-unselected-hover-icon-color: #5300e8;
+      --mdc-checkbox-unselected-focus-icon-color: #6200ee;
+      --mdc-checkbox-unselected-focus-state-layer-color: #6200ee;
+      --mdc-checkbox-unselected-hover-state-layer-color: #6200ee;
+      --mdc-checkbox-unselected-pressed-state-layer-color: #6200ee;
 
-  &__checkbox {
-    // Cores do checkbox forçadas para sobrescrever o tema
-    // Cores do checkbox no estado não selecionado
-    --mdc-checkbox-unselected-icon-color: #6200ee;
-    --mdc-checkbox-unselected-pressed-icon-color: #5300e8;
-    --mdc-checkbox-unselected-hover-icon-color: #5300e8;
-    --mdc-checkbox-unselected-focus-icon-color: #6200ee;
-    --mdc-checkbox-unselected-focus-state-layer-color: #6200ee;
-    --mdc-checkbox-unselected-hover-state-layer-color: #6200ee;
-    --mdc-checkbox-unselected-pressed-state-layer-color: #6200ee;
+      // Cor do checkmark
+      --mdc-checkbox-selected-checkmark-color: #ffffff;
 
-    // Cor do checkmark
-    --mdc-checkbox-selected-checkmark-color: #ffffff;
+      // Cores do checkbox no estado selecionado
+      --mdc-checkbox-selected-icon-color: #6002ee;
+      --mdc-checkbox-selected-focus-icon-color: #6002ee;
+      --mdc-checkbox-selected-pressed-icon-color: #5300e8;
 
-    // Cores do checkbox no estado selecionado
-    --mdc-checkbox-selected-icon-color: #6002ee;
-    --mdc-checkbox-selected-focus-icon-color: #6002ee;
-    --mdc-checkbox-selected-pressed-icon-color: #5300e8;
-
-    // Cor do remember me
-    --mdc-theme-text-primary-on-background: rgb(255, 255, 255);
-  }
-
-  &__password-recovery {
-
-    background-color: transparent;
-    border: none;
-    font-weight: 600;
-    font-size: 16px;
-    color: $text-color;
-    margin-right: 8px;
-    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
-  }
-
-  &__checkbox:hover {
-    cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
-    border-radius: 10px !important;
-  }
-
-  ::ng-deep {
-    .mdc-checkbox__background {
-      border-radius: 0px !important;
+      // Cor do remember me
+      --mdc-theme-text-primary-on-background: rgb(255, 255, 255);
     }
 
-    .mdc-label {
-      font-weight: 500 !important;
+    &__password-recovery {
+
+      background-color: transparent;
+      border: none;
+      font-weight: 600;
       font-size: 16px;
-      cursor: url("../../../assets/icons/mouse-hover.png"), auto !important;
+      color: $text-color;
+      margin-right: 8px;
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
     }
 
-    .mdc-checkbox {
+    &__checkbox:hover {
       cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
+      border-radius: 10px !important;
+    }
+
+    ::ng-deep {
+      
+      .mdc-checkbox__background {
+        border-radius: 0px !important;
+      }
+
+      .mdc-label {
+        font-weight: 500 !important;
+        font-size: 16px;
+        cursor: url("../../../assets/icons/mouse-hover.png"), auto !important;
+      }
+
+      .mdc-checkbox {
+        cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
+      }
     }
   }
 }
@@ -234,29 +234,25 @@ footer {
         margin-left: 0px;
       }
     }
-  }
-
-  .checkbox-page {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    &__checkbox {
-      position: absolute;
-      top: 655px;
-      animation: anotherSlide 1s linear;
+    &__checkbox-page {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      &__checkbox {
+        position: absolute;
+        top: 655px;
+        animation: anotherSlide 1s linear;
+      }
+      &__password-recovery {
+        position: absolute;
+        display: flex;
+        top: 573px;
+        margin-left: 10px;
+        animation: anotherSlide 1s linear;
+      }
     }
   }
-
-  .checkbox-page button {
-    position: absolute;
-    display: flex;
-    top: 573px;
-    margin-left: 10px;
-    animation: anotherSlide 1s linear;
-  }
 }
-
-
 
 @media screen and (max-width: 361px) {
 
@@ -278,15 +274,16 @@ footer {
       text-align: center;
       color: $text-color;
     }
-}
-
-  .checkbox-page {
-    &__checkbox {
-      top: 675px;
-    }
   }
 
-  .checkbox-page button {
-    top: 593px;
+  .login-page {
+    &__checkbox-page {
+      &__checkbox {
+        top: 675px;
+      }
+      &__password-recovery {
+        top: 593px;
+      }
+    }
   }
 }
