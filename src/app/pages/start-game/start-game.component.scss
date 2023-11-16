@@ -10,6 +10,7 @@
   height: 80%;
 
   gap: 10px;
+  animation: slideToLoad 0.5s ease;
 
   &__title {
     color: $text-color;
@@ -34,5 +35,16 @@
 
   &__button {
     margin-top: 15px;
+  }
+}
+
+@keyframes slideToLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
   }
 }
