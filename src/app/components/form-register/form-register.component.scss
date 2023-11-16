@@ -1,42 +1,38 @@
 @import "../../../colors";
 
-.form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.form__item {
-  width: 100%;
-}
-
-.panel__form {
+.panel-form {
   text-align: center;
-}
+  &__title {
+    & h4 {
+      color: $text-color;
+      font-family: Roboto;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.12px;
+    }
 
-.form__title {
-  h4 {
-    color: $text-color;
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: 0.12px;
+    & p {
+      color: $text-color;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
   }
-
-  p {
-    color: $text-color;
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+  &__container {
+    margin-top: 40px;
+    &__form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+        &__item {
+          width: 100%;
+        }
+    }
   }
-}
-
-.form__container {
-  margin-top: 40px;
 }
 
 ::ng-deep {
