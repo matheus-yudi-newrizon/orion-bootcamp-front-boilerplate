@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   public isSignUpPage(): boolean {
     return [
       '/sign-up',
-      '/reset-password',
+      '/auth/reset-password',
       '/registration-success',
       '/registration-failure',
       '/reset-password-success',
