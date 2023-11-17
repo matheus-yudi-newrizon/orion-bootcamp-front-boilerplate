@@ -33,7 +33,7 @@
       cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
 
       & p {
-        margin-top: 14px;
+        padding: 8.6px 0;
         cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
       }
     }
@@ -51,6 +51,13 @@
       border-radius: 4px;
       line-height: 1px;
     }
+  }
+}
+
+::ng-deep {
+
+  & .mat-typography p {
+    margin: 0;
   }
 }
 
@@ -76,7 +83,7 @@
         margin-right: 0;
 
         &__play {
-          padding: 4px 8px;
+          padding: 8px 8px;
           font-size: 0;
           gap: 0;
         }
