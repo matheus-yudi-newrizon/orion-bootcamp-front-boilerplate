@@ -7,7 +7,4 @@ import { Router } from '@angular/router';
 })
 export class RegisterPageComponent {
   constructor(private router: Router) {}
-  // abrirLogin() {
-  //   this.router.navigate(['/login'])
-  // }
 }

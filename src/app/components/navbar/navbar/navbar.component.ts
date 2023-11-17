@@ -1,6 +1,7 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
+import { PopUpHowToPlayComponent } from '../../pop-up-how-to-play/pop-up-how-to-play.component';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public myService: PopUpHowToPlayService
+    public dialog: MatDialog
   ) {}
 
   public ngOnInit(): void {
@@ -41,8 +42,23 @@ export class NavbarComponent implements OnInit {
     ].includes(this.currentRoute);
   }
 
-  public moverParaEsquerda(): void {
-    const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
-    this.myService.alterarDeslocamento(novoDeslocamento);
+  /**
+   * Função responsável por abrir o modal de forgotPassword
+   */
+  public openModalHowToPlay(): void {
+    const dialogRef = this.dialog.open(PopUpHowToPlayComponent, {
+      width: '500px',
+      height: '100%',
+      panelClass: 'custom__modal',
+      disableClose: false,
+      position: {
+        right: '0'
+      },
+      exitAnimationDuration: 6000
+    });
+
+    dialogRef.beforeClosed().subscribe(() => {
+      dialogRef.addPanelClass('modal__closed');
+    });
   }
 }
