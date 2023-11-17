@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   private currentRoute = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public myService: PopUpHowToPlayService
+  ) {}
 
   public ngOnInit(): void {
     this.currentRoute = this.router.url;
@@ -28,7 +32,14 @@ export class NavbarComponent implements OnInit {
    * @returns True se a página atual é a página de cadastro, caso contrário, False.
    */
   public isSignUpPage(): boolean {
-    return this.currentRoute === '/sign-up' || this.currentRoute === '/reset-password';
+    return [
+      '/sign-up',
+      '/reset-password',
+      '/registration-success',
+      '/registration-failure',
+      '/reset-password-success',
+      '/reset-password-failure'
+    ].includes(this.currentRoute);
   }
 
   /**
@@ -37,5 +48,10 @@ export class NavbarComponent implements OnInit {
    */
   public isStarGamePage(): boolean {
     return this.currentRoute === '/start-game';
+  }
+
+  public moverParaEsquerda(): void {
+    const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
+    this.myService.alterarDeslocamento(novoDeslocamento);
   }
 }

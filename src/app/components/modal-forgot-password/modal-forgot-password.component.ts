@@ -31,7 +31,7 @@ export class ModalForgotPasswordComponent {
   }
 
   /**
-   * Função responsável por acessar o campo de e-mail do formulário.
+   * Função responsável por acessar o campo de e-mail do formulário
    */
   public get email(): FormControl {
     return this.forgotPasswordForm.get('email') as FormControl;

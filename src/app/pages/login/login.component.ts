@@ -1,6 +1,6 @@
 import { UserService } from 'src/app/services/user/user.service';
 import { Component } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-password/modal-forgot-password.component';
 import { emailPattern } from '../../components/form-register/form-register.component';
@@ -30,12 +30,12 @@ export class LoginComponent {
   }
 
   // Método público para obter o controle de email
-  public get emailInput(): any {
+  public get emailInput(): AbstractControl | null {
     return this.signInForm.get('email');
   }
 
   // Método público para obter o controle de senha
-  public get passwordInput(): any {
+  public get passwordInput(): AbstractControl | null {
     return this.signInForm.get('password');
   }
 

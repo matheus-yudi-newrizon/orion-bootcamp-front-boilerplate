@@ -20,14 +20,16 @@
     <mat-icon class="login-page__width__icon" matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
 
-  <section class="checkbox-page" id="check">
-    <mat-checkbox class="checkbox-page__checkbox" formControlName="rememberMe"> Remember me </mat-checkbox>
-    <button (click)="openModalForgot()" class="checkbox-page__password-recovery">Forgot Password?</button>
+  <section class="login-page__checkbox-page" id="check">
+    <mat-checkbox class="login-page__checkbox-page__checkbox" formControlName="rememberMe"> Remember me </mat-checkbox>
+    <button (click)="openModalForgot()" class="login-page__checkbox-page__password-recovery">Forgot Password?</button>
   </section>
 
   <button class="login-page__width__button form__button" mat-raised-button color="primary" (click)="submit()" [disabled]="signInForm.invalid" type="submit">LOG IN</button>
   <div class="login-page__width__login-error"> {{errorMessage}} </div>
 </form>
+
+<app-pop-up-how-to-play></app-pop-up-how-to-play>
 
 <footer>
   <p>Don't have an account?</p>

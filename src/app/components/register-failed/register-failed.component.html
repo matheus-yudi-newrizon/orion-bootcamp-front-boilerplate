@@ -1,13 +1,16 @@
 <app-navbar></app-navbar>
 
-<section class="section__failed">
-  <div class="failed__icon__error">
+<section class="section-failed">
+
+  <div class="section-failed__icon-error">
     <img src="assets/icons/icon-error.svg" alt="Imagem representando falha no registro">
   </div>
-  <div class="txt-failed">
+
+  <div class="section-failed__txt-failed">
     <h4>{{ titlePageFailed }}</h4>
     <p>{{ textPageFailed }}</p>
   </div>
-  <button (click)="returnToHome()" class="failed__button__return" mat-raised-button color="primary" type="submit">{{
-    textButtonFailed }}</button>
+
+  <button (click)="returnToHome()" class="section-failed__failed-button-return" mat-raised-button color="primary" type="submit">{{ textButtonFailed }}</button>
+
 </section>

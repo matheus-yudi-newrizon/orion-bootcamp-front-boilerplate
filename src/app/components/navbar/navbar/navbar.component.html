@@ -1,14 +1,17 @@
-<nav [ngClass]="{ 'login-page-navbar': isLoginPage(), 'sign-up-page-navbar': isSignUpPage(), 'start-game-page': isStarGamePage()}">
+<nav
+  class="navbar-page"
+  [ngClass]="{ 'login-page-navbar': isLoginPage(), 'sign-up-page-navbar': isSignUpPage(), 'start-game-page': isStarGamePage() }"
+>
+  <img class="navbar-page__logo" src="../../../../assets/icons/logotipo.svg" alt="logotipo" />
 
-  <img class="navbar__logo" src="../../../../assets/icons/logotipo.svg" alt="logotipo">
+  <div class="navbar-page__right-icons" *ngIf="isLoginPage() || isStarGamePage()">
+    <button class="navbar-page__right-icons__play" (click)="moverParaEsquerda()">
+      <img src="../../../../assets/icons/icon-question-mark.svg" alt="how to play" />
+      <p>HOW TO PLAY</p>
+    </button>
 
-  <div class="right-icons">
-
-      <a href="#" *ngIf="isLoginPage() || isStarGamePage()" class="play"><img src="../../../../assets/icons/icon-question-mark.svg" alt="how to play"><span>HOW TO PLAY</span></a>
-
-      <a href="#" *ngIf="isSignUpPage() || isStarGamePage()" class="logout"><img src="../../../../assets/icons/icon-out.svg" alt=""> </a>
-
+    <a href="#" *ngIf="isSignUpPage() || isStarGamePage()" class="navbar-page__right-icons__logout">
+      <img src="../../../../assets/icons/icon-out.svg" alt="" />
+    </a>
   </div>
-
 </nav>
-

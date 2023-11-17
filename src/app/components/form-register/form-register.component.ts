@@ -11,7 +11,7 @@ export const emailPattern = /^[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit {
-  protected registerForm!: FormGroup;
+  public registerForm!: FormGroup;
   public isLoading = false;
 
   constructor(

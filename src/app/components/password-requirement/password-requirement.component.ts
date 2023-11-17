@@ -7,7 +7,7 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   styleUrls: ['./password-requirement.component.scss']
 })
 export class PasswordRequirementComponent {
-  private password = '';
+  public password = '';
   public upperCase = false;
   public specialChar = false;
   public passwordSize = false;

@@ -10,7 +10,11 @@ interface SignUpRequest {
   confirmPassword: string;
 }
 
-interface SignUpResponse extends SuccessResponse<{ id: number; email: string }> {}
+interface SignUpResponse
+  extends SuccessResponse<{
+    id: number;
+    email: string;
+  }> {}
 
 interface ForgotPasswordRequest {
   email: string;
@@ -26,7 +30,12 @@ interface LoginRequest {
   rememberMe: boolean;
 }
 
-interface LoginResponse extends SuccessResponse<{ id: number; email: string; token: string }> {}
+interface LoginResponse
+  extends SuccessResponse<{
+    id: number;
+    email: string;
+    token: string;
+  }> {}
 
 interface ResetPasswordRequest {
   token: string;
@@ -54,7 +63,7 @@ export class UserService extends RequestService {
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
-        message: 'The user with email ' + data.email + ' already exists.'
+        message: 'The user with email' + data.email + 'already exists.'
       };
       throw errorResponse;
     }
@@ -86,7 +95,10 @@ export class UserService extends RequestService {
     try {
       return await lastValueFrom(this.httpClient.post<LoginResponse>(this.BASE_URL + '/login/', data));
     } catch (error) {
-      const errorResponse: ErrorResponse = { success: false, message: 'Email or password is invalid.' };
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'Email or password is invalid.'
+      };
       throw errorResponse;
     }
   }
@@ -100,7 +112,10 @@ export class UserService extends RequestService {
     try {
       return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/reset-password/', data));
     } catch (error) {
-      const errorResponse: ErrorResponse = { success: false, message: 'An error occurred while resetting the password.' };
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while resetting the password.'
+      };
       return errorResponse;
     }
   }
