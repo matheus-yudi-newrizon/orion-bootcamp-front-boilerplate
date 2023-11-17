@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     NavbarComponent,
     ModalForgotPasswordComponent,
     LoginComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    PopUpHowToPlayComponent
   ],
   imports: [
     BrowserModule,

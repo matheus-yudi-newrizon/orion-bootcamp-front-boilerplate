@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+
 @include mat.core();
 @import "theme";
 @import "colors";
@@ -16,6 +17,39 @@
   --mdc-filled-text-field-label-text-color: #6b6b83;
   --mdc-filled-text-field-button-disabled-color: rgba(5, 5, 206, 0.356);
   --mdc-filled-text-field-active-indicator-color: #6002ee;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideToLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes anotherSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(90%);
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .custom__modal {
@@ -58,9 +92,7 @@
 }
 
 .modal__closed {
-
   .mat-mdc-dialog-container {
-
     .mdc-dialog__container .mat-mdc-dialog-surface {
       background-color: #25252F;
     }
@@ -80,7 +112,6 @@
       opacity: 30%;
       background-color: $accent-color;
     }
-
   }
 
   animation: slideOut 0.8s forwards;
@@ -161,39 +192,6 @@ body {
     #0f1620 50% / cover no-repeat;
 }
 
-@keyframes slide {
-  0% {
-    opacity: 0;
-    transform: translateY(-50%);
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideToLoad {
-  0% {
-    opacity: 0;
-    transform: translateY(30%);
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes anotherSlide {
-  0% {
-    opacity: 0;
-    transform: translateY(90%);
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 @media screen and (max-width: 575px) {
   body {
     padding: 0 30px;
@@ -202,14 +200,12 @@ body {
   main {
     margin-bottom: 30px;
   }
+
+  footer {
+    padding-bottom: 30px;
+  }
 }
 
-a,
-ul:hover,
-span:hover,
-input[type="text"],
-textarea:hover,
-p:hover,
-h4:hover {
+a, ul:hover, span:hover, input[type="text"], textarea:hover, p:hover, h4:hover {
   cursor: url(../src/assets/icons/mouse-hover.png), auto;
 }
