@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-password/modal-forgot-password.component';
 import { emailPattern } from '../../components/form-register/form-register.component';
 import { ErrorResponse } from 'src/app/models/http/interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(
     public dialog: MatDialog,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(emailPattern)]],
@@ -48,6 +50,7 @@ export class LoginComponent {
     if (this.signInForm.valid) {
       try {
         await this.userService.login(this.signInForm.value);
+        this.router.navigate(['/start-game']);
       } catch (error) {
         this.errorMessage = `Error on login: ${(error as ErrorResponse).message}`;
       }
