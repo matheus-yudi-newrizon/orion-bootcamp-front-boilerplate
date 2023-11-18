@@ -54,7 +54,7 @@ export class LoginComponent {
         const loginResponse = await this.userService.login(this.signInForm.value);
         this.router.navigate(['/start-game']);
         /** Salvar o token do usuário ao fazer login */
-        this.tokenService.saveToken(loginResponse);
+        if (loginResponse.data) this.tokenService.save(loginResponse.data.token);
       } catch (error) {
         this.errorMessage = `Error on login: ${(error as ErrorResponse).message}`;
       }

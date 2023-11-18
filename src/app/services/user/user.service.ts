@@ -35,9 +35,7 @@ export interface LoginResponse
     id: number;
     email: string;
     token: string;
-  }> {
-  token: string;
-}
+  }> {}
 interface ResetPasswordRequest {
   token: string;
   id: number;
