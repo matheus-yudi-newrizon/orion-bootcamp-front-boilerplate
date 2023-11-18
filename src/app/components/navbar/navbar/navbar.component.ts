@@ -61,7 +61,7 @@ export class NavbarComponent implements OnInit {
    * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
    */
   public logout(): void {
-    this.tokenService.deleteToken();
+    this.tokenService.delete();
     this.router.navigate(['/login']);
   }
 }
