@@ -2,6 +2,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopUpHowToPlayComponent } from '../../pop-up-how-to-play/pop-up-how-to-play.component';
+import { TokenService } from 'src/app/services/token/token.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private tokenService: TokenService
   ) {}
 
   public ngOnInit(): void {
@@ -27,6 +29,7 @@ export class NavbarComponent implements OnInit {
   public isLoginPage(): boolean {
     return this.currentRoute === '/login';
   }
+
   /**
    * Verifica se a página atual é a página de cadastro.
    * @returns True se a página atual é a página de cadastro, caso contrário, False.
@@ -40,6 +43,14 @@ export class NavbarComponent implements OnInit {
       '/reset-password-success',
       '/reset-password-failure'
     ].includes(this.currentRoute);
+  }
+
+  /**
+   * Função responsável por ocultar/exibir itens e aplicar classes no caso da página ser start-game.
+   * @returns
+   */
+  public isStartGamePage(): boolean {
+    return this.currentRoute === '/start-game';
   }
 
   /**
@@ -60,5 +71,13 @@ export class NavbarComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(() => {
       dialogRef.addPanelClass('modal__closed');
     });
+  }
+
+  /**
+   * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
+   */
+  public logout(): void {
+    this.tokenService.delete();
+    this.router.navigate(['/login']);
   }
 }

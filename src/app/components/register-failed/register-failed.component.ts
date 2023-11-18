@@ -31,7 +31,7 @@ export class RegisterFailedComponent implements OnInit {
   }
 
   /**
-   * Função responsável por mudar o título e textos da página baseado na URL
+   * Função responsável por mudar o título e textos da página baseado na URL.
    */
   public changeWordsComponent(): void {
     if (this.currentUrl === '/registration-failure') {
