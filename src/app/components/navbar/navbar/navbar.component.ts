@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
    * Função responsável por ocultar/exibir itens e aplicar classes no caso da página ser start-game.
    * @returns
    */
-  public isStarGamePage(): boolean {
+  public isStartGamePage(): boolean {
     return this.currentRoute === '/start-game';
   }
 
