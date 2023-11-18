@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
+import { TokenService } from 'src/app/services/token/token.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public myService: PopUpHowToPlayService
+    public myService: PopUpHowToPlayService,
+    private tokenService: TokenService
   ) {}
 
   public ngOnInit(): void {
@@ -53,5 +55,13 @@ export class NavbarComponent implements OnInit {
   public moverParaEsquerda(): void {
     const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
     this.myService.alterarDeslocamento(novoDeslocamento);
+  }
+
+  /**
+   * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
+   */
+  public logout(): void {
+    this.tokenService.deleteToken();
+    this.router.navigate(['/login']);
   }
 }

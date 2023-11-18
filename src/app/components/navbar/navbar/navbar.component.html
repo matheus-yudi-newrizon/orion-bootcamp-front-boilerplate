@@ -10,7 +10,7 @@
       <p>HOW TO PLAY</p>
     </button>
 
-    <a href="#" *ngIf="isSignUpPage() || isStartGamePage()" class="navbar-page__right-icons__logout">
+    <a href="#" *ngIf="isSignUpPage() || isStartGamePage()" (click)="logout()" class="navbar-page__right-icons__logout">
       <img src="../../../../assets/icons/icon-out.svg" alt="" />
     </a>
   </div>

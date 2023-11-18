@@ -30,13 +30,14 @@ interface LoginRequest {
   rememberMe: boolean;
 }
 
-interface LoginResponse
+export interface LoginResponse
   extends SuccessResponse<{
     id: number;
     email: string;
     token: string;
-  }> {}
-
+  }> {
+  token: string;
+}
 interface ResetPasswordRequest {
   token: string;
   id: number;

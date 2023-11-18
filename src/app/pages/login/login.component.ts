@@ -6,6 +6,7 @@ import { ModalForgotPasswordComponent } from 'src/app/components/modal-forgot-pa
 import { emailPattern } from '../../components/form-register/form-register.component';
 import { ErrorResponse } from 'src/app/models/http/interface';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent {
     public dialog: MatDialog,
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService
   ) {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(emailPattern)]],
@@ -49,8 +51,10 @@ export class LoginComponent {
     // Lógica de submissão do formulário
     if (this.signInForm.valid) {
       try {
-        await this.userService.login(this.signInForm.value);
+        const loginResponse = await this.userService.login(this.signInForm.value);
         this.router.navigate(['/start-game']);
+        /** Salvar o token do usuário ao fazer login */
+        this.tokenService.saveToken(loginResponse);
       } catch (error) {
         this.errorMessage = `Error on login: ${(error as ErrorResponse).message}`;
       }
