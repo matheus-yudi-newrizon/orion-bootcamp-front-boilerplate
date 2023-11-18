@@ -59,7 +59,7 @@ export class UserService extends RequestService {
    */
   public async signUp(data: SignUpRequest): Promise<SignUpResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<SignUpResponse>(this.BASE_URL + '/signup/', data));
+      return await lastValueFrom(this.httpClient.post<SignUpResponse>(this.BASE_URL + '/auth' + '/signup/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -76,7 +76,7 @@ export class UserService extends RequestService {
    */
   public async forgotPassword(email: ForgotPasswordRequest): Promise<ForgotPasswordResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/forgot-password/', email));
+      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/auth' + '/forgot-password/', email));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -93,7 +93,7 @@ export class UserService extends RequestService {
    */
   public async login(data: LoginRequest): Promise<LoginResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<LoginResponse>(this.BASE_URL + '/login/', data));
+      return await lastValueFrom(this.httpClient.post<LoginResponse>(this.BASE_URL + '/auth' + '/login/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -110,7 +110,7 @@ export class UserService extends RequestService {
    */
   public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/reset-password/', data));
+      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/auth' + '/reset-password/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
