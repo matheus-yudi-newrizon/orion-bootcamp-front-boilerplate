@@ -1,7 +1,7 @@
-<div class="pop-up-body" [style.transform]="'translateX(' + myService.deslocamento + 'px)'">
+<div class="pop-up-body">
   <nav class="pop-up-body__nav">
     <h1>How to play?</h1>
-    <img src="../../../assets/icons/icon-close.svg" (click)="mudarDeslocamento()" alt="" (keydown)="handleKeyDown($event)" tabindex="0">
+    <img src="../../../assets/icons/icon-close.svg" (click)="closeModal()" alt="" (keydown)="handleKeyDown($event)" tabindex="0">
   </nav>
 
   <main class="pop-up-body__main">

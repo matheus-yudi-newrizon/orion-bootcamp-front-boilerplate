@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pop-up-how-to-play',
@@ -7,16 +7,17 @@ import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-u
   styleUrls: ['./pop-up-how-to-play.component.scss']
 })
 export class PopUpHowToPlayComponent {
-  constructor(public myService: PopUpHowToPlayService) {}
+  constructor(public dialogRef: MatDialogRef<PopUpHowToPlayComponent>) {}
 
-  public mudarDeslocamento(): void {
-    const novoDeslocamento = this.myService.deslocamento + 450; // Ajuste conforme necessário
-    this.myService.alterarDeslocamento(novoDeslocamento);
+  /**
+   * Função responsável por fechar o modal quando o botão "cancel" for acionado.
+   */
+  public closeModal(): void {
+    this.dialogRef.close();
   }
-
   public handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Enter' || event.key === 'Space') {
-      this.mudarDeslocamento();
+    if (event.key === 'Enter') {
+      this.closeModal();
     }
   }
 }

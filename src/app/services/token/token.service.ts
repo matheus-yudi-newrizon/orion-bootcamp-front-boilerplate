@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { LoginResponse } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
