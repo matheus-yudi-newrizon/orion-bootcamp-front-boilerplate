@@ -28,12 +28,12 @@
       background-color: transparent;
       gap: 10px;
       border: 1px solid $text-color;
-      padding: 0px 12px;
+      padding: 2px 12px 0px 12px;
       border-radius: 4px;
       cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
 
       & p {
-        padding: 8.6px 0;
+        padding: 7.8px 0;
         cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
       }
     }
@@ -41,7 +41,7 @@
     &__play:hover{
       border: 1px solid $accent-color;
       & img {
-        filter: invert(50%) sepia(100%) saturate(70) hue-rotate(262deg);
+        filter: invert(50%) sepia(100%) saturate(78) hue-rotate(262deg);
         cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
       }
     }

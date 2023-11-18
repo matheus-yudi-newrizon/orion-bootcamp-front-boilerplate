@@ -68,7 +68,8 @@ export class LoginComponent {
       position: {
         right: '0'
       },
-      exitAnimationDuration: 6000
+      exitAnimationDuration: 6000,
+      enterAnimationDuration: -6000
     });
 
     dialogRef.beforeClosed().subscribe(() => {

@@ -53,6 +53,7 @@
 }
 
 .custom__modal {
+
   .mat-mdc-dialog-container {
     .mdc-dialog__container .mat-mdc-dialog-surface {
       background-color: #25252f;
@@ -80,12 +81,13 @@
 
   @keyframes slideIn {
     0% {
-      opacity: 0;
+
+      opacity: 1 !important;
       transform: translateX(100%);
     }
 
     100% {
-      opacity: 1;
+      opacity: 1 !important;
       transform: translateX(0);
     }
   }
@@ -119,12 +121,12 @@
 
   @keyframes slideOut {
     0% {
-      opacity: 1;
+      // opacity: 1;
       transform: translateX(0);
     }
 
     100% {
-      opacity: 0;
+      // opacity: 1;
       transform: translateX(100%);
     }
   }
