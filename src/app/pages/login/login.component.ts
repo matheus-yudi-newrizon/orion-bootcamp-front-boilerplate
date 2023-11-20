@@ -32,12 +32,12 @@ export class LoginComponent {
   }
 
   // Método público para obter o controle de email
-  public get emailInput(): AbstractControl | null {
+  public get emailInput(): AbstractControl<string> | null {
     return this.signInForm.get('email');
   }
 
   // Método público para obter o controle de senha
-  public get passwordInput(): AbstractControl | null {
+  public get passwordInput(): AbstractControl<string> | null {
     return this.signInForm.get('password');
   }
 

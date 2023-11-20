@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Função responsável por abrir o modal de forgotPassword
+   * Função responsável pelo modal de howToPlay
    */
   public openModalHowToPlay(): void {
     const dialogRef = this.dialog.open(PopUpHowToPlayComponent, {

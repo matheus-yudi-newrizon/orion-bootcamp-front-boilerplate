@@ -1,3 +1,5 @@
+@import '../../../colors';
+
 .section-success {
   display: flex;
   flex-direction: column;
@@ -9,9 +11,8 @@
   height: 50vh;
 
   &__txt-success {
-
     & h4 {
-      color: var(--foundation-gray-scale-white, #FFF);
+      color: var(--foundation-gray-scale-white, $text-color);
       font-family: Roboto;
       font-size: 24px;
       font-style: normal;
@@ -21,7 +22,7 @@
     }
 
     & p {
-      color: var(--foundation-gray-scale-white, #FFF);
+      color: var(--foundation-gray-scale-white, $text-color);
       font-family: Roboto;
       font-size: 16px;
       font-style: normal;
@@ -29,6 +30,7 @@
       line-height: normal;
     }
   }
+
   &__button-play {
     display: flex;
     width: 523px;

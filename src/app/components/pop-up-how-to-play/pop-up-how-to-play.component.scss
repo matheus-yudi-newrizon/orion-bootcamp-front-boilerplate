@@ -5,56 +5,65 @@
   color: $text-color;
   position: fixed;
   top: 0;
-  // right: -452px;
   max-width: 404px;
   height: 100%;
   padding: 18px 24px;
-  background-color: #25252f;
+  background-color: $background-color;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.5s ease;
+
   &__nav {
     margin-bottom: 24px;
     display: flex;
     width: 100%;
     justify-content: space-between;
+
     & img {
-      width: 24px ;
+      width: 24px;
       mix-blend-mode: difference;
     }
+
     & img:hover {
       filter: invert(50%) sepia(100%) saturate(70) hue-rotate(262deg);
     }
+
     & img:active {
       mix-blend-mode: exclusion;
     }
-    & h1  {
+
+    & h1 {
       font-size: 24px;
       font-weight: 500;
       display: flex;
       margin: 18px 0;
     }
   }
+
   &__main {
     width: 100%;
+
     & p {
       font-size: 14px;
       font-weight: 400;
       line-height: 24px;
     }
+
     & span {
       color: $error-text-color;
     }
   }
+
   &__footer {
-    border: 1px solid #373744;
+    border: 1px solid $secondary-background-color;
     border-radius: 8px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
+
     & p {
       margin: 0px;
       padding: 16px 0;
@@ -66,10 +75,14 @@
   .pop-up-body {
     max-width: 100%;
     padding: 0;
+
     &__nav {
       margin-top: 18px;
     }
-    &__nav, &__main, &__footer {
+
+    &__nav,
+    &__main,
+    &__footer {
       width: 90%;
     }
   }

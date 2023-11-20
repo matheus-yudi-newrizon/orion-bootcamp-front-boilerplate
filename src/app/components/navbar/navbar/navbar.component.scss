@@ -1,7 +1,6 @@
-@import "../../../../colors";
+@import '../../../../colors';
 
 .navbar-page {
-
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -30,21 +29,23 @@
       border: 1px solid $text-color;
       padding: 2px 12px 0px 12px;
       border-radius: 4px;
-      cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
+      cursor: url('../../../../assets/icons/cursor-question-mark.png'), auto;
 
       & p {
         padding: 7.8px 0;
-        cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
+        cursor: url('../../../../assets/icons/cursor-question-mark.png'), auto;
       }
     }
 
-    &__play:hover{
+    &__play:hover {
       border: 1px solid $accent-color;
+
       & img {
         filter: invert(50%) sepia(100%) saturate(78) hue-rotate(262deg);
-        cursor: url("../../../../assets/icons/cursor-question-mark.png"), auto;
+        cursor: url('../../../../assets/icons/cursor-question-mark.png'), auto;
       }
     }
+
     &__logout {
       border: 1px solid $text-color;
       padding: 9px;
@@ -55,7 +56,6 @@
 }
 
 ::ng-deep {
-
   & .mat-typography p {
     margin: 0;
   }
@@ -76,9 +76,8 @@
 
 @media screen and (max-width: 575px) {
   .login-page-navbar {
-
     .navbar-page {
-
+      
       &__right-icons {
         margin-right: 0;
 
@@ -87,6 +86,7 @@
           font-size: 0;
           gap: 0;
         }
+
         & img {
           margin-left: 1px;
         }

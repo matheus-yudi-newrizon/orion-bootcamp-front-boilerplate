@@ -1,34 +1,33 @@
-@use "@angular/material" as mat;
+@use '@angular/material' as mat;
 
 @include mat.core();
 
-@import "../../../theme.scss";
-@import "../../../colors";
-@import "../../../spacing";
+@import '../../../theme.scss';
+@import '../../../colors';
+@import '../../../spacing';
 
 app-navbar {
   animation: slide 1.2s linear;
 }
 
 .title-login {
+  & h1 {
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 20px;
+    color: $text-color;
+    line-height: 54px;
+    margin-top: -53px;
+  }
 
-    & h1 {
-      font-size: 48px;
-      font-weight: 500;
-      text-align: center;
-      padding: 0 20px;
-      color: $text-color;
-      line-height: 54px;
-      margin-top: -53px;
-    }
-
-    & p {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 30px;
-      text-align: center;
-      color: $text-color;
-    }
+  & p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+    color: $text-color;
+  }
 }
 
 .login-page {
@@ -56,13 +55,12 @@ app-navbar {
       padding: 12px;
       box-sizing: content-box;
       color: $text-color;
-      cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
     }
 
     &__label {
-      color: $text-color;
-      cursor: url("../../../assets/icons/mouse-hover.png"), auto;
-
+      color: $input-text-color;
+      cursor: url('../../../assets/icons/mouse-hover.png'), auto;
     }
 
     &__login-error {
@@ -75,15 +73,13 @@ app-navbar {
   }
 
   &__width:hover {
-    cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+    cursor: url('../../../assets/icons/mouse-hover.png'), auto;
   }
 
   ::ng-deep {
-
-    .mdc-text-field--filled.mdc-text-field--invalid:not(
-        .mdc-text-field--disabled
-      ).mdc-text-field__input, .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
-    cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+    .mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field__input,
+    .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+      cursor: url('../../../assets/icons/mouse-hover.png'), auto;
     }
 
     .mat-mdc-raised-button {
@@ -100,9 +96,10 @@ app-navbar {
     }
 
     .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    cursor: url(../../../assets/icons/mouse-hover.png), auto;
+      cursor: url(../../../assets/icons/mouse-hover.png), auto;
     }
   }
+
   &__checkbox-page {
     margin: 18px -8px;
     display: flex;
@@ -133,7 +130,6 @@ app-navbar {
     }
 
     &__password-recovery {
-
       background-color: transparent;
       border: none;
       font-weight: 600;
@@ -144,12 +140,11 @@ app-navbar {
     }
 
     &__checkbox:hover {
-      cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto !important;
       border-radius: 10px !important;
     }
 
     ::ng-deep {
-
       .mdc-checkbox__background {
         border-radius: 0px !important;
       }
@@ -157,11 +152,11 @@ app-navbar {
       .mdc-label {
         font-weight: 500 !important;
         font-size: 16px;
-        cursor: url("../../../assets/icons/mouse-hover.png"), auto !important;
+        cursor: url('../../../assets/icons/mouse-hover.png'), auto !important;
       }
 
       .mdc-checkbox {
-        cursor: url("../../../assets/icons/mini-pointer-2.png"), auto !important;
+        cursor: url('../../../assets/icons/mini-pointer-2.png'), auto !important;
       }
     }
   }
@@ -179,7 +174,7 @@ footer {
     margin-bottom: 0;
     font-size: 16px;
     font-weight: 500;
-    cursor: url("../../../assets/icons/mouse-hover.png"), auto;
+    cursor: url('../../../assets/icons/mouse-hover.png'), auto;
   }
 
   & a {
@@ -191,14 +186,12 @@ footer {
     border: 1px solid $text-color;
     padding: 8px;
     border-radius: 4px;
-    cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
   }
 }
 
 @media screen and (max-width: 575px) {
-
   .title-login {
-
     h1 {
       font-size: 40px;
       font-weight: 500;
@@ -216,17 +209,19 @@ footer {
       text-align: center;
       color: $text-color;
     }
-}
+  }
 
   .login-page {
     &__width {
       width: 100%;
+
       &__button {
         width: 100%;
         margin-bottom: 269px;
       }
+
       &__login-error {
-        color: #EE0056;
+        color: #ee0056;
         position: relative;
         text-align: left;
         margin-top: -39px;
@@ -234,15 +229,18 @@ footer {
         margin-left: 0px;
       }
     }
+
     &__checkbox-page {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
       &__checkbox {
         position: absolute;
         top: 655px;
         animation: anotherSlide 1s linear;
       }
+
       &__password-recovery {
         position: absolute;
         display: flex;
@@ -255,9 +253,7 @@ footer {
 }
 
 @media screen and (max-width: 361px) {
-
   .title-login {
-
     h1 {
       font-size: 30px;
       font-weight: 800;
@@ -281,6 +277,7 @@ footer {
       &__checkbox {
         top: 675px;
       }
+
       &__password-recovery {
         top: 593px;
       }
