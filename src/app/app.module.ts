@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
+import { StartGameComponent } from './pages/start-game/start-game.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-
     ModalForgotPasswordComponent,
     LoginComponent,
     PasswordResetComponent,
-    PopUpHowToPlayComponent
+    PopUpHowToPlayComponent,
+    StartGameComponent
   ],
   imports: [
     BrowserModule,

@@ -74,6 +74,12 @@
   }
 }
 
+.start-game-page {
+  .navbar-page__right-icons {
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (max-width: 575px) {
   .login-page-navbar {
     .navbar-page {
@@ -91,6 +97,28 @@
           margin-left: 1px;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .start-game-page {
+    .navbar-page__right-icons__play {
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .start-game-page {
+    .navbar-page__logo {
+      margin: 0;
+    }
+
+    .navbar-page__right-icons{
+      margin-right: 0;
     }
   }
 }

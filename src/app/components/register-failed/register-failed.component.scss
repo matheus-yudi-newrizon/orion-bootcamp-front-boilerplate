@@ -37,6 +37,20 @@
     justify-content: center;
     align-items: flex-start;
   }
+
+}
+
+::ng-deep{
+  .mat-mdc-raised-button
+  .mat-mdc-button-touch-target {
+  cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+  }
+
+  .mat-mdc-raised-button
+  .mdc-button__label,
+  .mat-mdc-outlined-button .mdc-button__label {
+    margin-top: 3px;
+}
 }
 
 @media screen and (max-width: 575px) {

@@ -37,7 +37,7 @@ export class ModalForgotPasswordComponent {
   }
 
   /**
-   * Envia a solicitação de redefinição de senha para o e-mail fornecido
+   * Envia a solicitação de redefinição de senha para o e-mail fornecido.
    */
   public async forgotPassword(): Promise<void> {
     if (this.forgotPasswordForm.valid) {

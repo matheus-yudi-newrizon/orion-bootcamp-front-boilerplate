@@ -30,11 +30,11 @@ export class RegisterSuccessComponent implements OnInit {
   }
 
   /**
-   * Retorna para a tela de cadastro em caso de erro.
+   * Retorna para a tela de cadastro em caso de sucesso.
    */
   public returnToHome(): void {
     if (this.currentUrl === '/registration-success' || this.currentUrl === '/reset-password-success') {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/start-game']);
     }
   }
 }
