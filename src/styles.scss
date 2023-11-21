@@ -15,20 +15,17 @@
     background-color: $input-color;
   }
 
-  .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
-    color: $input-text-color;
-  }
-
-  .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
-    color: $input-text-color !important;
-  }
+  .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input,
+  .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label,
   .mat-mdc-input-element::placeholder {
     color: $input-text-color !important;
   }
 
-  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before,
+  .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before {
     border-bottom-color: $accent-color;
   }
+
 }
 
 @keyframes slide {
