@@ -35,8 +35,9 @@ export class PasswordResetComponent implements OnInit {
   }
 
   /**
-   * Obtém o valor da senha e atribui ao formulário
-   * @param password
+   * Obtém o valor da senha e atribui ao formulário.
+   * @param password - A senha a ser atribuída ao formulário.
+   * @param confirmPassword - A confirmação da senha a ser atribuída ao formulário.
    */
   public getPassword(password: string, confirmPassword: string): void {
     this.resetPasswordForm.patchValue({ password: password });

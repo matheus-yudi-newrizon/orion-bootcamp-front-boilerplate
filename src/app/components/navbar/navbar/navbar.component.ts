@@ -54,18 +54,19 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Função responsável por abrir o modal de forgotPassword
+   * Função responsável pelo modal de howToPlay
    */
   public openModalHowToPlay(): void {
     const dialogRef = this.dialog.open(PopUpHowToPlayComponent, {
-      width: '500px',
+      width: '404px',
       height: '100%',
       panelClass: 'custom__modal',
       disableClose: false,
       position: {
         right: '0'
       },
-      exitAnimationDuration: 6000
+      exitAnimationDuration: 6000,
+      enterAnimationDuration: -6000
     });
 
     dialogRef.beforeClosed().subscribe(() => {

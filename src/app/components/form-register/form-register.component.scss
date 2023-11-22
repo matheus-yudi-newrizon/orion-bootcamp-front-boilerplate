@@ -1,7 +1,8 @@
-@import "../../../colors";
+@import '../../../colors';
 
 .panel-form {
   text-align: center;
+
   &__title {
     & h4 {
       color: $text-color;
@@ -22,15 +23,18 @@
       line-height: normal;
     }
   }
+
   &__container {
     margin-top: 40px;
+
     &__form {
-        min-width: 150px;
-        max-width: 500px;
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+      
+      &__item {
         width: 100%;
-        &__item {
-          width: 100%;
-        }
+      }
     }
   }
 }
@@ -41,15 +45,19 @@
     position: absolute;
     margin-left: 4px;
   }
+
   .mat-mdc-icon-button .mat-mdc-button-touch-target {
     cursor: url(../../../assets/icons/mini-pointer-2.png), auto;
   }
+
   .mat-mdc-raised-button .mat-mdc-button-touch-target {
     cursor: url(../../../assets/icons/mini-pointer-2.png), auto;
   }
+
   .list__requirement[_ngcontent-ng-c2532552156] span[_ngcontent-ng-c2532552156] {
     cursor: url(../../../assets/icons/mouse-hover.png), auto;
   }
+
   .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
     cursor: url(../../../assets/icons/mouse-hover.png), auto;
   }

@@ -1,22 +1,30 @@
-@use "@angular/material" as mat;
+@use '@angular/material' as mat;
 
 @include mat.core();
-@import "theme";
-@import "colors";
-@import "fonts";
-@import "spacing";
+@import 'theme';
+@import 'colors';
+@import 'fonts';
+@import 'spacing';
 
 * {
-  cursor: url("../src/assets/icons/cursor.png"), auto;
+  cursor: url('../src/assets/icons/cursor.png'), auto;
 }
 
 :root {
-  --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.08);
-  --mdc-filled-text-field-input-text-color: rgba(255, 255, 255, 0.87);
-  --mdc-filled-text-field-input-text-placeholder-color: rgba(255, 255, 255, 0.87);
-  --mdc-filled-text-field-label-text-color: #6b6b83;
-  --mdc-filled-text-field-button-disabled-color: rgba(5, 5, 206, 0.356);
-  --mdc-filled-text-field-active-indicator-color: #6002ee;
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: $input-color;
+  }
+
+  .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input,
+  .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label,
+  .mat-mdc-input-element::placeholder {
+    color: $input-text-color !important;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before,
+  .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before {
+    border-bottom-color: $accent-color;
+  }
 }
 
 @keyframes slide {
@@ -55,7 +63,7 @@
 .custom__modal {
   .mat-mdc-dialog-container {
     .mdc-dialog__container .mat-mdc-dialog-surface {
-      background-color: #25252f;
+      background-color: $background-color;
     }
 
     .mdc-dialog__title,
@@ -80,12 +88,12 @@
 
   @keyframes slideIn {
     0% {
-      opacity: 0;
+      opacity: 1 !important;
       transform: translateX(100%);
     }
 
     100% {
-      opacity: 1;
+      opacity: 1 !important;
       transform: translateX(0);
     }
   }
@@ -94,7 +102,7 @@
 .modal__closed {
   .mat-mdc-dialog-container {
     .mdc-dialog__container .mat-mdc-dialog-surface {
-      background-color: #25252F;
+      background-color: $background-color;
     }
 
     .mdc-dialog__title,
@@ -119,12 +127,10 @@
 
   @keyframes slideOut {
     0% {
-      opacity: 1;
       transform: translateX(0);
     }
 
     100% {
-      opacity: 0;
       transform: translateX(100%);
     }
   }
@@ -151,7 +157,7 @@
 
   &:active {
     background-color: mat.get-color-from-palette($primary-palette, 700);
-    border: 1px solid #767676;
+    border: 1px solid $active-button-color;
     height: 36px;
   }
 }
@@ -187,8 +193,9 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: url(../src/assets/background/background.svg),
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background:
+    url(../src/assets/background/background.svg),
     #0f1620 50% / cover no-repeat;
 }
 
@@ -206,6 +213,12 @@ body {
   }
 }
 
-a, ul:hover, span:hover, input[type="text"], textarea:hover, p:hover, h4:hover {
+a,
+ul:hover,
+span:hover,
+input[type='text'],
+textarea:hover,
+p:hover,
+h4:hover {
   cursor: url(../src/assets/icons/mouse-hover.png), auto;
 }

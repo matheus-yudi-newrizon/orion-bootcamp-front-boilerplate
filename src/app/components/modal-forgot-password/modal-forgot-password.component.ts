@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user/user.service';
@@ -13,7 +13,6 @@ export class ModalForgotPasswordComponent {
   protected forgotPasswordForm!: FormGroup;
 
   constructor(
-    private el: ElementRef,
     private formBuilder: FormBuilder,
     private userService: UserService,
     public dialogRef: MatDialogRef<ModalForgotPasswordComponent>

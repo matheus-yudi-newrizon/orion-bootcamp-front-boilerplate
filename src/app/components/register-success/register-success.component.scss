@@ -1,3 +1,5 @@
+@import '../../../colors';
+
 .section-success {
   display: flex;
   flex-direction: column;
@@ -9,9 +11,8 @@
   height: 50vh;
 
   &__txt-success {
-
     & h4 {
-      color: var(--foundation-gray-scale-white, #FFF);
+      color: var(--foundation-gray-scale-white, $text-color);
       font-family: Roboto;
       font-size: 24px;
       font-style: normal;
@@ -21,7 +22,7 @@
     }
 
     & p {
-      color: var(--foundation-gray-scale-white, #FFF);
+      color: var(--foundation-gray-scale-white, $text-color);
       font-family: Roboto;
       font-size: 16px;
       font-style: normal;
@@ -29,12 +30,26 @@
       line-height: normal;
     }
   }
+
   &__button-play {
     display: flex;
     width: 523px;
     padding: 6px 6px 6px 8px;
     justify-content: center;
     align-items: flex-start;
+  }
+}
+
+::ng-deep{
+  .mat-mdc-raised-button
+  .mat-mdc-button-touch-target {
+  cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+  }
+
+  .mat-mdc-raised-button
+  .mdc-button__label,
+  .mat-mdc-outlined-button .mdc-button__label {
+    margin-top: 3px;
   }
 }
 

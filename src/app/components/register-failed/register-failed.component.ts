@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 export class RegisterFailedComponent implements OnInit {
   public titlePageFailed = '';
   public textPageFailed = '';
-  public textButtonFailed = '';
   public currentUrl = '';
 
   constructor(private router: Router) {}
@@ -37,11 +36,9 @@ export class RegisterFailedComponent implements OnInit {
     if (this.currentUrl === '/registration-failure') {
       this.titlePageFailed = 'It was not possible to create your account';
       this.textPageFailed = 'Please return to the home page and try again.';
-      this.textButtonFailed = 'RETURN';
     } else if (this.currentUrl === '/reset-password-failure') {
       this.titlePageFailed = 'It was not possible to recover the password';
       this.textPageFailed = 'Please return to the home page and request again.';
-      this.textButtonFailed = 'RETURN TO HOME';
     }
   }
 }
