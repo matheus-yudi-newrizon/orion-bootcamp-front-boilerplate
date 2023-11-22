@@ -15,6 +15,7 @@ export class PopUpHowToPlayComponent {
   public closeModal(): void {
     this.dialogRef.close();
   }
+
   /**
    * Manipula o evento de pressionar uma tecla do teclado.
    * Fecha o modal se a tecla pressionada for a tecla "Enter".

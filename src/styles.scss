@@ -25,7 +25,6 @@
   .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before {
     border-bottom-color: $accent-color;
   }
-
 }
 
 @keyframes slide {
@@ -128,12 +127,10 @@
 
   @keyframes slideOut {
     0% {
-      // opacity: 1;
       transform: translateX(0);
     }
 
     100% {
-      // opacity: 1;
       transform: translateX(100%);
     }
   }
