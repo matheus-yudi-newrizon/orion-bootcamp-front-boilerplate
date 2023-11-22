@@ -5,6 +5,7 @@ import { RegisterSuccessComponent } from './components/register-success/register
 import { RegisterFailedComponent } from './components/register-failed/register-failed.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { StartGameComponent } from './pages/start-game/start-game.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     component: RegisterFailedComponent
   },
   {
-    path: 'reset-password',
+    path: 'auth/reset-password',
     component: PasswordResetComponent
   },
   {
@@ -35,14 +36,19 @@ const routes: Routes = [
     path: 'reset-password-failure',
     component: RegisterFailedComponent
   },
+  {
+    path: 'start-game',
+    component: StartGameComponent
+  },
   // Rota para capturar caminhos não correspondentes
   {
-    path: '**', redirectTo: '/login',
-  },
+    path: '**',
+    redirectTo: '/login'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

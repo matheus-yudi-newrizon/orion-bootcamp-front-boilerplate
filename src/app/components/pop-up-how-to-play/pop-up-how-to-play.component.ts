@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pop-up-how-to-play',
@@ -7,18 +7,24 @@ import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-u
   styleUrls: ['./pop-up-how-to-play.component.scss']
 })
 export class PopUpHowToPlayComponent {
+  constructor(public dialogRef: MatDialogRef<PopUpHowToPlayComponent>) {}
 
-  constructor(public myService: PopUpHowToPlayService) {}
-
-  mudarDeslocamento(): void {
-    const novoDeslocamento = this.myService.deslocamento + 450; // Ajuste conforme necessário
-    this.myService.alterarDeslocamento(novoDeslocamento);
+  /**
+   * Função responsável por fechar o modal quando o botão "cancel" for acionado.
+   */
+  public closeModal(): void {
+    this.dialogRef.close();
   }
 
-  handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Enter' || event.key === 'Space') {
-      this.mudarDeslocamento();
+  /**
+   * Manipula o evento de pressionar uma tecla do teclado.
+   * Fecha o modal se a tecla pressionada for a tecla "Enter".
+   *
+   * @param event - O evento de teclado a ser manipulado.
+   */
+  public handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.closeModal();
     }
-
   }
 }

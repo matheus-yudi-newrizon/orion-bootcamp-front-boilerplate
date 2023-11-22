@@ -13,10 +13,14 @@ export class PasswordResetComponent implements OnInit {
   protected resetPasswordForm!: FormGroup;
   public isLoading = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-
+  public ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const token = params['token'];
       const id = params['id'];
@@ -26,16 +30,16 @@ export class PasswordResetComponent implements OnInit {
         id: [id, [Validators.required]],
         password: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]]
-      })
+      });
     });
-
   }
 
   /**
- * Obtém o valor da senha e atribui ao formulário
- * @param password
- */
-  public getPassword(password: string, confirmPassword: string) {
+   * Obtém o valor da senha e atribui ao formulário.
+   * @param password - A senha a ser atribuída ao formulário.
+   * @param confirmPassword - A confirmação da senha a ser atribuída ao formulário.
+   */
+  public getPassword(password: string, confirmPassword: string): void {
     this.resetPasswordForm.patchValue({ password: password });
     this.resetPasswordForm.patchValue({ confirmPassword: confirmPassword });
   }
@@ -53,13 +57,10 @@ export class PasswordResetComponent implements OnInit {
 
         const router = success ? '/reset-password-success' : '/reset-password-failure';
         this.router.navigate([router]);
-
       } catch (error) {
         this.router.navigate(['/reset-password-failure']);
-
       } finally {
         this.isLoading = false;
-
       }
     }
   }

@@ -8,11 +8,9 @@ import { RequestData, SuccessResponse } from 'src/app/models/http/interface';
   providedIn: 'root'
 })
 export class RequestService {
-
   protected BASE_URL: string = environment.baseUrl;
 
-  constructor(protected httpClient: HttpClient) { }
-
+  constructor(protected httpClient: HttpClient) {}
   /**
    * Realiza uma requisição de leitura assíncrona
    * @param id recurso a ser lido

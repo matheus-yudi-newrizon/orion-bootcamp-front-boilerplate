@@ -5,84 +5,85 @@
   color: $text-color;
   position: fixed;
   top: 0;
-  right: -452px;
   max-width: 404px;
   height: 100%;
   padding: 18px 24px;
-  background-color: #25252f;
+  background-color: $background-color;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.5s ease;
-}
 
-.pop-up-nav {
-  margin-bottom: 24px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
+  &__nav {
+    margin-bottom: 24px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 
-.pop-up-nav img {
-  width: 24px ;
-  mix-blend-mode: difference;
-}
+    & img {
+      width: 24px;
+      mix-blend-mode: difference;
+    }
 
-.pop-up-nav img:hover {
-  mix-blend-mode: color-dodge;
-}
+    & img:hover {
+      filter: invert(50%) sepia(100%) saturate(70) hue-rotate(262deg);
+    }
 
-.pop-up-nav img:active {
-  mix-blend-mode: exclusion;
-}
+    & img:active {
+      mix-blend-mode: exclusion;
+    }
 
-.pop-up-nav h1 {
-  font-size: 24px;
-  font-weight: 500;
-  display: flex;
-  margin: 18px 0;
-}
+    & h1 {
+      font-size: 24px;
+      font-weight: 500;
+      display: flex;
+      margin: 18px 0;
+    }
+  }
 
-.pop-up-main {
-  width: 100%;
-}
+  &__main {
+    width: 100%;
 
-.pop-up-main p {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 24px;
-}
+    & p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+    }
 
-.pop-up-main span {
-  color: $error-text-color;
-}
+    & span {
+      color: $error-text-color;
+    }
+  }
 
-.pop-up-footer {
-  border: 1px solid #373744;
-  border-radius: 8px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
+  &__footer {
+    border: 1px solid $secondary-background-color;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 
-.pop-up-footer p {
-  margin: 0px;
-  padding: 16px 0;
+    & p {
+      margin: 0px;
+      padding: 16px 0;
+    }
+  }
 }
 
 @media screen and (max-width: 452px) {
   .pop-up-body {
     max-width: 100%;
     padding: 0;
-  }
 
-  .pop-up-nav {
-    margin-top: 18px;
-  }
+    &__nav {
+      margin-top: 18px;
+    }
 
-  .pop-up-nav, .pop-up-main, .pop-up-footer {
-    width: 90%;
+    &__nav,
+    &__main,
+    &__footer {
+      width: 90%;
+    }
   }
 }

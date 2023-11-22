@@ -1,21 +1,24 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopUpHowToPlayService } from 'src/app/services/pop-up-how-to-play/pop-up-how-to-play.service';
+import { PopUpHowToPlayComponent } from '../../pop-up-how-to-play/pop-up-how-to-play.component';
+import { TokenService } from 'src/app/services/token/token.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   private currentRoute = '';
 
   constructor(
     private router: Router,
-    public myService: PopUpHowToPlayService
+    public dialog: MatDialog,
+    private tokenService: TokenService
   ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.currentRoute = this.router.url;
   }
 
@@ -23,26 +26,59 @@ export class NavbarComponent implements OnInit {
    * Verifica se a página atual é a página de login.
    * @returns True se a página atual é a página de login, caso contrário, False.
    */
-  isLoginPage() {
+  public isLoginPage(): boolean {
     return this.currentRoute === '/login';
   }
+
   /**
    * Verifica se a página atual é a página de cadastro.
    * @returns True se a página atual é a página de cadastro, caso contrário, False.
    */
-  isSignUpPage() {
+  public isSignUpPage(): boolean {
     return [
       '/sign-up',
-      '/reset-password',
+      '/auth/reset-password',
       '/registration-success',
       '/registration-failure',
       '/reset-password-success',
-      '/reset-password-failure',
+      '/reset-password-failure'
     ].includes(this.currentRoute);
   }
 
-  moverParaEsquerda(): void {
-    const novoDeslocamento = this.myService.deslocamento - 450; // Ajuste conforme necessário
-    this.myService.alterarDeslocamento(novoDeslocamento);
+  /**
+   * Função responsável por ocultar/exibir itens e aplicar classes no caso da página ser start-game.
+   * @returns
+   */
+  public isStartGamePage(): boolean {
+    return this.currentRoute === '/start-game';
+  }
+
+  /**
+   * Função responsável pelo modal de howToPlay
+   */
+  public openModalHowToPlay(): void {
+    const dialogRef = this.dialog.open(PopUpHowToPlayComponent, {
+      width: '404px',
+      height: '100%',
+      panelClass: 'custom__modal',
+      disableClose: false,
+      position: {
+        right: '0'
+      },
+      exitAnimationDuration: 6000,
+      enterAnimationDuration: -6000
+    });
+
+    dialogRef.beforeClosed().subscribe(() => {
+      dialogRef.addPanelClass('modal__closed');
+    });
+  }
+
+  /**
+   * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
+   */
+  public logout(): void {
+    this.tokenService.delete();
+    this.router.navigate(['/login']);
   }
 }

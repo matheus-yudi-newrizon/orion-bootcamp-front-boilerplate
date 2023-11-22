@@ -7,31 +7,30 @@ import { PasswordValidationService } from 'src/app/services/password-validation/
   styleUrls: ['./password-requirement.component.scss']
 })
 export class PasswordRequirementComponent {
-  password = '';
-  upperCase = false;
-  specialChar = false;
-  passwordSize = false;
-  samePassword = true;
-  validPassword = false;
-  hide = true;
+  public password = '';
+  public upperCase = false;
+  public specialChar = false;
+  public passwordSize = false;
+  public samePassword = true;
+  public validPassword = false;
+  public hide = true;
 
-  @Output() passwordValueChanged = new EventEmitter<string>();
-  @Output() confirmPasswordValueChanged = new EventEmitter<string>();
+  @Output() public passwordValueChanged = new EventEmitter<string>();
+  @Output() public confirmPasswordValueChanged = new EventEmitter<string>();
 
-  constructor(private passwordValidationService: PasswordValidationService) { }
+  constructor(private passwordValidationService: PasswordValidationService) {}
   /**
    * Valida a senha inserida baseada no tamanho, letras maiúsculas e caracteres especiais
    * @param passwordValue a senha a ser validada pelo service
    */
   public validatePassword(passwordValue: string): void {
-
     if (passwordValue) {
       this.password = passwordValue;
       this.passwordSize = this.passwordValidationService.passwordSize(this.password);
       this.upperCase = this.passwordValidationService.upperCase(this.password);
       this.specialChar = this.passwordValidationService.specialChar(this.password);
 
-      this.validPassword = (this.passwordSize && this.upperCase && this.specialChar);
+      this.validPassword = this.passwordSize && this.upperCase && this.specialChar;
     }
   }
 
@@ -48,6 +47,5 @@ export class PasswordRequirementComponent {
       this.passwordValueChanged.emit(password);
       this.confirmPasswordValueChanged.emit(confirmPassword);
     }
-
   }
 }
