@@ -32,9 +32,13 @@ interface LoginRequest {
 
 export interface LoginResponse
   extends SuccessResponse<{
-    id: number;
-    email: string;
     token: string;
+    game: {
+      lives: number;
+      score: number;
+      combo: number;
+      isActive: boolean;
+    };
   }> {}
 interface ResetPasswordRequest {
   token: string;
