@@ -50,7 +50,7 @@ export class NavbarComponent implements OnInit {
    * @returns
    */
   public isStartGamePage(): boolean {
-    return this.currentRoute === '/start-game';
+    return this.currentRoute === '/start-game' || this.currentRoute === '/game';
   }
 
   /**
