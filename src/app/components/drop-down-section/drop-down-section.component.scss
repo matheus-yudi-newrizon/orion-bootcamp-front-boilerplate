@@ -53,9 +53,11 @@ button {
     border-radius: 4px;
     background-color: $accent-color;
     cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+    margin-top: -10px;
   }
 
   .mat-mdc-unelevated-button .mdc-button__label {
     cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+    margin-top: -17px;
   }
 }
