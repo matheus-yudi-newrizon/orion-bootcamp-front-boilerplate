@@ -20,9 +20,10 @@ interface ForgotPasswordRequest {
   email: string;
 }
 
-interface ForgotPasswordResponse extends SuccessResponse {
-  message: string;
-}
+interface ForgotPasswordResponse
+  extends SuccessResponse<{
+    message: string;
+  }> {}
 
 interface LoginRequest {
   email: string;
@@ -52,47 +53,51 @@ interface StartGameRequest {
   token: string;
 }
 
-interface StartGameResponse extends SuccessResponse {
-  lives: number;
-  score: number;
-  combo: number;
-  isActive: boolean;
-}
+interface StartGameResponse
+  extends SuccessResponse<{
+    lives: number;
+    score: number;
+    combo: number;
+    isActive: boolean;
+  }> {}
 
 interface GenerateReviewRequest {
   token: string;
 }
 
-interface GenerateReviewResponse extends SuccessResponse {
-  id: string;
-  text: string;
-}
+interface GenerateReviewResponse
+  extends SuccessResponse<{
+    id: string;
+    text: string;
+  }> {}
 
 interface SendReplyRequest {
   reviewId: string;
   answer: string;
 }
 
-interface SendReplyResponse extends SuccessResponse {
-  isCorrect: boolean;
-  game: {
-    lives: number;
-    score: number;
-    combo: number;
-    isActive: boolean;
-  };
-}
+interface SendReplyResponse
+  extends SuccessResponse<{
+    isCorrect: boolean;
+    game: {
+      lives: number;
+      score: number;
+      combo: number;
+      isActive: boolean;
+    };
+  }> {}
 
 interface UploadMoviesRequest {
   title: string;
   token: string;
 }
 
-interface UploadMoviesResponse extends SuccessResponse {
-  title: string;
-  posterPath: string;
-  releaseDate: string;
-}
+interface UploadMoviesResponse
+  extends SuccessResponse<{
+    title: string;
+    posterPath: string;
+    releaseDate: string;
+  }> {}
 
 @Injectable({
   providedIn: 'root'
