@@ -177,12 +177,12 @@ export class UserService extends RequestService {
 
   /**
    * Função responsável por iniciar o jogo.
-   * @param token token do usuário necessário para iniciar o jogo
+   * @param data token do usuário necessário para iniciar o jogo
    * @returns Promise contendo os dados do jogo ou um objeto ErrorResponse no caso de erro
    */
-  public async startGame(token: StartGameRequest): Promise<StartGameResponse | ErrorResponse> {
+  public async startGame(data: StartGameRequest): Promise<StartGameResponse | ErrorResponse> {
     try {
-      const headers = new HttpHeaders().set('auth_token', `Bearer ${token}`);
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
 
       return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', null, { headers }));
     } catch (error) {
@@ -196,12 +196,14 @@ export class UserService extends RequestService {
 
   /**
    * Função responsável por gerar uma nova review a cada token fornecido
-   * @param token o token necessário para gerar a review
+   * @param data o token necessário para gerar a review
    * @returns Promise contendo a review ou um objeto ErrorResponse no caso de erro
    */
-  public async generateReview(token: GenerateReviewRequest): Promise<GenerateReviewResponse | ErrorResponse> {
+  public async generateReview(data: GenerateReviewRequest): Promise<GenerateReviewResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.get<GenerateReviewResponse>(`${this.BASE_URL}/reviews/random/${token}`));
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
+
+      return await lastValueFrom(this.httpClient.get<GenerateReviewResponse>(this.BASE_URL + '/reviews/random/', { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -216,9 +218,11 @@ export class UserService extends RequestService {
    * @param data os dados contendo id da review e resposta
    * @returns Promise que devolve se a resposta está correta e os dados do jogo ou um objeto ErrorResponse no caso de erro
    */
-  public async sendReply(data: SendReplyRequest): Promise<SendReplyResponse | ErrorResponse> {
+  public async sendReply(data: SendReplyRequest, token: string): Promise<SendReplyResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.put<SendReplyResponse>(this.BASE_URL + '/games/answer/', data));
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      return await lastValueFrom(this.httpClient.put<SendReplyResponse>(this.BASE_URL + '/games/answer/', data, { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -235,7 +239,9 @@ export class UserService extends RequestService {
    */
   public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.get<UploadMoviesResponse>(`${this.BASE_URL}/movies/${data}`));
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
+
+      return await lastValueFrom(this.httpClient.get<UploadMoviesResponse>(`${this.BASE_URL}/movies?title=${data.title}`, { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
