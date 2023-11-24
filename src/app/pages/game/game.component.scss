@@ -1,0 +1,60 @@
+@import '../../../colors';
+
+.page__game {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  justify-content: center;
+  height: 60%;
+  align-items: center;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__title {
+    color: $accent-color;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__record {
+    color: $text-color;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__challenge {
+    border-radius: 8px;
+    background-color: #25252F;
+    color: $text-color;
+    width: 800px;
+    padding: 40px;
+    text-align: left;
+
+    p {
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Roboto;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px
+    }
+  }
+
+  &__challenge__title {
+    font-weight: 500;
+    font-size: 20px;
+  }
+}

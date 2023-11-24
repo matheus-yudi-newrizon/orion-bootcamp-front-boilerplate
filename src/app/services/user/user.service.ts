@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorResponse, SuccessResponse } from 'src/app/models/http/interface';
 import { lastValueFrom } from 'rxjs';
 
@@ -20,9 +20,10 @@ interface ForgotPasswordRequest {
   email: string;
 }
 
-interface ForgotPasswordResponse extends SuccessResponse {
-  message: string;
-}
+interface ForgotPasswordResponse
+  extends SuccessResponse<{
+    message: string;
+  }> {}
 
 interface LoginRequest {
   email: string;
@@ -32,16 +33,71 @@ interface LoginRequest {
 
 export interface LoginResponse
   extends SuccessResponse<{
-    id: number;
-    email: string;
     token: string;
+    game: {
+      lives: number;
+      score: number;
+      combo: number;
+      isActive: boolean;
+    };
   }> {}
+
 interface ResetPasswordRequest {
   token: string;
   id: number;
   password: string;
   confirmPassword: string;
 }
+
+interface StartGameRequest {
+  token: string;
+}
+
+interface StartGameResponse
+  extends SuccessResponse<{
+    lives: number;
+    score: number;
+    combo: number;
+    isActive: boolean;
+  }> {}
+
+interface GenerateReviewRequest {
+  token: string;
+}
+
+interface GenerateReviewResponse
+  extends SuccessResponse<{
+    id: string;
+    text: string;
+  }> {}
+
+interface SendReplyRequest {
+  reviewId: string;
+  answer: string;
+}
+
+interface SendReplyResponse
+  extends SuccessResponse<{
+    isCorrect: boolean;
+    game: {
+      lives: number;
+      score: number;
+      combo: number;
+      isActive: boolean;
+    };
+  }> {}
+
+interface UploadMoviesRequest {
+  title: string;
+  token: string;
+}
+
+interface UploadMoviesResponse
+  extends SuccessResponse<{
+    title: string;
+    posterPath: string;
+    releaseDate: string;
+  }> {}
 
 @Injectable({
   providedIn: 'root'
@@ -114,6 +170,82 @@ export class UserService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'An error occurred while resetting the password.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por iniciar o jogo.
+   * @param data token do usuário necessário para iniciar o jogo
+   * @returns Promise contendo os dados do jogo ou um objeto ErrorResponse no caso de erro
+   */
+  public async startGame(data: StartGameRequest): Promise<StartGameResponse | ErrorResponse> {
+    try {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
+
+      return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', null, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while starting the game. Please try again later.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por gerar uma nova review a cada token fornecido
+   * @param data o token necessário para gerar a review
+   * @returns Promise contendo a review ou um objeto ErrorResponse no caso de erro
+   */
+  public async generateReview(data: GenerateReviewRequest): Promise<GenerateReviewResponse | ErrorResponse> {
+    try {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
+
+      return await lastValueFrom(this.httpClient.get<GenerateReviewResponse>(this.BASE_URL + '/reviews/random/', { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while generating the review. Please try again later.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Envia a resposta do usuário do jogo
+   * @param data os dados contendo id da review e resposta
+   * @returns Promise que devolve se a resposta está correta e os dados do jogo ou um objeto ErrorResponse no caso de erro
+   */
+  public async sendReply(data: SendReplyRequest, token: string): Promise<SendReplyResponse | ErrorResponse> {
+    try {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+      return await lastValueFrom(this.httpClient.put<SendReplyResponse>(this.BASE_URL + '/games/answer/', data, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while sending the response. Please try again later.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Realiza o carregamento de informações sobre filmes usando os dados fornecidos
+   * @param data os dados necessários para realizar o carregamento de informações sobre filmes
+   * @returns Promise que devolve os dados dos filmes ou um objeto ErrorResponse no caso de erro
+   */
+  public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse | ErrorResponse> {
+    try {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
+
+      return await lastValueFrom(this.httpClient.get<UploadMoviesResponse>(`${this.BASE_URL}/movies?title=${data.title}`, { headers }));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while uploading the movie. Please try again later.'
       };
       return errorResponse;
     }

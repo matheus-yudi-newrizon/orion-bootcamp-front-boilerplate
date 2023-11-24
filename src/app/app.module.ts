@@ -26,6 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
 import { StartGameComponent } from './pages/start-game/start-game.component';
+import { GameComponent } from './pages/game/game.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { StartGameComponent } from './pages/start-game/start-game.component';
     LoginComponent,
     PasswordResetComponent,
     PopUpHowToPlayComponent,
-    StartGameComponent
+    StartGameComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

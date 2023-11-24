@@ -6,6 +6,7 @@ import { RegisterFailedComponent } from './components/register-failed/register-f
 import { LoginComponent } from './pages/login/login.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { StartGameComponent } from './pages/start-game/start-game.component';
+import { GameComponent } from './pages/game/game.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'start-game',
     component: StartGameComponent
+  },
+  {
+    path: 'game',
+    component: GameComponent
   },
   // Rota para capturar caminhos não correspondentes
   {
