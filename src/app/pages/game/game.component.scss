@@ -1,67 +1,125 @@
 @import '../../../colors';
 
-.page__game {
+.game {
+  width: 100%;
+}
+
+.game__page {
   display: flex;
   flex-direction: column;
   text-align: center;
-
-  justify-content: center;
-  height: 60%;
   align-items: center;
-
-  &__header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-  }
-
-  &__title {
-    color: $accent-color;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Roboto;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-
-  &__record {
-    color: $text-color;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
+  overflow: hidden;
 
   &__challenge {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 158px;
+    margin-bottom: 8px;
     border-radius: 8px;
     background-color: #25252F;
     color: $text-color;
-    width: 800px;
+    width: 720px;
     padding: 40px;
     text-align: left;
 
-    p {
-      font-feature-settings: 'clig' off, 'liga' off;
-      font-family: Roboto;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 24px
+    &__header {
+      position: relative;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+
+      &__wrap {
+        display: flex;
+        position: absolute;
+        flex-wrap: wrap;
+        top: -58px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        &__title {
+
+          color: $accent-color;
+          font-feature-settings: 'clig' off, 'liga' off;
+          font-family: Roboto;
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          width: 285px;
+        }
+
+        &__record {
+          color: $text-color;
+          font-feature-settings: 'clig' off, 'liga' off !important;
+          font-family: Roboto !important;
+          font-size: 20px !important;
+          font-style: normal !important;
+          font-weight: 500 !important;
+          line-height: normal !important;
+          margin-bottom: 20px;
+          width: 250px;
+        }
+      }
+    }
+
+    &__review {
+
+      &__text {
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        height: 300px;
+        overflow-y: auto;
+      }
+
+      &__title {
+        font-weight: 500;
+        font-size: 20px;
+      }
     }
   }
-
-  &__challenge__title {
-    font-weight: 500;
-    font-size: 20px;
-  }
 }
-
-
 
 .drop-down-section {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 916px) {
+
+  .game {
+    .game__page {
+
+      &__challenge {
+        width: 80%;
+
+        &__header {
+
+          // max-width: 80%;
+
+          &__wrap {
+
+            &__record {
+              // right: 14%;
+
+            }
+
+          }
+        }
+      }
+
+    }
+  }
+
+
+}
+
+@media screen and (max-width: 361px) {
+
 }
