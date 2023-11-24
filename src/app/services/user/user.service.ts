@@ -47,6 +47,52 @@ interface ResetPasswordRequest {
   confirmPassword: string;
 }
 
+interface StartGameRequest {
+  token: string;
+}
+
+interface StartGameResponse extends SuccessResponse {
+  lives: number;
+  score: number;
+  combo: number;
+  isActive: boolean;
+}
+
+interface GenerateReviewRequest {
+  token: string;
+}
+
+interface GenerateReviewResponse extends SuccessResponse {
+  id: string;
+  text: string;
+}
+
+interface SendReplyRequest {
+  reviewId: string;
+  answer: string;
+}
+
+interface SendReplyResponse extends SuccessResponse {
+  isCorrect: boolean;
+  game: {
+    lives: number;
+    score: number;
+    combo: number;
+    isActive: boolean;
+  };
+}
+
+interface UploadMoviesRequest {
+  title: string;
+  token: string;
+}
+
+interface UploadMoviesResponse extends SuccessResponse {
+  title: string;
+  posterPath: string;
+  releaseDate: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -118,6 +164,74 @@ export class UserService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'An error occurred while resetting the password.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por iniciar o jogo.
+   * @param token token do usuário necessário para iniciar o jogo
+   * @returns Promise contendo os dados do jogo ou um objeto ErrorResponse no caso de erro
+   */
+  public async startGame(token: StartGameRequest): Promise<StartGameResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', token));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while starting the game. Please try again later.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Função responsável por gerar uma nova review a cada token fornecido
+   * @param token o token necessário para gerar a review
+   * @returns Promise contendo a review ou um objeto ErrorResponse no caso de erro
+   */
+  public async generateReview(token: GenerateReviewRequest): Promise<GenerateReviewResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<GenerateReviewResponse>(this.BASE_URL + '/reviews/random/', token));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while generating the review. Please try again later.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Envia a resposta do usuário do jogo
+   * @param data os dados contendo id da review e resposta
+   * @returns Promise que devolve se a resposta está correta e os dados do jogo ou um objeto ErrorResponse no caso de erro
+   */
+  public async sendReply(data: SendReplyRequest): Promise<SendReplyResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<SendReplyResponse>(this.BASE_URL + '/games/answer/', data));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while sending the response. Please try again later.'
+      };
+      return errorResponse;
+    }
+  }
+
+  /**
+   * Realiza o carregamento de informações sobre filmes usando os dados fornecidos
+   * @param data os dados necessários para realizar o carregamento de informações sobre filmes
+   * @returns Promise que devolve os dados dos filmes ou um objeto ErrorResponse no caso de erro
+   */
+  public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse | ErrorResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.post<UploadMoviesResponse>(this.BASE_URL + '/movies/', data));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while uploading the movie. Please try again later.'
       };
       return errorResponse;
     }
