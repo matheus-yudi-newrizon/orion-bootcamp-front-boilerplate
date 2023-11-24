@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorResponse, SuccessResponse } from 'src/app/models/http/interface';
 import { lastValueFrom } from 'rxjs';
 
@@ -40,6 +40,7 @@ export interface LoginResponse
       isActive: boolean;
     };
   }> {}
+
 interface ResetPasswordRequest {
   token: string;
   id: number;
@@ -176,7 +177,9 @@ export class UserService extends RequestService {
    */
   public async startGame(token: StartGameRequest): Promise<StartGameResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', token));
+      const headers = new HttpHeaders().set('auth_token', `Bearer ${token}`);
+
+      return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', null, { headers }));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -193,7 +196,7 @@ export class UserService extends RequestService {
    */
   public async generateReview(token: GenerateReviewRequest): Promise<GenerateReviewResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<GenerateReviewResponse>(this.BASE_URL + '/reviews/random/', token));
+      return await lastValueFrom(this.httpClient.get<GenerateReviewResponse>(`${this.BASE_URL}/reviews/random/${token}`));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -210,7 +213,7 @@ export class UserService extends RequestService {
    */
   public async sendReply(data: SendReplyRequest): Promise<SendReplyResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<SendReplyResponse>(this.BASE_URL + '/games/answer/', data));
+      return await lastValueFrom(this.httpClient.put<SendReplyResponse>(this.BASE_URL + '/games/answer/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -227,7 +230,7 @@ export class UserService extends RequestService {
    */
   public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse | ErrorResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<UploadMoviesResponse>(this.BASE_URL + '/movies/', data));
+      return await lastValueFrom(this.httpClient.get<UploadMoviesResponse>(`${this.BASE_URL}/movies/${data}`));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
