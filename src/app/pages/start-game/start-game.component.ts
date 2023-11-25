@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./start-game.component.scss']
 })
 export class StartGameComponent {
+  public isLoading = false;
+
   constructor(
     public router: Router,
     private userService: UserService,
@@ -20,6 +22,8 @@ export class StartGameComponent {
    */
   public async startGame(): Promise<void> {
     try {
+      this.isLoading = true;
+
       const token = this.tokenService.get();
       const game = this.tokenService.getGameData();
 
@@ -31,6 +35,7 @@ export class StartGameComponent {
 
       this.router.navigate(['/game']);
     } catch (error) {
+      this.isLoading = false;
       console.error('error', error);
     }
   }
