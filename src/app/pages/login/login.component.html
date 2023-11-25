@@ -8,7 +8,7 @@
 <form [formGroup]="signInForm" class="login-page">
 
   <mat-form-field class="login-page__width">
-    <mat-label class="login-page__width__label">Email</mat-label>
+    <mat-label class="login-page__width__label">E-mail</mat-label>
     <input class="email login-page__width__email-input" type="email" matInput formControlName="email" required>
     <mat-error class="login-page__width__error" *ngIf="emailInput?.errors?.['pattern']">
       Please enter a valid email address
