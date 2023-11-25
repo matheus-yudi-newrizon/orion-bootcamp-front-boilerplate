@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
+<section class="panel__loading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
 
 <div class="game">
   <section class="game__page__challenge">
@@ -12,14 +15,44 @@
     </div>
 
     <div class="game__page__challenge__review">
-      <h3 class="game__page__challenge__review__title">{{ review?.title }}</h3>
-      <p class="game__page__challenge__review__text">
-        {{ review?.text }}
-      </p>
+      <h3 class="game__page__challenge__review__title">{{ review.title }}</h3>
+      <p class="game__page__challenge__review__text">{{ review.text }}</p>
     </div>
   </section>
 
   <section class="drop-down-section">
-    <app-drop-down-section (guessTitleChanged)="sendReply($event)"></app-drop-down-section>
+    <div class="drop-down-wrapper">
+      <div class="upper-part">
+        <div class="lives">
+          <p>Lives:</p>
+          <ng-container *ngFor="let item of lives">
+            <img [src]="item ? '../../../assets/icons/icon-filled-heart.svg' : '../../../assets/icons/icon-empty-heart.svg'" alt="vidas restantes" />
+          </ng-container>
+
+          <p class="lives-number">x{{ gameData?.lives }}</p>
+        </div>
+        <p class="combo">Current combo: {{ gameData?.combo }}</p>
+      </div>
+
+      <div class="form-wrapper">
+        <form class="example-form">
+          <mat-form-field>
+            <mat-label>Guess the movie</mat-label>
+            <mat-icon matSuffix>search</mat-icon>
+            <input type="text" placeholder="" aria-label="Number" matInput [formControl]="guessTitle" [matAutocomplete]="auto" />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <button (click)="sendReply()" mat-flat-button color="primary">GUESS</button>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="replyMessage">
+    <p style="color: white; font-size: 24px; padding: 24px">{{ replyMessage }}</p>
   </section>
 </div>

@@ -1,3 +1,4 @@
+@import '../../../spacing';
 @import '../../../colors';
 
 .game {
@@ -60,7 +61,6 @@
           font-weight: 500 !important;
           line-height: normal !important;
           margin-bottom: 20px;
-          width: 250px;
           margin-top: 7px;
 
           .movies {
@@ -82,6 +82,7 @@
         line-height: 24px;
         height: 300px;
         overflow-y: auto;
+        text-align: justify;
       }
 
       &__title {
@@ -220,6 +221,175 @@
 
     .drop-down-section {
       width: 100%;
+    }
+  }
+}
+
+.drop-down-wrapper {
+  background-color: $background-color;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 40px 20px;
+  box-sizing: border-box;
+
+  .upper-part {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .lives {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: $text-color;
+      margin-bottom: 20px;
+    }
+
+    .lives-number {
+      display: none;
+    }
+
+    .combo {
+      color: $text-color;
+      font-size: 14px;
+    }
+  }
+
+  .form-wrapper {
+    display: flex;
+    width: 100%;
+    gap: $spacing-unit;
+
+    .example-form {
+      width: 100%;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    button {
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+      height: 56px;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-form-field-icon-suffix > .mat-icon {
+    padding: 12px;
+    box-sizing: content-box;
+    color: $text-color;
+  }
+
+  .mat-mdc-unelevated-button .mat-mdc-button-touch-target {
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+
+  .mat-mdc-unelevated-button .mdc-button__label {
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .drop-down-wrapper {
+    padding: 30px;
+  }
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+    .lives {
+      order: 2;
+    }
+
+
+    .combo {
+      margin-bottom: $spacing-unit;
+      order: 1;
+    }
+  }
+
+  .form-wrapper {
+    flex-direction: column;
+
+    .example-form {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 418px) {
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+
+    .lives :not(:first-child):not(:nth-child(2)) {
+      display: none;
+    }
+
+    .lives-number {
+      display: block !important;
+    }
+
+    .combo {
+      text-align: center;
+    }
+  }
+
+  .form-wrapper {
+
+    .example-form {
+
+      mat-form-field {
+        mat-label {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 361px) {
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+
+    .combo {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 275px) {
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+    .combo {
+      text-align: center;
+    }
+  }
+
+  .form-wrapper {
+
+    .example-form {
+
+      mat-form-field {
+        mat-label {
+          display: none;
+        }
+      }
     }
   }
 }
