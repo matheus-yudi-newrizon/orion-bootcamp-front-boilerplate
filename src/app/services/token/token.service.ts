@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { LoginResponse } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
   private readonly tokenUser = 'auth_token';
+  private readonly gameData = 'game_data';
 
   /**
    * Função responsável por armazenar o token de autenticação do usuário no localStorage (armazenamento local)
@@ -27,5 +29,19 @@ export class TokenService {
    */
   public delete(): void {
     localStorage.removeItem(this.tokenUser);
+  }
+
+  public saveGameData(gameData: LoginResponse['data']['game']): void {
+    localStorage.setItem(this.gameData, JSON.stringify(gameData));
+  }
+
+  public getGameData(): LoginResponse['data']['game'] | null {
+    const gameData = localStorage.getItem(this.gameData);
+
+    return gameData ? JSON.parse(gameData) : null;
+  }
+
+  public deleteGameData(): void {
+    localStorage.removeItem(this.gameData);
   }
 }

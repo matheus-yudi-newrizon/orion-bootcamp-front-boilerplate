@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -61,7 +62,8 @@ import { DropDownSectionComponent } from './components/drop-down-section/drop-do
     MatProgressSpinnerModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
