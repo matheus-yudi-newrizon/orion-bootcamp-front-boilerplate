@@ -29,6 +29,7 @@ import { StartGameComponent } from './pages/start-game/start-game.component';
 import { GameComponent } from './pages/game/game.component';
 import { DropDownSectionComponent } from './components/drop-down-section/drop-down-section.component';
 import { PopUpCorrectComponent } from './components/pop-up-correct/pop-up-correct.component';
+import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-confirmation/pop-up-success-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PopUpCorrectComponent } from './components/pop-up-correct/pop-up-correc
     StartGameComponent,
     GameComponent,
     DropDownSectionComponent,
-    PopUpCorrectComponent
+    PopUpCorrectComponent,
+    PopUpSuccessConfirmationComponent
   ],
   imports: [
     BrowserModule,
