@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './pop-up-correct.component.html',
   styleUrls: ['./pop-up-correct.component.scss']
 })
-export class PopUpCorrectComponent {}
+export class PopUpCorrectComponent {
+  public title = 'Congratulations!';
+  public buttonLabel = 'NEXT MOVIE';
+  public movieName = '';
+}
