@@ -31,16 +31,17 @@ interface LoginRequest {
   rememberMe: boolean;
 }
 
-export interface LoginResponse
-  extends SuccessResponse<{
+export interface LoginResponse extends SuccessResponse {
+  data: {
     token: string;
     game: {
       lives: number;
-      score: number;
+      record: number;
       combo: number;
       isActive: boolean;
     };
-  }> {}
+  };
+}
 
 interface ResetPasswordRequest {
   token: string;
@@ -56,7 +57,7 @@ interface StartGameRequest {
 interface StartGameResponse
   extends SuccessResponse<{
     lives: number;
-    score: number;
+    record: number;
     combo: number;
     isActive: boolean;
   }> {}
@@ -65,39 +66,36 @@ interface GenerateReviewRequest {
   token: string;
 }
 
-interface GenerateReviewResponse
+export interface GenerateReviewResponse
   extends SuccessResponse<{
     id: string;
     text: string;
   }> {}
 
-interface SendReplyRequest {
+export interface SendReplyRequest {
   reviewId: string;
   answer: string;
 }
 
-interface SendReplyResponse
+export interface SendReplyResponse
   extends SuccessResponse<{
     isCorrect: boolean;
     game: {
       lives: number;
-      score: number;
+      record: number;
       combo: number;
       isActive: boolean;
     };
   }> {}
 
-interface UploadMoviesRequest {
+export interface UploadMoviesRequest {
   title: string;
   token: string;
 }
 
-interface UploadMoviesResponse
-  extends SuccessResponse<{
-    title: string;
-    posterPath: string;
-    releaseDate: string;
-  }> {}
+interface UploadMoviesResponse extends Omit<SuccessResponse, 'data'> {
+  data: Array<{ title: string; posterPath: string; releaseDate: string }>;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -161,9 +159,9 @@ export class UserService extends RequestService {
   /**
    * Função responsável por realizar a redefinição de senha para o usuário
    * @param data um objeto contendo as informações necessárias para a redefinição, como token, id, password e confirmPassword
-   * @returns Promise contendo os dados redefinidos ou um objeto ErrorResponse no caso de erro
+   * @returns Promise contendo os dados redefinidos
    */
-  public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse | ErrorResponse> {
+  public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse> {
     try {
       return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/auth/reset-password/', data));
     } catch (error) {
@@ -171,16 +169,16 @@ export class UserService extends RequestService {
         success: false,
         message: 'An error occurred while resetting the password.'
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 
   /**
    * Função responsável por iniciar o jogo.
    * @param data token do usuário necessário para iniciar o jogo
-   * @returns Promise contendo os dados do jogo ou um objeto ErrorResponse no caso de erro
+   * @returns Promise contendo os dados do jogo
    */
-  public async startGame(data: StartGameRequest): Promise<StartGameResponse | ErrorResponse> {
+  public async startGame(data: StartGameRequest): Promise<StartGameResponse> {
     try {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
 
@@ -190,16 +188,16 @@ export class UserService extends RequestService {
         success: false,
         message: 'An error occurred while starting the game. Please try again later.'
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 
   /**
    * Função responsável por gerar uma nova review a cada token fornecido
    * @param data o token necessário para gerar a review
-   * @returns Promise contendo a review ou um objeto ErrorResponse no caso de erro
+   * @returns Promise contendo a review
    */
-  public async generateReview(data: GenerateReviewRequest): Promise<GenerateReviewResponse | ErrorResponse> {
+  public async generateReview(data: GenerateReviewRequest): Promise<GenerateReviewResponse> {
     try {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
 
@@ -209,16 +207,16 @@ export class UserService extends RequestService {
         success: false,
         message: 'An error occurred while generating the review. Please try again later.'
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 
   /**
    * Envia a resposta do usuário do jogo
    * @param data os dados contendo id da review e resposta
-   * @returns Promise que devolve se a resposta está correta e os dados do jogo ou um objeto ErrorResponse no caso de erro
+   * @returns Promise que devolve se a resposta está correta e os dados do jogo
    */
-  public async sendReply(data: SendReplyRequest, token: string): Promise<SendReplyResponse | ErrorResponse> {
+  public async sendReply(data: SendReplyRequest, token: string): Promise<SendReplyResponse> {
     try {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
@@ -228,16 +226,16 @@ export class UserService extends RequestService {
         success: false,
         message: 'An error occurred while sending the response. Please try again later.'
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 
   /**
    * Realiza o carregamento de informações sobre filmes usando os dados fornecidos
    * @param data os dados necessários para realizar o carregamento de informações sobre filmes
-   * @returns Promise que devolve os dados dos filmes ou um objeto ErrorResponse no caso de erro
+   * @returns Promise que devolve os dados dos filmes
    */
-  public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse | ErrorResponse> {
+  public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse> {
     try {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
 
@@ -247,7 +245,7 @@ export class UserService extends RequestService {
         success: false,
         message: 'An error occurred while uploading the movie. Please try again later.'
       };
-      return errorResponse;
+      throw errorResponse;
     }
   }
 }

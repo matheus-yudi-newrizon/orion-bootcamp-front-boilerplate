@@ -6,7 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './pop-up-correct.component.html',
   styleUrls: ['./pop-up-correct.component.scss']
 })
-export class PopUpCorrectComponent {
+export abstract class PopUpCorrectComponent {
   public title = 'Congratulations!';
   public buttonLabel = 'NEXT MOVIE';
   public imageUrl = '';
@@ -15,11 +15,11 @@ export class PopUpCorrectComponent {
   constructor(public dialogRef: MatDialogRef<void>) {}
 
   /** Fecha o modal ao clicar no botão 'Close' */
-  public closeModal(): void {}
+  public abstract closeModal(): void;
 
   /* Redireciona o usuário para o site do TMDB */
-  public seeMoreMovie(): void {}
+  public abstract seeMoreMovie(): void;
 
   /** Leva o usuário a uma nova tentativa no jogo */
-  public nextMovie(): void {}
+  public abstract nextMovie(): void;
 }

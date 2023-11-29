@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,8 +28,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
 import { StartGameComponent } from './pages/start-game/start-game.component';
 import { GameComponent } from './pages/game/game.component';
-import { DropDownSectionComponent } from './components/drop-down-section/drop-down-section.component';
-import { PopUpCorrectComponent } from './components/pop-up-correct/pop-up-correct.component';
 import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-confirmation/pop-up-success-confirmation.component';
 
 @NgModule({
@@ -46,8 +45,6 @@ import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-c
     PopUpHowToPlayComponent,
     StartGameComponent,
     GameComponent,
-    DropDownSectionComponent,
-    PopUpCorrectComponent,
     PopUpSuccessConfirmationComponent
   ],
   imports: [
@@ -65,7 +62,8 @@ import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-c
     MatProgressSpinnerModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

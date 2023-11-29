@@ -27,6 +27,7 @@ export class PopUpSuccessConfirmationComponent extends PopUpCorrectComponent {
   }
 
   /** Função para ver mais informações sobre um filme */
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public override seeMoreMovie(): void {}
 
   /** Função para navegar para a próxima tela de jogo */
