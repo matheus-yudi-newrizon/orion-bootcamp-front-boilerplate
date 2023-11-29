@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: ''
+  baseUrl: 'https://reviewreveal.hopto.org'
 };
