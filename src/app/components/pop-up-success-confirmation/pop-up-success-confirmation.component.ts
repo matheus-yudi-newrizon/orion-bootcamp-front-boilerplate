@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { PopUpCorrectComponent } from '../pop-up-correct/pop-up-correct.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PopUpGameComponent } from '../pop-up-game/pop-up-game.component';
 
 @Component({
   selector: 'app-pop-up-success-confirmation',
-  templateUrl: '../pop-up-correct/pop-up-correct.component.html',
-  styleUrls: ['../pop-up-correct/pop-up-correct.component.scss']
+  templateUrl: '../pop-up-game/pop-up-game.component.html',
+  styleUrls: ['../pop-up-game/pop-up-game.component.scss']
 })
-export class PopUpSuccessConfirmationComponent extends PopUpCorrectComponent {
+export class PopUpSuccessConfirmationComponent extends PopUpGameComponent {
   public override title = 'Congratulations you got it!';
   public override buttonLabel = 'Next movie';
   public override imageUrl!: string;
