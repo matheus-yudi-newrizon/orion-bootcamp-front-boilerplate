@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 export class PopUpCorrectComponent {
   public title = 'Congratulations!';
   public buttonLabel = 'NEXT MOVIE';
+  public imageUrl = '';
   public movieName = 'Movie name';
 }

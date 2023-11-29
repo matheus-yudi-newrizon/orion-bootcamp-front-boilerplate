@@ -6,4 +6,9 @@ import { PopUpCorrectComponent } from '../pop-up-correct/pop-up-correct.componen
   templateUrl: '../pop-up-correct/pop-up-correct.component.html',
   styleUrls: ['../pop-up-correct/pop-up-correct.component.scss']
 })
-export class PopUpSuccessConfirmationComponent extends PopUpCorrectComponent {}
+export class PopUpSuccessConfirmationComponent extends PopUpCorrectComponent {
+  public override title = 'Congratulations you got it!';
+  public override buttonLabel = 'Next movie';
+  public override imageUrl!: string;
+  public override movieName!: string;
+}
