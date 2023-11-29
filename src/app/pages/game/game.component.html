@@ -23,7 +23,7 @@
         <div class="lives">
           <p>Lives:</p>
           <ng-container *ngFor="let item of lives">
-            <img [src]="item ? '../../../assets/icons/icon-filled-heart.svg' : '../../../assets/icons/icon-empty-heart.svg'" alt="vidas restantes" />
+            <img [src]="item ? 'assets/icons/icon-filled-heart.svg' : 'assets/icons/icon-empty-heart.svg'" alt="vidas restantes" />
           </ng-container>
 
           <p class="lives-number">x{{ gameData?.lives }}</p>
