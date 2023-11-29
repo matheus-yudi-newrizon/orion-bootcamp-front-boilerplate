@@ -163,7 +163,7 @@ export class UserService extends RequestService {
    */
   public async resetPassword(data: ResetPasswordRequest): Promise<ForgotPasswordResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<ForgotPasswordResponse>(this.BASE_URL + '/auth/reset-password/', data));
+      return await lastValueFrom(this.httpClient.put<ForgotPasswordResponse>(this.BASE_URL + '/auth/reset-password/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
