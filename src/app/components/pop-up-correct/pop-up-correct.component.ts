@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 export class PopUpCorrectComponent {
   public title = 'Congratulations!';
   public buttonLabel = 'NEXT MOVIE';
-  public movieName = '';
+  public movieName = 'Movie name';
 }
