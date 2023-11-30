@@ -12,8 +12,8 @@ interface SignUpRequest {
 
 interface SignUpResponse
   extends SuccessResponse<{
-    id: number;
-    email: string;
+    success: string;
+    message: string;
   }> {}
 
 interface ForgotPasswordRequest {
@@ -33,7 +33,7 @@ interface LoginRequest {
 
 export interface LoginResponse extends SuccessResponse {
   data: {
-    token: string;
+    accessToken: string;
     game: {
       lives: number;
       record: number;
@@ -70,11 +70,12 @@ export interface GenerateReviewResponse
   extends SuccessResponse<{
     id: string;
     text: string;
+    author: string;
   }> {}
 
 export interface SendReplyRequest {
   reviewId: string;
-  answer: string;
+  answer: number;
 }
 
 export interface SendReplyResponse
@@ -93,9 +94,20 @@ export interface UploadMoviesRequest {
   token: string;
 }
 
-interface UploadMoviesResponse extends Omit<SuccessResponse, 'data'> {
-  data: Array<{ title: string; posterPath: string; releaseDate: string }>;
+export interface UploadMoviesResponse extends Omit<SuccessResponse, 'data'> {
+  data: Array<{ id: number; title: string; posterPath: string; releaseDate: string }>;
 }
+
+interface ConfirmEmailRequest {
+  token: string;
+  id: number;
+}
+
+interface ConfirmEmailResponse
+  extends SuccessResponse<{
+    success: string;
+    message: string;
+  }> {}
 
 @Injectable({
   providedIn: 'root'
@@ -244,6 +256,23 @@ export class UserService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'An error occurred while uploading the movie. Please try again later.'
+      };
+      throw errorResponse;
+    }
+  }
+
+  /**
+   * Realiza a confirmação do e-mail
+   * @param data o token e o id do usuário
+   * @returns uma Promise contendo uma mensagem de sucesso
+   */
+  public async confirmEmail(data: ConfirmEmailRequest): Promise<ConfirmEmailResponse> {
+    try {
+      return await lastValueFrom(this.httpClient.put<ConfirmEmailResponse>(this.BASE_URL + '/auth/confirm-email/', data));
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while confirming the email. Try again later.'
       };
       throw errorResponse;
     }
