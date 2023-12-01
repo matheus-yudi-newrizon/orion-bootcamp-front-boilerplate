@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { EnumPopUpActions } from 'src/app/components/pop-up-game/pop-up-game.component';
 import { PopUpSuccessConfirmationComponent } from 'src/app/components/pop-up-success-confirmation/pop-up-success-confirmation.component';
 import { TokenService } from 'src/app/services/token/token.service';
 import { LoginResponse, UploadMoviesResponse, UserService } from 'src/app/services/user/user.service';
@@ -25,8 +26,6 @@ export class GameComponent implements OnInit {
     title: ''
   };
   public gameData!: LoginResponse['data']['game'] | null;
-  public replyMessage!: string;
-
   public guessTitle = new FormControl('');
   public selectedMovie: UploadMoviesResponse['data'][0] | null = null;
   public options: UploadMoviesResponse['data'] = [];
@@ -116,14 +115,15 @@ export class GameComponent implements OnInit {
       this.fillLives(this.gameData.lives);
 
       if (this.gameData.isActive) {
-        this.replyMessage = `Your answer is ${isCorrect ? 'correct' : 'wrong'}`;
         this.tokenService.saveGameData(this.gameData);
 
         if (isCorrect) {
           this.openPopUpSuccess(this.selectedMovie!);
+        } else {
+          this.openPopUpError(this.selectedMovie!);
         }
       } else {
-        this.replyMessage = 'Game Over';
+        this.openPopUpGameOver(this.selectedMovie!);
       }
     } catch (error) {
       this.returnToStartGame();
@@ -167,7 +167,43 @@ export class GameComponent implements OnInit {
     const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
       data: movie
     });
-    dialogRef.afterClosed();
+    dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
+      if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
+        this.generateReview();
+      }
+    });
+  }
+
+  /**
+   * Abre o pop-up de erro no caso do usuário ter errado a review
+   * @param movie  As informações do filme que serão exibidas na janela de pop-up
+   */
+  public openPopUpError(movie: UploadMoviesResponse['data'][0]): void {
+    // TODO trocar pelo pop-up de erro
+    const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
+      data: movie
+    });
+    dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
+      if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
+        this.generateReview();
+      }
+    });
+  }
+
+  /**
+   * Abre o pop-up de game over no caso do usuário ter perdido todas as vidas
+   * @param movie  As informações do filme que serão exibidas na janela de pop-up
+   */
+  public openPopUpGameOver(movie: UploadMoviesResponse['data'][0]): void {
+    // TODO trocar pelo game over
+    const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
+      data: movie
+    });
+    dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
+      if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
+        this.router.navigate(['/start-game']);
+      }
+    });
   }
 
   /**

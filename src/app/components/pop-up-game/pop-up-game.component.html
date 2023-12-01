@@ -11,9 +11,9 @@
       <p>The movie is "{{ data.title }}" from {{ data.releaseDate | date: 'yyyy'}}</p>
     </div>
     <div  class="pop-up__correct__buttons">
-      <button (click)="closeModal()" mat-flat-button>CLOSE</button>
+      <button (click)="close()" mat-flat-button>CLOSE</button>
       <button (click)="seeMoreMovie()" class="pop-up__correct__buttons__see-more" mat-raised-button>SEE MORE</button>
-      <button (click)="nextMovie()" mat-flat-button color="primary">{{ buttonLabel }}</button>
+      <button (click)="next()" mat-flat-button color="primary">{{ buttonLabel }}</button>
     </div>
   </div>
 </section>
