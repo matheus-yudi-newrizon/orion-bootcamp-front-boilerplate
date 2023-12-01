@@ -8,9 +8,9 @@ permissions: write-all
 on:
   # Triggers the workflow on push or pull request events but only for the "develop" branch
   push:
-    branches: [ "develop" ]
+    branches: [ "stage" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "stage" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
