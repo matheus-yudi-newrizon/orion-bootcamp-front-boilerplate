@@ -5,6 +5,7 @@
 @import 'colors';
 @import 'fonts';
 @import 'spacing';
+@import 'scrollbar';
 
 * {
   cursor: url('../src/assets/icons/cursor.png'), auto;
@@ -35,6 +36,20 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes gameSlide {
+  0% {
+    transform: translateY(50%);
+  }
+
+  40% {
+    transform: translateY(-5%);
+  }
+
+  100% {
+    transform: translateY(0%);
   }
 }
 
@@ -189,6 +204,7 @@
 html,
 body {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -218,7 +234,11 @@ ul:hover,
 span:hover,
 input[type='text'],
 textarea:hover,
-p:hover,
+.game__page__challenge__review__wrapper:hover,
 h4:hover {
   cursor: url(../src/assets/icons/mouse-hover.png), auto;
+}
+
+p:hover{
+  cursor: url(../src/assets/icons/mini-pointer-2.png), auto;
 }

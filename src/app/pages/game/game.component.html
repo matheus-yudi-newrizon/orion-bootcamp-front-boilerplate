@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 
 <div class="game">
   <section class="game__page__challenge">
@@ -14,6 +14,65 @@
     <div class="game__page__challenge__review">
       <h3 class="game__page__challenge__review__title">{{ review.title }}</h3>
       <p class="game__page__challenge__review__text">{{ review.text }}</p>
+    </div>
+  </section>
+
+  <section class="drop-down-section">
+    <div class="drop-down-wrapper">
+      <div class="upper-part">
+        <div class="lives">
+          <p>Lives:</p>
+          <ng-container *ngFor="let item of lives">
+            <img [src]="item ? 'assets/icons/icon-filled-heart.svg' : 'assets/icons/icon-empty-heart.svg'" alt="vidas restantes" />
+          </ng-container>
+
+          <p class="lives-number">x{{ gameData?.lives }}</p>
+        </div>
+        <p class="combo">Current combo: {{ gameData?.combo }}</p>
+      </div>
+
+      <div class="form-wrapper">
+        <form class="example-form">
+          <mat-form-field>
+            <mat-label>Guess the movie</mat-label>
+            <mat-icon matSuffix>search</mat-icon>
+            <input type="text" placeholder="" aria-label="Number" matInput [formControl]="guessTitle" [matAutocomplete]="auto" />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of options" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <button (click)="sendReply()" mat-flat-button color="primary">GUESS</button>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="replyMessage">
+    <p style="color: white; font-size: 24px; padding: 24px">{{ replyMessage }}</p>
+  </section>
+</div> -->
+
+
+<app-navbar></app-navbar>
+
+<div class="game">
+  <section class="game__page__challenge">
+    <div class="game__page__challenge__header">
+      <div class="game__page__challenge__header__wrap">
+        <h2 class="game__page__challenge__header__wrap__title">Guess the review!</h2>
+        <p class="game__page__challenge__header__wrap__record">
+          Your record: <span class="movies">33</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="game__page__challenge__review">
+      <h3 class="game__page__challenge__review__title"> Lorem ipsum dolor sit amet. </h3>
+      <div class="game__page__challenge__review__wrapper">
+        <p class="game__page__challenge__review__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quasi tempore excepturi aspernatur doloremque molestias at architecto non doloribus vitae, nostrum nisi nemo cum quis, cupiditate dolore officia odit hic nesciunt repellendus aut. Molestiae explicabo porro aliquam, odio dolorem corporis animi. Rerum quisquam consectetur illum quos magni? Accusantium nobis impedit assumenda porro facilis sequi est accusamus eos repellendus, corporis incidunt, ex adipisci. Pariatur soluta fugit laboriosam quisquam magnam unde itaque minima eveniet omnis odit voluptas expedita iusto nisi natus mollitia dicta fuga, tempora nam dignissimos, ipsam maxime facere totam! Quaerat modi inventore accusantium fuga sint libero laboriosam tempora ipsa? Omnis accusamus eius reprehenderit itaque repellat quas obcaecati dolorum temporibus illum accusantium? Cupiditate accusamus dolore sit soluta itaque, eos impedit voluptatibus recusandae eius sunt fuga? Assumenda quos corporis explicabo sed ducimus esse, fugiat, minus ex voluptas molestiae libero magnam perspiciatis laudantium iusto! Fugiat optio explicabo nihil quae suscipit, eaque autem debitis dolorum asperiores, dignissimos, est iure vitae. Iusto facilis, molestias facere excepturi, deleniti dolor velit mollitia accusamus, magnam deserunt ex voluptates. Sit aut nisi asperiores voluptas explicabo nihil, ipsa nostrum illum ipsam est quidem soluta molestias mollitia perspiciatis error accusantium odit non, hic nesciunt porro saepe! Eum quis aliquid consectetur. Neque.</p>
+      </div>
     </div>
   </section>
 
