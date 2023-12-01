@@ -28,6 +28,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-how-to-play.component';
 import { StartGameComponent } from './pages/start-game/start-game.component';
 import { GameComponent } from './pages/game/game.component';
+import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-confirmation/pop-up-success-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GameComponent } from './pages/game/game.component';
     PasswordResetComponent,
     PopUpHowToPlayComponent,
     StartGameComponent,
-    GameComponent
+    GameComponent,
+    PopUpSuccessConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,86 @@
+@import '../../../colors';
+
+.pop-up {
+  &__correct {
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+
+    &__title {
+      background-color: rgba(255, 255, 255, 0.12);
+      padding: 14px 16px 0px 16px;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+
+      h2 {
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+      }
+    }
+
+    &__image {
+      display: flex;
+      justify-content: center;
+      background-color: $background-color;
+    }
+
+    &__reply {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: $text-color;
+      padding: 9px;
+
+      &__text {
+        display: flex;
+        padding: 10px 16px 20px 16px;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+
+        p {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 20px;
+          letter-spacing: 0.25px;
+
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        color: $text-color;
+      }
+
+      &__see-more {
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+    }
+  }
+}
+
+::ng-deep {
+
+  /* Botão SEE MORE */
+  .mat-mdc-raised-button,
+  .mat-mdc-outlined-button {
+    background-color: transparent !important;
+
+  }
+
+  /* Botão CLOSE */
+  .mat-mdc-unelevated-button.mat-unthemed {
+    background-color: transparent !important;
+  }
+
+}
