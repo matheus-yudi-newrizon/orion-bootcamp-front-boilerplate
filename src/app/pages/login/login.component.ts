@@ -55,7 +55,7 @@ export class LoginComponent {
         this.router.navigate(['/start-game']);
         /** Salvar o token do usuário ao fazer login */
         if (loginResponse.data) {
-          this.tokenService.save(loginResponse.data.token);
+          this.tokenService.save(loginResponse.data.accessToken);
           this.tokenService.saveGameData(loginResponse.data.game);
         }
       } catch (error) {

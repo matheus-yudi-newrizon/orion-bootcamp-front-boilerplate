@@ -3,17 +3,17 @@
     <h2>{{ title }}</h2>
   </div>
   <div class="pop-up__correct__image">
-    <img [src]="imageUrl" alt="Image from a film" />
+    <img src="{{ imageUrl }}{{ data.posterPath }}" alt="Image from a film" />
   </div>
 
   <div class="pop-up__correct__reply">
     <div class="pop-up__correct__reply__text">
-      <p>{{ movieName }}</p>
+      <p>The movie is "{{ data.title }}" from {{ data.releaseDate | date: 'yyyy'}}</p>
     </div>
-    <div class="pop-up__correct__buttons">
-      <button (click)="closeModal()" mat-flat-button>CLOSE</button>
+    <div  class="pop-up__correct__buttons">
+      <button (click)="close()" mat-flat-button>CLOSE</button>
       <button (click)="seeMoreMovie()" class="pop-up__correct__buttons__see-more" mat-raised-button>SEE MORE</button>
-      <button (click)="nextMovie()" mat-flat-button color="primary">{{ buttonLabel }}</button>
+      <button (click)="next()" mat-flat-button color="primary">{{ buttonLabel }}</button>
     </div>
   </div>
 </section>
