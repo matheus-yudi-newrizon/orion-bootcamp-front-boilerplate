@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { PopUpGameComponent } from '../pop-up-game/pop-up-game.component';
 
 @Component({
@@ -10,16 +8,9 @@ import { PopUpGameComponent } from '../pop-up-game/pop-up-game.component';
 })
 export class PopUpSuccessConfirmationComponent extends PopUpGameComponent {
   public override title = 'Congratulations you got it!';
-  public override buttonLabel = 'Next movie';
-  public override imageUrl!: string;
+  public override buttonLabel = 'NEXT MOVIE';
+  public override imageUrl = 'https://image.tmdb.org/t/p/w220_and_h330_face';
   public override movieName!: string;
-
-  constructor(
-    public override dialogRef: MatDialogRef<void>,
-    public router: Router
-  ) {
-    super(dialogRef);
-  }
 
   /** Função para fechar o modal ao clique */
   public override closeModal(): void {
