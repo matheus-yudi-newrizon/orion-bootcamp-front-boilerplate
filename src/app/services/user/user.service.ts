@@ -10,11 +10,7 @@ interface SignUpRequest {
   confirmPassword: string;
 }
 
-interface SignUpResponse
-  extends SuccessResponse<{
-    success: string;
-    message: string;
-  }> {}
+interface SignUpResponse extends Omit<SuccessResponse, 'data'> {}
 
 interface ForgotPasswordRequest {
   email: string;
@@ -103,11 +99,7 @@ interface ConfirmEmailRequest {
   id: number;
 }
 
-interface ConfirmEmailResponse
-  extends SuccessResponse<{
-    success: string;
-    message: string;
-  }> {}
+interface ConfirmEmailResponse extends Omit<SuccessResponse, 'data'> {}
 
 @Injectable({
   providedIn: 'root'
