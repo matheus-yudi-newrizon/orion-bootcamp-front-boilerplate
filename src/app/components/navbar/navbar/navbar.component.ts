@@ -98,6 +98,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  /**
+   * Função responsável por detectar a rota atual e navegar para a rota correspondente
+   */
   public onLogoClick(): void {
     if (this.currentRoute === '/game') {
       this.router.navigate(['/start-game']);
