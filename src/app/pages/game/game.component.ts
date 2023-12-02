@@ -7,6 +7,7 @@ import { EnumPopUpActions } from 'src/app/components/pop-up-game/pop-up-game.com
 import { PopUpSuccessConfirmationComponent } from 'src/app/components/pop-up-success-confirmation/pop-up-success-confirmation.component';
 import { TokenService } from 'src/app/services/token/token.service';
 import { LoginResponse, UploadMoviesResponse, UserService } from 'src/app/services/user/user.service';
+import * as showdown from 'showdown';
 
 interface Review {
   id: string;
@@ -79,9 +80,14 @@ export class GameComponent implements OnInit {
       this.isLoading = true;
 
       const response = await this.userService.generateReview({ token });
-      const { text, id } = response.data!;
+      const { text, id, author } = response.data!;
+      const converter = new showdown.Converter();
 
-      this.review = { title: text.slice(0, 30).concat('...'), text, id };
+      this.review = {
+        title: author,
+        text: converter.makeHtml(text || ''),
+        id
+      };
     } catch (error) {
       this.isLoading = false;
 
