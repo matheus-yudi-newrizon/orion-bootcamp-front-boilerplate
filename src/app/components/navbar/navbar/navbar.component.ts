@@ -31,10 +31,10 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Verifica se a página atual é a página de cadastro.
-   * @returns True se a página atual é a página de cadastro, caso contrário, False.
+   * Verifica se pode mostrar o ícone de logout.
+   * @returns True se puder mostrar, caso contrário, False.
    */
-  public isSignUpPage(): boolean {
+  public canShowLogout(): boolean {
     return [
       '/sign-up',
       '/auth/reset-password',
@@ -50,7 +50,23 @@ export class NavbarComponent implements OnInit {
    * @returns
    */
   public isStartGamePage(): boolean {
-    return this.currentRoute === '/start-game' || this.currentRoute === '/game';
+    return this.currentRoute === '/start-game';
+  }
+
+  /**
+   * Função responsável por ocultar/exibir itens e aplicar classes no caso da página ser game.
+   * @returns
+   */
+  public isGamePage(): boolean {
+    return this.currentRoute === '/game';
+  }
+
+  /**
+   * Função responsável por ocultar/exibir itens e aplicar classes no caso da página ser sign-up.
+   * @returns
+   */
+  public isSignUpPage(): boolean {
+    return this.currentRoute === '/sign-up';
   }
 
   /**
@@ -80,5 +96,19 @@ export class NavbarComponent implements OnInit {
   public logout(): void {
     this.tokenService.delete();
     this.router.navigate(['/login']);
+  }
+
+  /**
+   * Função responsável por detectar a rota atual e navegar para a rota correspondente
+   */
+  public onLogoClick(): void {
+    if (this.currentRoute === '/game') {
+      this.router.navigate(['/start-game']);
+      return;
+    }
+    if (this.currentRoute === '/sign-up') {
+      this.router.navigate(['/login']);
+      return;
+    }
   }
 }

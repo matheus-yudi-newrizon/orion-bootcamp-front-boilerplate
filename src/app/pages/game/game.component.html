@@ -13,7 +13,9 @@
 
     <div class="game__page__challenge__review">
       <h3 class="game__page__challenge__review__title">{{ review.title }}</h3>
-      <p class="game__page__challenge__review__text">{{ review.text }}</p>
+      <div class="game__page__challenge__review__wrapper">
+        <p class="game__page__challenge__review__text" [innerHTML]="review.text"></p>
+      </div>
     </div>
   </section>
 

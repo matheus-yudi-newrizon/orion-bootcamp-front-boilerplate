@@ -1,0 +1,78 @@
+@import 'colors';
+
+/* Whole Scrollbar */
+::-webkit-scrollbar {
+  width: 24px;
+  border: 5px solid transparent;
+}
+
+/* Sliding bar inside Scrollbar - Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #75757c;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8a8a8f;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #96969c;
+}
+
+/* Bar where thumb bar slides on */
+::-webkit-scrollbar-track {
+  background-color: #3a3a43;
+}
+
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+  background-color: #75757c;
+  display: block;
+  border-style: solid;
+  height: 24px;
+  width: 16px;
+}
+
+/* General adjustments for both buttons, up and down */
+::-webkit-scrollbar-button:single-button:hover {
+  background-color: #65656b;
+}
+
+/* General adjustments for up button.
+The pseudo-class :vertical means that is only for vertical scrollbar
+The pseudo-class :decrement stands for the up button */
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url('../src/assets/scrollbar/triangle-up-small.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-color: transparent;
+  border-radius: 2px 2px 0 0;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+  background-color: #57575c
+}
+
+/* General adjustments for down button.
+The pseudo-class :vertical means that is only for vertical scrollbar
+The pseudo-class :increment stands for the down button */
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url('../src/assets/scrollbar/triangle-down.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-color: transparent;
+  border-radius: 0 0 2px 2px;
+}
+
+::-webkit-scrollbar-button:vertical:single-button:increment:hover {
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:active {
+  background-color: #57575c
+}

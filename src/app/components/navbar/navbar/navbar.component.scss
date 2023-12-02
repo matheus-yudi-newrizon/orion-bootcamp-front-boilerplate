@@ -11,6 +11,10 @@
     margin: 0 0 0 40px;
   }
 
+  .logo-cursor {
+    cursor: url('../../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+
   &__right-icons {
     display: flex;
     align-items: center;
