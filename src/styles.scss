@@ -235,10 +235,11 @@ span:hover,
 input[type='text'],
 textarea:hover,
 p:hover,
+h2:hover,
 h4:hover {
   cursor: url(../src/assets/icons/mouse-hover.png), auto;
 }
 
 .game__page__challenge__review__wrapper:hover {
-  cursor: url(../src/assets/icons/mini-pointer-2.png), auto;
+  cursor: url(../src/assets/icons/cursor.png), auto;
 }

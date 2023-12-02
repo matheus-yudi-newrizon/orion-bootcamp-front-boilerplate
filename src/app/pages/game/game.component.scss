@@ -14,6 +14,10 @@
   justify-content: space-between;
 }
 
+.lives-number {
+  font-weight: 900;
+}
+
 .game__page {
   &__challenge {
     display: flex;
@@ -106,17 +110,15 @@
   width: 800px;
 }
 
+::ng-deep .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+  cursor: url(../../../assets/icons/mouse-hover.png), auto;
+}
+
 @media screen and (max-width: 916px) {
   .game {
     .game__page {
       &__challenge {
         width: 80%;
-        // height: 422px;
-        &__review {
-          &__text {
-            // height: 273px;
-          }
-        }
       }
     }
     .drop-down-section {
@@ -139,9 +141,6 @@
 
         &__review {
           margin-top: 0px;
-
-          &__text {
-          }
 
           &__title {
             text-align: center;
@@ -174,7 +173,6 @@
 
           &__title {
             text-align: center;
-            // margin-bottom: 65px;
           }
         }
       }
@@ -194,7 +192,6 @@
     &__page {
       &__challenge {
         width: 90% !important;
-        // padding: 45px 6px;
 
         &__review {
           &__title {
@@ -208,7 +205,6 @@
 
         &__header {
           &__wrap {
-            // top: -64px !important;
             width: 98%;
             &__title {
               font-size: 32px;
@@ -234,17 +230,14 @@
     &__page {
       &__challenge {
         width: 90% !important;
-        // padding: 45px 6px;
 
         &__review {
-          // width: 100%;
           margin-top: 66px !important;
           &__title {
             text-align: center;
             width: 238px;
             margin: 0 auto;
             width: 180px;
-            // font-size: 100%;
             margin-bottom: 22px;
           }
 
@@ -257,7 +250,6 @@
         &__header {
           justify-content: center;
           &__wrap {
-            // top: -64px !important;
             width: 90%;
             &__title {
               font-size: 32px;
