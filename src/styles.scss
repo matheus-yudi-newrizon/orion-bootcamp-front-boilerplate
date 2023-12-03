@@ -44,7 +44,7 @@
     transform: translateY(50%);
   }
 
-  40% {
+  35% {
     transform: translateY(-5%);
   }
 
@@ -204,7 +204,7 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 body {
