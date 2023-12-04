@@ -1,6 +1,6 @@
 <nav
   class="navbar-page"
-  [ngClass]="{ 'login-page-navbar': isLoginPage(), 'sign-up-page-navbar': canShowLogout(), 'start-game-page': isStartGamePage() || isGamePage() }"
+  [ngClass]="{ 'login-page-navbar': isLoginPage(), 'sign-up-page-navbar': canShowLogoutIcon(), 'start-game-page': isStartGamePage() || isGamePage() }"
 >
   <img
   [ngClass]="{ 'logo-cursor': isSignUpPage() || isGamePage()}"
@@ -12,7 +12,7 @@
       <p>HOW TO PLAY</p>
     </button>
 
-    <a href="#" *ngIf="canShowLogout() || isStartGamePage() || isGamePage()" (click)="logout()" class="navbar-page__right-icons__logout">
+    <a href="#" *ngIf="canShowLogoutIcon() || isStartGamePage() || isGamePage()" (click)="logout()" class="navbar-page__right-icons__logout">
       <img src="assets/icons/icon-out.svg" alt="" />
     </a>
   </div>

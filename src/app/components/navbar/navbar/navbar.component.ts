@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
    * Verifica se pode mostrar o ícone de logout.
    * @returns True se puder mostrar, caso contrário, False.
    */
-  public canShowLogout(): boolean {
+  public canShowLogoutIcon(): boolean {
     return [
       '/sign-up',
       '/auth/reset-password',
@@ -99,7 +99,7 @@ export class NavbarComponent implements OnInit {
   }
 
   /**
-   * Função responsável por detectar a rota atual e navegar para a rota correspondente
+   * Função responsável por detectar a rota atual e dependendo da rota detectada navegar para a rota correspondente
    */
   public onLogoClick(): void {
     if (this.currentRoute === '/game') {
