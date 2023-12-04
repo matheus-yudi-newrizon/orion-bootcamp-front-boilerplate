@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EnumPopUpActions } from 'src/app/components/pop-up-game/pop-up-game.component';
 import { PopUpSuccessConfirmationComponent } from 'src/app/components/pop-up-success-confirmation/pop-up-success-confirmation.component';
+import { PopUpUnsuccessConfirmationComponent } from 'src/app/components/pop-up-unsuccess-confirmation/pop-up-unsuccess-confirmation.component';
 import { TokenService } from 'src/app/services/token/token.service';
 import { LoginResponse, UploadMoviesResponse, UserService } from 'src/app/services/user/user.service';
 import * as showdown from 'showdown';
@@ -186,7 +187,7 @@ export class GameComponent implements OnInit {
    */
   public openPopUpError(movie: UploadMoviesResponse['data'][0]): void {
     // TODO trocar pelo pop-up de erro
-    const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
+    const dialogRef = this.dialog.open(PopUpUnsuccessConfirmationComponent, {
       data: movie
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
