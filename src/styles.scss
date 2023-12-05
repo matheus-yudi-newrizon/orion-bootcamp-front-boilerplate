@@ -26,6 +26,12 @@
   .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before {
     border-bottom-color: $accent-color;
   }
+
+  .mat-mdc-unelevated-button:disabled {
+    background-color: $accent-color;
+    opacity: 30%;
+    color: $text-color;
+  }
 }
 
 @keyframes slide {
@@ -44,7 +50,7 @@
     transform: translateY(50%);
   }
 
-  40% {
+  35% {
     transform: translateY(-5%);
   }
 

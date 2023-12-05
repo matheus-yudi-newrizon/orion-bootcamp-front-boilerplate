@@ -38,7 +38,7 @@
           <mat-form-field>
             <mat-label>Guess the movie</mat-label>
             <mat-icon matSuffix>search</mat-icon>
-            <input type="text" placeholder="" aria-label="Number" matInput [formControl]="guessTitle" [matAutocomplete]="auto" />
+            <input type="text" placeholder="" aria-label="Number" matInput [formControl]="guessTitle" [matAutocomplete]="auto" (click)="onMovieChange($any($event)) " />
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onMovieSelected($event)" [displayWith]="displayWith">
               <mat-option class="dropdown__option" *ngFor="let option of options" [value]="option">
                 <p>{{ option.title }}</p>
@@ -47,7 +47,7 @@
             </mat-autocomplete>
           </mat-form-field>
         </form>
-        <button (click)="sendReply()" mat-flat-button color="primary">GUESS</button>
+        <button (click)="sendReply()" mat-flat-button color="primary" [disabled]="!selectedMovie">GUESS</button>
       </div>
     </div>
   </section>

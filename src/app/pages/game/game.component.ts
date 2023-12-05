@@ -218,7 +218,8 @@ export class GameComponent implements OnInit {
    * @returns string contendo o título ou string vazia, no caso do título estar indisponível
    */
   public displayWith(movie: UploadMoviesResponse['data'][0]): string {
-    return movie.title || '';
+    const { title, releaseDate } = movie;
+    return title ? `${title} (${new Date(releaseDate).getFullYear()})` : '';
   }
 
   /**
@@ -227,5 +228,15 @@ export class GameComponent implements OnInit {
    */
   public onMovieSelected(event: MatAutocompleteSelectedEvent): void {
     this.selectedMovie = event.option.value as UploadMoviesResponse['data'][0];
+  }
+
+  /**
+   * Pega o filme trazido pelo Autocomplete e a partir dele sugere opções semelhantes ao clicar no input
+   * @param event evento do input clicado
+   */
+  public async onMovieChange(event: InputEvent): Promise<void> {
+    const [title] = (event.target as HTMLInputElement).value.split('(');
+    await this.uploadMovies(title);
+    this.selectedMovie = null;
   }
 }
