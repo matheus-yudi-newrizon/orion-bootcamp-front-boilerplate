@@ -80,11 +80,14 @@ export class GameComponent implements OnInit {
 
     try {
       this.isLoading = true;
+      this.selectedMovie = null;
+      this.guessTitle.setValue(null);
 
       const response = await this.userService.generateReview({ token });
       const { text, id, author } = response.data!;
       const converter = new showdown.Converter();
 
+      this.isLoading = false;
       this.review = {
         title: 'Review Author: ' + author.toUpperCase(),
         text: converter.makeHtml(text || ''),
@@ -210,7 +213,7 @@ export class GameComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
-        this.router.navigate(['/start-game']);
+        this.returnToStartGame();
       }
     });
   }
@@ -221,7 +224,7 @@ export class GameComponent implements OnInit {
    * @returns string contendo o título ou string vazia, no caso do título estar indisponível
    */
   public displayWith(movie: UploadMoviesResponse['data'][0]): string {
-    const { title, releaseDate } = movie;
+    const { title, releaseDate } = movie || {};
     return title ? `${title} (${new Date(releaseDate).getFullYear()})` : '';
   }
 

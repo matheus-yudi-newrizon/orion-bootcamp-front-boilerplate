@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 
-<div class="game">
+<section class="panel__loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
+<div class="game" *ngIf="!isLoading">
   <section class="game__page__challenge">
     <div class="game__page__challenge__header">
       <div class="game__page__challenge__header__wrap">
