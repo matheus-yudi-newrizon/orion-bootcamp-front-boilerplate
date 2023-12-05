@@ -14,6 +14,7 @@ export class ReturnConfirmationComponent {
 
   constructor(public router: Router) {}
 
+  /** Retorna para a página de login */
   public return(): void {
     this.router.navigate(['/login']);
   }
