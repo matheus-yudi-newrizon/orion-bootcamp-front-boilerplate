@@ -173,7 +173,8 @@ export class GameComponent implements OnInit {
    */
   public openPopUpSuccess(movie: UploadMoviesResponse['data'][0]): void {
     const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
-      data: movie
+      data: movie,
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
@@ -188,7 +189,8 @@ export class GameComponent implements OnInit {
    */
   public openPopUpError(movie: UploadMoviesResponse['data'][0]): void {
     const dialogRef = this.dialog.open(PopUpUnsuccessConfirmationComponent, {
-      data: movie
+      data: movie,
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
@@ -203,7 +205,8 @@ export class GameComponent implements OnInit {
    */
   public openPopUpGameOver(movie: UploadMoviesResponse['data'][0]): void {
     const dialogRef = this.dialog.open(PopUpGameOverComponent, {
-      data: movie
+      data: movie,
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
