@@ -32,7 +32,7 @@ export class StartGameComponent {
         const response = await this.userService.startGame(data);
         this.tokenService.saveGameData(response.data!);
       }
-
+      this.isLoading = true;
       this.router.navigate(['/game']);
     } catch (error) {
       this.isLoading = false;
