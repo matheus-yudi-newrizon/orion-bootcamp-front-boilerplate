@@ -8,5 +8,5 @@ import { PopUpGameComponent } from '../pop-up-game/pop-up-game.component';
 })
 export class PopUpUnsuccessConfirmationComponent extends PopUpGameComponent {
   public override title = 'Unfortunately you lost';
-  public override buttonLabel = 'NEXT MOVIE';
+  public override buttonLabel = 'TRY AGAIN';
 }

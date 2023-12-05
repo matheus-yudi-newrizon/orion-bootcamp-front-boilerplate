@@ -186,7 +186,6 @@ export class GameComponent implements OnInit {
    * @param movie  As informações do filme que serão exibidas na janela de pop-up
    */
   public openPopUpError(movie: UploadMoviesResponse['data'][0]): void {
-    // TODO trocar pelo pop-up de erro
     const dialogRef = this.dialog.open(PopUpUnsuccessConfirmationComponent, {
       data: movie
     });
