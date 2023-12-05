@@ -11,9 +11,19 @@
   cursor: url('../src/assets/icons/cursor.png'), auto;
 }
 
+
 :root {
+  --pointer-cursor: url('../src/assets/icons/mini-pointer-2.png'), auto;
+
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: $input-color;
+  }
+
+  .mat-mdc-option,
+  .mat-mdc-option:hover,
+  .mat-mdc-option .mdc-list-item__primary-text,
+  .mat-mdc-option .mdc-list-item__primary-text p {
+    cursor: var(--pointer-cursor);
   }
 
   .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input,
@@ -29,10 +39,11 @@
 
   .mat-mdc-unelevated-button:disabled {
     background-color: $accent-color;
-    opacity: 30%;
+    opacity: 0.3;
     color: $text-color;
   }
 }
+
 
 @keyframes slide {
   0% {
