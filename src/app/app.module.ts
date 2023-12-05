@@ -29,6 +29,7 @@ import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-
 import { StartGameComponent } from './pages/start-game/start-game.component';
 import { GameComponent } from './pages/game/game.component';
 import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-confirmation/pop-up-success-confirmation.component';
+import { PopUpGameOverComponent } from './components/pop-up-game-over/pop-up-game-over.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-c
     PopUpHowToPlayComponent,
     StartGameComponent,
     GameComponent,
-    PopUpSuccessConfirmationComponent
+    PopUpSuccessConfirmationComponent,
+    PopUpGameOverComponent
   ],
   imports: [
     BrowserModule,

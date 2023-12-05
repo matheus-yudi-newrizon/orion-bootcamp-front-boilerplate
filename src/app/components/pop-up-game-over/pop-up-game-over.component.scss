@@ -1,0 +1,10 @@
+@import '../../../colors';
+
+.pop-up {
+  &__title {
+    h2 {
+      color: $error-text-color;
+    }
+  }
+
+}
