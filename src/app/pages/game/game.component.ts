@@ -86,7 +86,7 @@ export class GameComponent implements OnInit {
       const converter = new showdown.Converter();
 
       this.review = {
-        title: author,
+        title: 'Review Author: ' + author.toUpperCase(),
         text: converter.makeHtml(text || ''),
         id
       };
