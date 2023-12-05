@@ -9,6 +9,7 @@ import { PopUpUnsuccessConfirmationComponent } from 'src/app/components/pop-up-u
 import { TokenService } from 'src/app/services/token/token.service';
 import { LoginResponse, UploadMoviesResponse, UserService } from 'src/app/services/user/user.service';
 import * as showdown from 'showdown';
+import { PopUpGameOverComponent } from 'src/app/components/pop-up-game-over/pop-up-game-over.component';
 
 interface Review {
   id: string;
@@ -201,8 +202,7 @@ export class GameComponent implements OnInit {
    * @param movie  As informações do filme que serão exibidas na janela de pop-up
    */
   public openPopUpGameOver(movie: UploadMoviesResponse['data'][0]): void {
-    // TODO trocar pelo game over
-    const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
+    const dialogRef = this.dialog.open(PopUpGameOverComponent, {
       data: movie
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
