@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user/user.service';
 import { emailPattern } from '../form-register/form-register.component';
+import { ErrorResponse } from 'src/app/models/http/interface';
 
 @Component({
   selector: 'app-modal-forgot-password',
@@ -44,7 +45,7 @@ export class ModalForgotPasswordComponent {
       try {
         await this.userService.forgotPassword(this.forgotPasswordForm.value);
       } catch (error) {
-        console.error('Error requesting password reset:', error);
+        console.error('Error requesting password reset:', (error as ErrorResponse).message);
       }
     }
   }

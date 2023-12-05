@@ -59,7 +59,7 @@ export class LoginComponent {
           this.tokenService.saveGameData(loginResponse.data.game);
         }
       } catch (error) {
-        this.errorMessage = `Error on login: ${(error as ErrorResponse).message}`;
+        this.errorMessage = `${(error as ErrorResponse).message}`;
       }
     }
   }
