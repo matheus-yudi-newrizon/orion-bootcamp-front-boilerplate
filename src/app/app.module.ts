@@ -54,7 +54,7 @@ import { PopUpGameOverComponent } from './components/pop-up-game-over/pop-up-gam
     ConfirmResetPasswordComponent,
     ReturnConfirmationComponent,
     ResetPasswordSuccessComponent,
-    ResetPasswordFailureComponent
+    ResetPasswordFailureComponent,
     PopUpGameOverComponent
   ],
   imports: [
