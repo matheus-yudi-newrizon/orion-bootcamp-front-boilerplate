@@ -1,4 +1,4 @@
-import { UserService } from 'src/app/services/user/user.service';
+import { LoginRequest, UserService } from 'src/app/services/user/user.service';
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -55,6 +55,9 @@ export class LoginComponent {
         this.router.navigate(['/start-game']);
         /** Salvar o token do usuário ao fazer login */
         if (loginResponse.data) {
+          const { rememberMe } = this.signInForm.value as LoginRequest;
+          this.tokenService.saveRememberMe(rememberMe);
+          this.tokenService.setStorage(rememberMe ? 'localStorage' : 'sessionStorage');
           this.tokenService.save(loginResponse.data.accessToken);
           this.tokenService.saveGameData(loginResponse.data.game);
         }
