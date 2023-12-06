@@ -1,5 +1,7 @@
 @import 'colors';
 
+
+
 /* Whole Scrollbar */
 ::-webkit-scrollbar {
   width: 24px;
@@ -26,10 +28,10 @@
 }
 
 /* Buttons */
+
 ::-webkit-scrollbar-button:single-button {
   background-color: #75757c;
   display: block;
-  border-style: solid;
   height: 24px;
   width: 16px;
 }
@@ -47,15 +49,11 @@ The pseudo-class :decrement stands for the up button */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  border-color: transparent;
   border-radius: 2px 2px 0 0;
 }
 
-::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
-}
-
 ::-webkit-scrollbar-button:single-button:vertical:decrement:active {
-  background-color: #57575c
+  background-color: #57575c;
 }
 
 /* General adjustments for down button.
@@ -66,13 +64,9 @@ The pseudo-class :increment stands for the down button */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  border-color: transparent;
   border-radius: 0 0 2px 2px;
 }
 
-::-webkit-scrollbar-button:vertical:single-button:increment:hover {
-}
-
 ::-webkit-scrollbar-button:single-button:vertical:increment:active {
-  background-color: #57575c
+  background-color: #57575c;
 }
