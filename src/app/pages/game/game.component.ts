@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
     this.generateReview();
 
     this.guessTitle.valueChanges.subscribe(value => {
-      if ((value || '').length >= 4) {
+      if ((value || '').length >= 1) {
         this.uploadMovies(value || '');
       }
 
