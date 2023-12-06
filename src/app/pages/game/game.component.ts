@@ -121,7 +121,7 @@ export class GameComponent implements OnInit {
         token
       );
 
-      const { game, isCorrect } = response.data!;
+      const { game, isCorrect, movie } = response.data!;
       this.gameData = game;
       this.fillLives(this.gameData.lives);
 
@@ -131,10 +131,10 @@ export class GameComponent implements OnInit {
         if (isCorrect) {
           this.openPopUpSuccess(this.selectedMovie!);
         } else {
-          this.openPopUpError(this.selectedMovie!);
+          this.openPopUpError(movie);
         }
       } else {
-        this.openPopUpGameOver(this.selectedMovie!);
+        this.openPopUpGameOver(movie);
       }
     } catch (error) {
       this.returnToStartGame();
