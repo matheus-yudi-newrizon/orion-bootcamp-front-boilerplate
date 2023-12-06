@@ -9,6 +9,6 @@ import { ReturnConfirmationComponent } from '../return-confirmation/return-confi
 export class ResetPasswordFailureComponent extends ReturnConfirmationComponent {
   public override titlePageSuccess = 'It was not possible to recover the password';
   public override belowTheTitle = 'Please return to the home page and request again.';
-  public override labelButton = 'RETURN TO HOME';
+  public override labelButton = 'RETURN';
   public override imgURL = 'icon-error.svg';
 }

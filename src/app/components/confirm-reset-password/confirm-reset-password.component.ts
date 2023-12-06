@@ -7,7 +7,7 @@ import { ReturnConfirmationComponent } from '../return-confirmation/return-confi
   styleUrls: ['../return-confirmation/return-confirmation.component.scss']
 })
 export class ConfirmResetPasswordComponent extends ReturnConfirmationComponent {
-  public override titlePageSuccess = 'A password reset request has been sent to your email';
+  public override titlePageSuccess = 'A password reset request has been sent to your e-mail';
   public override belowTheTitle = 'Check your e-mail';
   public override labelButton = 'PLAY NOW';
 }
