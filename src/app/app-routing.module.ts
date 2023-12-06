@@ -7,6 +7,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { StartGameComponent } from './pages/start-game/start-game.component';
 import { GameComponent } from './pages/game/game.component';
+import { ConfirmResetPasswordComponent } from './components/confirm-reset-password/confirm-reset-password.component';
+import { ResetPasswordFailureComponent } from './components/reset-password-failure/reset-password-failure.component';
+import { ResetPasswordSuccessComponent } from './components/reset-password-success/reset-password-success.component';
 
 const routes: Routes = [
   {
@@ -31,11 +34,11 @@ const routes: Routes = [
   },
   {
     path: 'reset-password-success',
-    component: RegisterSuccessComponent
+    component: ResetPasswordSuccessComponent
   },
   {
     path: 'reset-password-failure',
-    component: RegisterFailedComponent
+    component: ResetPasswordFailureComponent
   },
   {
     path: 'start-game',
@@ -44,6 +47,10 @@ const routes: Routes = [
   {
     path: 'game',
     component: GameComponent
+  },
+  {
+    path: 'confirm-reset-password',
+    component: ConfirmResetPasswordComponent
   },
   // Rota para capturar caminhos não correspondentes
   {

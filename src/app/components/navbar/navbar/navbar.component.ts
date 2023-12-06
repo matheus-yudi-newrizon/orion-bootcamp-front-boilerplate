@@ -41,7 +41,8 @@ export class NavbarComponent implements OnInit {
       '/registration-success',
       '/registration-failure',
       '/reset-password-success',
-      '/reset-password-failure'
+      '/reset-password-failure',
+      '/confirm-reset-password'
     ].includes(this.currentRoute);
   }
 
@@ -95,6 +96,7 @@ export class NavbarComponent implements OnInit {
    */
   public logout(): void {
     this.tokenService.delete();
+    this.tokenService.deleteGameData();
     this.router.navigate(['/login']);
   }
 

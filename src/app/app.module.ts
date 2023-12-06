@@ -29,6 +29,10 @@ import { PopUpHowToPlayComponent } from './components/pop-up-how-to-play/pop-up-
 import { StartGameComponent } from './pages/start-game/start-game.component';
 import { GameComponent } from './pages/game/game.component';
 import { PopUpSuccessConfirmationComponent } from './components/pop-up-success-confirmation/pop-up-success-confirmation.component';
+import { ConfirmResetPasswordComponent } from './components/confirm-reset-password/confirm-reset-password.component';
+import { ReturnConfirmationComponent } from './components/return-confirmation/return-confirmation.component';
+import { ResetPasswordSuccessComponent } from './components/reset-password-success/reset-password-success.component';
+import { ResetPasswordFailureComponent } from './components/reset-password-failure/reset-password-failure.component';
 import { PopUpGameOverComponent } from './components/pop-up-game-over/pop-up-game-over.component';
 import { PopUpUnsuccessConfirmationComponent } from './components/pop-up-unsuccess-confirmation/pop-up-unsuccess-confirmation.component';
 
@@ -48,6 +52,10 @@ import { PopUpUnsuccessConfirmationComponent } from './components/pop-up-unsucce
     StartGameComponent,
     GameComponent,
     PopUpSuccessConfirmationComponent,
+    ConfirmResetPasswordComponent,
+    ReturnConfirmationComponent,
+    ResetPasswordSuccessComponent,
+    ResetPasswordFailureComponent,
     PopUpGameOverComponent,
     PopUpUnsuccessConfirmationComponent
   ],
