@@ -10,6 +10,7 @@ import { GameComponent } from './pages/game/game.component';
 import { ConfirmResetPasswordComponent } from './components/confirm-reset-password/confirm-reset-password.component';
 import { ResetPasswordFailureComponent } from './components/reset-password-failure/reset-password-failure.component';
 import { ResetPasswordSuccessComponent } from './components/reset-password-success/reset-password-success.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'confirm-reset-password',
     component: ConfirmResetPasswordComponent
+  },
+  {
+    path: 'access-denied',
+    component: AccessDeniedComponent
   },
   // Rota para capturar caminhos não correspondentes
   {
