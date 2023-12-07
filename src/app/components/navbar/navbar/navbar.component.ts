@@ -42,7 +42,10 @@ export class NavbarComponent implements OnInit {
       '/registration-failure',
       '/reset-password-success',
       '/reset-password-failure',
-      '/confirm-reset-password'
+      '/confirm-reset-password',
+      '/access-denied',
+      '/auth/confirm-email',
+      '/auth/confirm-email-failure'
     ].includes(this.currentRoute);
   }
 

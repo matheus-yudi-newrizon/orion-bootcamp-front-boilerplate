@@ -55,12 +55,12 @@ export class ConfirmEmailComponent extends ReturnConfirmationComponent {
 
       // Se a confirmação do e-mail não for bem-sucedida, navega até a rota de falha.
       if (!success) {
-        this.router.navigate(['/confirm-email-failure']);
+        this.router.navigate(['/auth/confirm-email-failure']);
       }
     } catch (error) {
       // Em caso de erro durante o processo de confirmação, define o estado de carregamento como falso e navega até a rota de falha.
       this.isLoading = false;
-      this.router.navigate(['/confirm-email-failure']);
+      this.router.navigate(['/auth/confirm-email-failure']);
     }
   }
 }
