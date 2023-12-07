@@ -98,9 +98,7 @@ export class NavbarComponent implements OnInit {
    * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
    */
   public logout(): void {
-    this.tokenService.delete();
-    this.tokenService.deleteGameData();
-    this.router.navigate(['/login']);
+    this.tokenService.logout();
   }
 
   /**
@@ -113,7 +111,6 @@ export class NavbarComponent implements OnInit {
     }
     if (this.currentRoute === '/sign-up') {
       this.router.navigate(['/login']);
-      return;
     }
   }
 }

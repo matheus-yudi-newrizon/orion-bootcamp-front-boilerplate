@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../user/user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class TokenService {
   private readonly gameData = 'game_data';
   private readonly rememberMe = 'remember_me';
   private type: 'sessionStorage' | 'localStorage' = 'localStorage';
+
+  constructor(private router: Router) {}
 
   /**
    * Função responsável setar o tipo de armazenamento
@@ -82,5 +85,14 @@ export class TokenService {
    */
   public deleteGameData(): void {
     window[this.type].removeItem(this.gameData);
+  }
+
+  /**
+   * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
+   */
+  public logout(): void {
+    this.delete();
+    this.deleteGameData();
+    this.router.navigate(['/login']);
   }
 }

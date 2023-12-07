@@ -13,6 +13,7 @@ import { ResetPasswordSuccessComponent } from './components/reset-password-succe
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { ConfirmEmailComponent } from './components/confirm-email /confirm-email.component';
 import { ConfirmEmailFailureComponent } from './components/confirm-email-failure/confirm-email-failure.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -53,11 +54,13 @@ const routes: Routes = [
   },
   {
     path: 'start-game',
-    component: StartGameComponent
+    component: StartGameComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'game',
-    component: GameComponent
+    component: GameComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'confirm-reset-password',
@@ -76,6 +79,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {}
