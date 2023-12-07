@@ -31,21 +31,34 @@ export class ConfirmEmailComponent extends ReturnConfirmationComponent {
   }
 
   /**
-   * Função responsável por realizar a redefinição de senha com base nos dados fornecidos no formulário e token
+   * Método assíncrono para confirmar o e-mail de um usuário.
+   * @param token - O token associado à solicitação de confirmação de e-mail.
+   * @param id - O ID do usuário para o qual a confirmação de e-mail está relacionada.
+   * @returns Promise<void>
    */
   private async confirmEmail(token: string, id: string): Promise<void> {
     try {
+      // Define o estado de carregamento como verdadeiro, indicando que o processo de confirmação está em andamento.
       this.isLoading = true;
+
+      // Chama o userService para confirmar o e-mail com o token e o ID do usuário fornecidos.
       const value = await this.userService.confirmEmail({
         token,
         id: Number(id)
       });
+
+      // Desestrutura a resposta para obter a propriedade 'success'.
       const { success } = value;
+
+      // Define o estado de carregamento como falso, indicando que o processo de confirmação está concluído.
       this.isLoading = false;
+
+      // Se a confirmação do e-mail não for bem-sucedida, navega até a rota de falha.
       if (!success) {
         this.router.navigate(['/confirm-email-failure']);
       }
     } catch (error) {
+      // Em caso de erro durante o processo de confirmação, define o estado de carregamento como falso e navega até a rota de falha.
       this.isLoading = false;
       this.router.navigate(['/confirm-email-failure']);
     }
