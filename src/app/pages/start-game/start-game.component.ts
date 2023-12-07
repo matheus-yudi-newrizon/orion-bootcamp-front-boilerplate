@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrorResponse } from 'src/app/models/http/interface';
 import { TokenService } from 'src/app/services/token/token.service';
 import { UserService } from 'src/app/services/user/user.service';
 @Component({
@@ -38,11 +39,11 @@ export class StartGameComponent {
         this.tokenService.saveGameData(response.data!);
         this.resultStart = response.data;
       }
-
+      this.isLoading = true;
       this.router.navigate(['/game']);
     } catch (error) {
       this.isLoading = false;
-      console.error('error', error);
+      console.error('Error starting game:', (error as ErrorResponse).message);
     }
   }
 

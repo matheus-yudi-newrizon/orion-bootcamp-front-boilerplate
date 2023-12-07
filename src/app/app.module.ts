@@ -35,6 +35,7 @@ import { ResetPasswordSuccessComponent } from './components/reset-password-succe
 import { ResetPasswordFailureComponent } from './components/reset-password-failure/reset-password-failure.component';
 import { PopUpGameOverComponent } from './components/pop-up-game-over/pop-up-game-over.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { PopUpUnsuccessConfirmationComponent } from './components/pop-up-unsuccess-confirmation/pop-up-unsuccess-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
     ResetPasswordSuccessComponent,
     ResetPasswordFailureComponent,
     PopUpGameOverComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    PopUpUnsuccessConfirmationComponent
   ],
   imports: [
     BrowserModule,

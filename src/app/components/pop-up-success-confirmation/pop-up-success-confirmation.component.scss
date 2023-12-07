@@ -1,10 +1,9 @@
 @import '../../../colors';
 
 .pop-up {
-  &__title {
+  &__game__title {
     h2 {
       color: $success-text-color;
     }
   }
-
 }

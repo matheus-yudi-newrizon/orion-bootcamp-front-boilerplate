@@ -67,7 +67,7 @@ app-navbar {
       color: $error-text-color;
       position: absolute;
       text-align: center;
-      margin-left: 109px;
+      margin-left: 160px;
       margin-top: -70px;
     }
   }
@@ -77,6 +77,12 @@ app-navbar {
   }
 
   ::ng-deep {
+
+    .mat-mdc-raised-button {
+      border-radius: 4px !important;
+      margin-bottom: 80px;
+    }
+
     .mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field__input,
     .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
       cursor: url('../../../assets/icons/mouse-hover.png'), auto;
@@ -175,6 +181,7 @@ footer {
     font-size: 16px;
     font-weight: 500;
     cursor: url('../../../assets/icons/mouse-hover.png'), auto;
+    margin-bottom: 30px;
   }
 
   & a {
@@ -187,6 +194,7 @@ footer {
     padding: 8px;
     border-radius: 4px;
     cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+    margin-bottom: 30px;
   }
 }
 
@@ -234,17 +242,18 @@ footer {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      position: relative;
 
       &__checkbox {
         position: absolute;
-        top: 655px;
+        margin-top: 55px;
         animation: anotherSlide 1s linear;
       }
 
       &__password-recovery {
         position: absolute;
         display: flex;
-        top: 573px;
+        margin-top: -30px;
         margin-left: 10px;
         animation: anotherSlide 1s linear;
       }
@@ -275,11 +284,11 @@ footer {
   .login-page {
     &__checkbox-page {
       &__checkbox {
-        top: 675px;
+        margin-top: 55px;
       }
 
       &__password-recovery {
-        top: 593px;
+        margin-top: -30px;
       }
     }
   }

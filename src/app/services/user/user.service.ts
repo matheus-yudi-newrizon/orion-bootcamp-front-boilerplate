@@ -83,6 +83,7 @@ export interface SendReplyResponse
       combo: number;
       isActive: boolean;
     };
+    movie: UploadMoviesResponse['data'][0];
   }> {}
 
 export interface UploadMoviesRequest {
