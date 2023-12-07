@@ -34,6 +34,7 @@ export class GameComponent implements OnInit {
   public options: UploadMoviesResponse['data'] = [];
   public lives: boolean[] = [];
   public isLoading = false;
+  public canSubmit = false;
 
   constructor(
     private tokenService: TokenService,
@@ -234,15 +235,33 @@ export class GameComponent implements OnInit {
    */
   public onMovieSelected(event: MatAutocompleteSelectedEvent): void {
     this.selectedMovie = event.option.value as UploadMoviesResponse['data'][0];
+    this.canSubmit = true;
   }
 
   /**
    * Pega o filme trazido pelo Autocomplete e a partir dele sugere opções semelhantes ao clicar no input
    * @param event evento do input clicado
    */
-  public async onMovieChange(event: InputEvent): Promise<void> {
-    const [title] = (event.target as HTMLInputElement).value.split('(');
-    await this.uploadMovies(title);
-    this.selectedMovie = null;
+  public onMovieClick(event: InputEvent): void {
+    const title = (event.target as HTMLInputElement).value.replace(/\(\d+\)/, '');
+    this.canSubmit = false;
+    this.uploadMovies(title);
+  }
+
+  public onMovieInput(event: InputEvent): void {
+    if (this.selectedMovie) {
+      const title = (event.target as HTMLInputElement).value.replace(/\(\d+\)/, '');
+
+      (event.target as HTMLInputElement).value = title;
+
+      this.selectedMovie = null;
+      this.canSubmit = false;
+    }
+  }
+
+  public onMovieBlur(): void {
+    if (this.selectedMovie && !this.canSubmit) {
+      this.canSubmit = true;
+    }
   }
 }
