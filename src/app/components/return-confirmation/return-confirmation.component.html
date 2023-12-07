@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 
-<section class="return-confirmation__section">
+<section class="panel__loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
+<section class="return-confirmation__section" *ngIf="!isLoading">
   <div class="return-confirmation__section__icon-check">
     <img src="assets/icons/{{ imgURL }}" alt="Imagem representando sucesso no registro" />
   </div>
