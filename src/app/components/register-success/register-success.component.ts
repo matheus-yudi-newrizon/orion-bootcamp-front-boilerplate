@@ -8,6 +8,6 @@ import { ReturnConfirmationComponent } from '../return-confirmation/return-confi
 })
 export class RegisterSuccessComponent extends ReturnConfirmationComponent {
   public override titlePageSuccess = 'Account created successfully';
-  public override belowTheTitle = 'You can now play the game.';
+  public override belowTheTitle = 'Check your email to confirm your registration.';
   public override labelButton = 'PLAY NOW';
 }

@@ -21,7 +21,11 @@
   .mat-mdc-option,
   .mat-mdc-option:hover,
   .mat-mdc-option .mdc-list-item__primary-text,
-  .mat-mdc-option .mdc-list-item__primary-text p {
+  .mat-mdc-option .mdc-list-item__primary-text p,
+  .mat-mdc-outlined-button .mdc-button__label,
+  .mdc-button .mdc-button__label,
+  .mat-mdc-raised-button .mat-mdc-button-touch-target,
+  .mat-mdc-button .mat-mdc-button-touch-target {
     cursor: var(--pointer-cursor);
   }
 
@@ -42,7 +46,6 @@
     color: $text-color;
   }
 }
-
 
 @keyframes slide {
   0% {

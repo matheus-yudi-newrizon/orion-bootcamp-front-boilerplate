@@ -11,6 +11,7 @@ export class ReturnConfirmationComponent {
   public belowTheTitle = '';
   public labelButton = '';
   public imgURL = 'icon-check.svg';
+  public isLoading = false;
 
   constructor(public router: Router) {}
 

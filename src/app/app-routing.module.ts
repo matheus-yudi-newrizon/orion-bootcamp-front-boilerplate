@@ -11,6 +11,8 @@ import { ConfirmResetPasswordComponent } from './components/confirm-reset-passwo
 import { ResetPasswordFailureComponent } from './components/reset-password-failure/reset-password-failure.component';
 import { ResetPasswordSuccessComponent } from './components/reset-password-success/reset-password-success.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { ConfirmEmailComponent } from './components/confirm-email /confirm-email.component';
+import { ConfirmEmailFailureComponent } from './components/confirm-email-failure/confirm-email-failure.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: RegisterPageComponent
+  },
+  {
+    path: 'auth/confirm-email',
+    component: ConfirmEmailComponent
+  },
+  {
+    path: 'auth/confirm-email-failure',
+    component: ConfirmEmailFailureComponent
   },
   {
     path: 'registration-success',
