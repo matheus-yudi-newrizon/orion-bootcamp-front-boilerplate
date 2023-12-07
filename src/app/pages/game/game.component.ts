@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EnumPopUpActions } from 'src/app/components/pop-up-game/pop-up-game.component';
 import { PopUpSuccessConfirmationComponent } from 'src/app/components/pop-up-success-confirmation/pop-up-success-confirmation.component';
+import { PopUpUnsuccessConfirmationComponent } from 'src/app/components/pop-up-unsuccess-confirmation/pop-up-unsuccess-confirmation.component';
 import { TokenService } from 'src/app/services/token/token.service';
 import { LoginResponse, UploadMoviesResponse, UserService } from 'src/app/services/user/user.service';
 import * as showdown from 'showdown';
@@ -33,6 +34,7 @@ export class GameComponent implements OnInit {
   public options: UploadMoviesResponse['data'] = [];
   public lives: boolean[] = [];
   public isLoading = false;
+  public canSubmit = false;
 
   constructor(
     private tokenService: TokenService,
@@ -48,7 +50,7 @@ export class GameComponent implements OnInit {
     this.generateReview();
 
     this.guessTitle.valueChanges.subscribe(value => {
-      if ((value || '').length >= 4) {
+      if ((value || '').length >= 1) {
         this.uploadMovies(value || '');
       }
 
@@ -79,13 +81,16 @@ export class GameComponent implements OnInit {
 
     try {
       this.isLoading = true;
+      this.selectedMovie = null;
+      this.guessTitle.setValue(null);
 
       const response = await this.userService.generateReview({ token });
       const { text, id, author } = response.data!;
       const converter = new showdown.Converter();
 
+      this.isLoading = false;
       this.review = {
-        title: author,
+        title: 'Review Author: ' + author.toUpperCase(),
         text: converter.makeHtml(text || ''),
         id
       };
@@ -117,7 +122,7 @@ export class GameComponent implements OnInit {
         token
       );
 
-      const { game, isCorrect } = response.data!;
+      const { game, isCorrect, movie } = response.data!;
       this.gameData = game;
       this.fillLives(this.gameData.lives);
 
@@ -127,10 +132,10 @@ export class GameComponent implements OnInit {
         if (isCorrect) {
           this.openPopUpSuccess(this.selectedMovie!);
         } else {
-          this.openPopUpError(this.selectedMovie!);
+          this.openPopUpError(movie);
         }
       } else {
-        this.openPopUpGameOver(this.selectedMovie!);
+        this.openPopUpGameOver(movie);
       }
     } catch (error) {
       this.returnToStartGame();
@@ -172,7 +177,8 @@ export class GameComponent implements OnInit {
    */
   public openPopUpSuccess(movie: UploadMoviesResponse['data'][0]): void {
     const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
-      data: movie
+      data: movie,
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
@@ -186,9 +192,9 @@ export class GameComponent implements OnInit {
    * @param movie  As informações do filme que serão exibidas na janela de pop-up
    */
   public openPopUpError(movie: UploadMoviesResponse['data'][0]): void {
-    // TODO trocar pelo pop-up de erro
-    const dialogRef = this.dialog.open(PopUpSuccessConfirmationComponent, {
-      data: movie
+    const dialogRef = this.dialog.open(PopUpUnsuccessConfirmationComponent, {
+      data: movie,
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
@@ -203,11 +209,12 @@ export class GameComponent implements OnInit {
    */
   public openPopUpGameOver(movie: UploadMoviesResponse['data'][0]): void {
     const dialogRef = this.dialog.open(PopUpGameOverComponent, {
-      data: movie
+      data: movie,
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe((result: EnumPopUpActions) => {
       if (result === EnumPopUpActions.CLOSE || result === EnumPopUpActions.NEXT) {
-        this.router.navigate(['/start-game']);
+        this.returnToStartGame();
       }
     });
   }
@@ -218,7 +225,8 @@ export class GameComponent implements OnInit {
    * @returns string contendo o título ou string vazia, no caso do título estar indisponível
    */
   public displayWith(movie: UploadMoviesResponse['data'][0]): string {
-    return movie.title || '';
+    const { title, releaseDate } = movie || {};
+    return title ? `${title} (${new Date(releaseDate).getFullYear()})` : '';
   }
 
   /**
@@ -227,5 +235,33 @@ export class GameComponent implements OnInit {
    */
   public onMovieSelected(event: MatAutocompleteSelectedEvent): void {
     this.selectedMovie = event.option.value as UploadMoviesResponse['data'][0];
+    this.canSubmit = true;
+  }
+
+  /**
+   * Pega o filme trazido pelo Autocomplete e a partir dele sugere opções semelhantes ao clicar no input
+   * @param event evento do input clicado
+   */
+  public onMovieClick(event: InputEvent): void {
+    const title = (event.target as HTMLInputElement).value.replace(/\(\d+\)/, '');
+    this.canSubmit = false;
+    this.uploadMovies(title);
+  }
+
+  public onMovieInput(event: InputEvent): void {
+    if (this.selectedMovie) {
+      const title = (event.target as HTMLInputElement).value.replace(/\(\d+\)/, '');
+
+      (event.target as HTMLInputElement).value = title;
+
+      this.selectedMovie = null;
+      this.canSubmit = false;
+    }
+  }
+
+  public onMovieBlur(): void {
+    if (this.selectedMovie && !this.canSubmit) {
+      this.canSubmit = true;
+    }
   }
 }

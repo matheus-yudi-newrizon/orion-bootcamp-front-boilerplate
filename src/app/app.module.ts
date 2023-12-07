@@ -34,6 +34,7 @@ import { ReturnConfirmationComponent } from './components/return-confirmation/re
 import { ResetPasswordSuccessComponent } from './components/reset-password-success/reset-password-success.component';
 import { ResetPasswordFailureComponent } from './components/reset-password-failure/reset-password-failure.component';
 import { PopUpGameOverComponent } from './components/pop-up-game-over/pop-up-game-over.component';
+import { PopUpUnsuccessConfirmationComponent } from './components/pop-up-unsuccess-confirmation/pop-up-unsuccess-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { PopUpGameOverComponent } from './components/pop-up-game-over/pop-up-gam
     ReturnConfirmationComponent,
     ResetPasswordSuccessComponent,
     ResetPasswordFailureComponent,
-    PopUpGameOverComponent
+    PopUpGameOverComponent,
+    PopUpUnsuccessConfirmationComponent
   ],
   imports: [
     BrowserModule,

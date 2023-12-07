@@ -1,7 +1,7 @@
 @import '../../../colors';
 
 .pop-up {
-  &__correct {
+  &__game {
     background-color: $background-color;
     display: flex;
     flex-direction: column;
@@ -21,6 +21,10 @@
         font-weight: 500;
         line-height: 24px;
         letter-spacing: 0.15px;
+        @media screen and (max-width: 483px) {
+          text-align: center;
+          width: 100%;
+        }
       }
     }
 
@@ -41,6 +45,9 @@
         align-items: flex-start;
         gap: 10px;
         align-self: stretch;
+        @media screen and (max-width: 483px) {
+          text-align: center;
+        }
 
         p {
           font-size: 16px;
@@ -65,22 +72,15 @@
         border-radius: 4px;
         border: 1px solid rgba(255, 255, 255, 0.12);
       }
+
+      @media screen and (max-width: 483px) {
+        flex-direction: column;
+        gap: 16px;
+      }
     }
   }
 }
 
-::ng-deep {
-
-  /* Botão SEE MORE */
-  .mat-mdc-raised-button,
-  .mat-mdc-outlined-button {
-    background-color: transparent !important;
-
-  }
-
-  /* Botão CLOSE */
-  .mat-mdc-unelevated-button.mat-unthemed {
-    background-color: transparent !important;
-  }
-
+::ng-deep .mat-mdc-button .mat-mdc-button-persistent-ripple::before {
+  background-color: transparent !important;
 }

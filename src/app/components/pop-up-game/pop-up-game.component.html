@@ -1,18 +1,18 @@
-<section class="pop-up__correct">
-  <div class="pop-up__correct__title">
+<section class="pop-up__game">
+  <div class="pop-up__game__title">
     <h2>{{ title }}</h2>
   </div>
-  <div class="pop-up__correct__image">
+  <div class="pop-up__game__image">
     <img src="{{ imageUrl }}{{ data.posterPath }}" alt="Image from a film" />
   </div>
 
-  <div class="pop-up__correct__reply">
-    <div class="pop-up__correct__reply__text">
+  <div class="pop-up__game__reply">
+    <div class="pop-up__game__reply__text">
       <p>The movie is "{{ data.title }}" from {{ data.releaseDate | date: 'yyyy'}}</p>
     </div>
-    <div  class="pop-up__correct__buttons">
-      <button (click)="close()" mat-flat-button>CLOSE</button>
-      <button (click)="seeMoreMovie()" class="pop-up__correct__buttons__see-more" mat-raised-button>SEE MORE</button>
+    <div  class="pop-up__game__buttons">
+      <button (click)="close()" mat-button class="pop-up__game__buttons__close">CLOSE</button>
+      <button (click)="seeMoreMovie()" class="pop-up__game__buttons__see-more" mat-stroked-button>SEE MORE</button>
       <button (click)="next()" mat-flat-button color="primary">{{ buttonLabel }}</button>
     </div>
   </div>
