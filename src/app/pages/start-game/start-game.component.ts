@@ -11,7 +11,6 @@ import { UserService } from 'src/app/services/user/user.service';
 export class StartGameComponent {
   public isLoading = false;
   public labelButton = 'START GAME';
-  public resultStart: any;
 
   constructor(
     public router: Router,
@@ -37,7 +36,6 @@ export class StartGameComponent {
         const data = { token: token };
         const response = await this.userService.startGame(data);
         this.tokenService.saveGameData(response.data!);
-        this.resultStart = response.data;
       }
       this.isLoading = true;
       this.router.navigate(['/game']);
@@ -51,7 +49,7 @@ export class StartGameComponent {
    * Verifica se o usuário tem algum jogo ativo e altera a label do botão.
    */
   public activeGame(): void {
-    if (this.resultStart.isActive) {
+    if (this.tokenService.getGameData()?.isActive) {
       this.labelButton = 'CONTINUE';
     } else {
       this.labelButton = 'START GAME';
