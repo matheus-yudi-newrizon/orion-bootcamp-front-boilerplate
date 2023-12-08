@@ -34,6 +34,7 @@ export class GameComponent implements OnInit {
   public options: UploadMoviesResponse['data'] = [];
   public lives: boolean[] = [];
   public isLoading = false;
+  public isLoadingPopUp = false;
   public canSubmit = false;
 
   constructor(
@@ -104,7 +105,7 @@ export class GameComponent implements OnInit {
     if (typeof this.guessTitle.value === 'string') {
       return;
     }
-
+    this.isLoadingPopUp = true;
     try {
       const response = await this.userService.sendReply({
         reviewId: this.review.id,
@@ -114,7 +115,7 @@ export class GameComponent implements OnInit {
       const { game, isCorrect, movie } = response.data!;
       this.gameData = game;
       this.fillLives(this.gameData.lives);
-
+      this.isLoadingPopUp = false;
       if (this.gameData.isActive) {
         this.tokenService.saveGameData(this.gameData);
 
@@ -127,6 +128,7 @@ export class GameComponent implements OnInit {
         this.openPopUpGameOver(movie);
       }
     } catch (error) {
+      this.isLoadingPopUp = false;
       this.returnToStartGame();
     }
   }

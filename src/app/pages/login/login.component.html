@@ -1,11 +1,15 @@
 <app-navbar></app-navbar>
 
-<div class="title-login">
+<section class="panel__loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
+<div class="title-login" *ngIf="!isLoading">
   <h1>Welcome to ReviewReveal</h1>
   <p>Log in to discover new movies by playing</p>
 </div>
 
-<form [formGroup]="signInForm" class="login-page">
+<form [formGroup]="signInForm" class="login-page" *ngIf="!isLoading">
 
   <mat-form-field class="login-page__width">
     <mat-label class="login-page__width__label">E-mail</mat-label>
@@ -25,11 +29,11 @@
     <button (click)="openModalForgot()" class="login-page__checkbox-page__password-recovery">Forgot Password?</button>
   </section>
 
-  <button class="login-page__width__button form__button" mat-raised-button color="primary" (click)="submit()" [disabled]="signInForm.invalid" type="submit">LOG IN</button>
+  <button class="login-page__width__button form__button" mat-raised-button color="primary" (click)="submit()" [disabled]="signInForm.invalid" type="submit" tabIndex="0">LOG IN</button>
   <div class="login-page__width__login-error"> {{errorMessage}} </div>
 </form>
 
-<footer>
+<footer *ngIf="!isLoading">
   <p>Don't have an account?</p>
   <a routerLink="/sign-up">SIGN UP NOW</a>
 </footer>

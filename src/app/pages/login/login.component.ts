@@ -18,6 +18,7 @@ export class LoginComponent {
   public hide = true;
   public errorMessage = '';
   public signInForm!: FormGroup;
+  public isLoading = false;
 
   constructor(
     public dialog: MatDialog,
@@ -50,9 +51,10 @@ export class LoginComponent {
   public async submit(): Promise<void> {
     // Lógica de submissão do formulário
     if (this.signInForm.valid) {
+      this.isLoading = true;
       try {
         const loginResponse = await this.userService.login(this.signInForm.value);
-        this.router.navigate(['/start-game']);
+
         /** Salvar o token do usuário ao fazer login */
         if (loginResponse.data) {
           const { rememberMe } = this.signInForm.value as LoginRequest;
@@ -63,8 +65,12 @@ export class LoginComponent {
             this.tokenService.saveGameData(loginResponse.data.game);
           }
         }
+
+        this.isLoading = false;
+        this.router.navigate(['/start-game']);
       } catch (error) {
         this.errorMessage = `${(error as ErrorResponse).message}`;
+        this.isLoading = false;
       }
     }
   }

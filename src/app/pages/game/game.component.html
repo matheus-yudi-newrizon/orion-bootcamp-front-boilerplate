@@ -4,6 +4,10 @@
   <mat-spinner color="primary" diameter="50"></mat-spinner>
 </section>
 
+<section class="panel__loading panel__loading__pop-up" *ngIf="isLoadingPopUp">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
 <div class="game" *ngIf="!isLoading">
   <section class="game__page__challenge">
     <div class="game__page__challenge__header">
