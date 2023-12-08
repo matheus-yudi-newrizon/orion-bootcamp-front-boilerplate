@@ -29,12 +29,10 @@ export class StartGameComponent {
     try {
       this.isLoading = true;
 
-      const token = this.tokenService.get();
       const game = this.tokenService.getGameData();
 
-      if (token !== null && !game) {
-        const data = { token: token };
-        const response = await this.userService.startGame(data);
+      if (!game) {
+        const response = await this.userService.startGame();
         this.tokenService.saveGameData(response.data!);
       }
       this.isLoading = true;

@@ -73,18 +73,12 @@ export class GameComponent implements OnInit {
    * @returns uma Promise quando a operação é concluída
    */
   public async generateReview(): Promise<void> {
-    const token = this.tokenService.get();
-
-    if (!token) {
-      return;
-    }
-
     try {
       this.isLoading = true;
       this.selectedMovie = null;
       this.guessTitle.setValue(null);
 
-      const response = await this.userService.generateReview({ token });
+      const response = await this.userService.generateReview();
       const { text, id, author } = response.data!;
       const converter = new showdown.Converter();
 
@@ -107,20 +101,15 @@ export class GameComponent implements OnInit {
    * @returns uma Promise quando a operação é concluída
    */
   public async sendReply(): Promise<void> {
-    const token = this.tokenService.get();
-
-    if (!token || typeof this.guessTitle.value === 'string') {
+    if (typeof this.guessTitle.value === 'string') {
       return;
     }
 
     try {
-      const response = await this.userService.sendReply(
-        {
-          reviewId: this.review.id,
-          answer: this.selectedMovie?.id !== undefined ? this.selectedMovie.id : 0
-        },
-        token
-      );
+      const response = await this.userService.sendReply({
+        reviewId: this.review.id,
+        answer: this.selectedMovie?.id !== undefined ? this.selectedMovie.id : 0
+      });
 
       const { game, isCorrect, movie } = response.data!;
       this.gameData = game;
@@ -149,14 +138,8 @@ export class GameComponent implements OnInit {
    * @returns uma Promise quando a operação é concluída
    */
   public async uploadMovies(title: string): Promise<void> {
-    const token = this.tokenService.get();
-
-    if (!token) {
-      return;
-    }
-
     try {
-      const response = await this.userService.uploadMovies({ title, token });
+      const response = await this.userService.uploadMovies({ title });
       this.options = response.data;
     } catch (error) {
       this.options = [];

@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.currentRoute = this.router.url;
+    this.currentRoute = location.pathname;
   }
 
   /**
@@ -98,7 +98,11 @@ export class NavbarComponent implements OnInit {
    * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
    */
   public logout(): void {
-    this.tokenService.logout();
+    this.tokenService.delete();
+    this.tokenService.deleteGameData();
+    this.router.navigate(['/login'], {
+      replaceUrl: true
+    });
   }
 
   /**

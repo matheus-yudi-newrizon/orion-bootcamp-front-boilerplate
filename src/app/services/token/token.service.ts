@@ -90,9 +90,11 @@ export class TokenService {
   /**
    * Função responsável por fazer o logout, deletar o token e redirecionar o usuário para a página de login
    */
-  public logout(): void {
+  public async logout(): Promise<boolean> {
     this.delete();
     this.deleteGameData();
-    this.router.navigate(['/login']);
+    return this.router.navigate(['/access-denied'], {
+      replaceUrl: true
+    });
   }
 }

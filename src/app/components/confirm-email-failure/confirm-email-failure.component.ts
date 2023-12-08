@@ -8,11 +8,7 @@ import { ReturnConfirmationComponent } from '../return-confirmation/return-confi
 })
 export class ConfirmEmailFailureComponent extends ReturnConfirmationComponent {
   public override titlePageSuccess = 'It was not possible to confirm your account';
-  public override belowTheTitle = 'Try again 30 minutes from the first attempt';
+  public override belowTheTitle = 'Please return to the home page and try again';
   public override labelButton = 'RETURN';
   public override imgURL = 'icon-error.svg';
-
-  public override return(): void {
-    this.router.navigate(['/sign-up']);
-  }
 }
