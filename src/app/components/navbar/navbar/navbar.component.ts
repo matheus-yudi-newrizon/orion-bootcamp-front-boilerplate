@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.currentRoute = location.pathname;
+    this.router.url.split('?')[0];
   }
 
   /**
