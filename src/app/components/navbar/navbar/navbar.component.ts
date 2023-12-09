@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
       '/access-denied',
       '/auth/confirm-email',
       '/auth/confirm-email-failure'
-    ].includes(this.currentRoute);
+    ].some(item => this.currentRoute.includes(item));
   }
 
   /**
