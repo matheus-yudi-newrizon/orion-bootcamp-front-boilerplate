@@ -1,4 +1,264 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@include mat.core();
+@import 'theme';
+@import 'colors';
+@import 'fonts';
+@import 'spacing';
+@import 'scrollbar';
+
+* {
+  cursor: url('../src/assets/icons/cursor.png'), auto;
+}
+
+:root {
+  --pointer-cursor: url('../src/assets/icons/mini-pointer-2.png'), auto;
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: $input-color;
+  }
+
+  .mat-mdc-option,
+  .mat-mdc-option:hover,
+  .mat-mdc-option .mdc-list-item__primary-text,
+  .mat-mdc-option .mdc-list-item__primary-text p,
+  .mat-mdc-outlined-button .mdc-button__label,
+  .mdc-button .mdc-button__label,
+  .mat-mdc-raised-button .mat-mdc-button-touch-target,
+  .mat-mdc-button .mat-mdc-button-touch-target {
+    cursor: var(--pointer-cursor);
+  }
+
+  .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input,
+  .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label,
+  .mat-mdc-input-element::placeholder {
+    color: $input-text-color !important;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before,
+  .mdc-text-field--filled:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-line-ripple::before {
+    border-bottom-color: $accent-color;
+  }
+
+  .mat-mdc-unelevated-button:disabled {
+    background-color: $accent-color;
+    opacity: 0.3;
+    color: $text-color;
+  }
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes gameSlide {
+  0% {
+    transform: translateY(50%);
+  }
+
+  35% {
+    transform: translateY(-5%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideToLoad {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes anotherSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(90%);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.custom__modal {
+  .mat-mdc-dialog-container {
+    .mdc-dialog__container .mat-mdc-dialog-surface {
+      background-color: $background-color;
+    }
+
+    .mdc-dialog__title,
+    .mdc-dialog__content,
+    .mat-mdc-button:not(:disabled),
+    .mat-mdc-button:disabled {
+      color: $text-color;
+    }
+
+    .mat-mdc-button:not(:disabled) {
+      background-color: $accent-color;
+    }
+
+    .mat-mdc-button:disabled {
+      opacity: 30%;
+      background-color: $accent-color;
+    }
+  }
+
+  animation: slideIn 0.6s forwards;
+  transform: translate(100%, -50%);
+
+  @keyframes slideIn {
+    0% {
+      opacity: 1 !important;
+      transform: translateX(100%);
+    }
+
+    100% {
+      opacity: 1 !important;
+      transform: translateX(0);
+    }
+  }
+}
+
+.modal__closed {
+  .mat-mdc-dialog-container {
+    .mdc-dialog__container .mat-mdc-dialog-surface {
+      background-color: $background-color;
+    }
+
+    .mdc-dialog__title,
+    .mdc-dialog__content,
+    .mat-mdc-button:not(:disabled),
+    .mat-mdc-button:disabled {
+      color: $text-color;
+    }
+
+    .mat-mdc-button:not(:disabled) {
+      background-color: $accent-color;
+    }
+
+    .mat-mdc-button:disabled {
+      opacity: 30%;
+      background-color: $accent-color;
+    }
+  }
+
+  animation: slideOut 0.8s forwards;
+  transform: translate(100%, -50%);
+
+  @keyframes slideOut {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+.form__button {
+  width: 500px;
+  height: 32px;
+  padding: 6px;
+  color: $text-color !important;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 229px;
+
+  &:disabled {
+    opacity: 30%;
+    background-color: $accent-color !important;
+    animation: slideToLoad 1s linear;
+  }
+
+  &:hover {
+    background-color: mat.get-color-from-palette($primary-palette, 800);
+  }
+
+  &:active {
+    background-color: mat.get-color-from-palette($primary-palette, 700);
+    border: 1px solid $active-button-color;
+    height: 36px;
+  }
+}
+
+.panel__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.password-reset {
+  .mat-mdc-button:not(:disabled) {
+    color: $text-color;
+    background-color: $accent-color;
+  }
+
+  .mat-mdc-button:disabled {
+    opacity: 30%;
+    color: $text-color;
+    background-color: $accent-color;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background:
+    url(../src/assets/background/background.svg),
+    #0f1620 50% / cover no-repeat;
+}
+
+@media screen and (max-width: 575px) {
+  body {
+    padding: 0 30px;
+  }
+
+  main {
+    margin-bottom: 30px;
+  }
+
+  footer {
+    padding-bottom: 30px;
+  }
+}
+
+a,
+ul:hover,
+span:hover,
+input[type='text'],
+textarea:hover,
+p:hover,
+h2:hover,
+h4:hover {
+  cursor: url(../src/assets/icons/mouse-hover.png), auto;
+}
+
+.game__page__challenge__review__wrapper:hover {
+  cursor: url(../src/assets/icons/cursor.png), auto;
+}

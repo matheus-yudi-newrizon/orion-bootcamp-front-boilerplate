@@ -1,0 +1,121 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Always import theme.scss on your components.
+
+// As the main colors are imported here from the custom color schema in colors.scss, you can use the color variable name directly. A quick guide from these colors below:
+// $accent-color: #6200EE;
+// $success-text-color: #17C69C;
+// $error-text-color: #EE0056;
+// $text-color: #fff;
+// $background-color: #25252F;
+// $secondary-background-color: #373744;
+
+// If you wanna use color from the palette add the following lines in your components before all:
+//  @use "@angular/material" as mat;
+//  @include mat.core();
+
+// How to import color from palette:
+// E.g.: color: mat.get-color-from-palette($primary-palette, 300);
+
+$primary-palette: (
+  50: #efe5fd,
+  100: #d4bff9,
+  200: #b794f6,
+  300: #9965f4,
+  400: #7e3ff2,
+  500: #6002ee,
+  600: #5300e8,
+  700: #3d00e0,
+  800: #1c00db,
+  900: #0000d6,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgb(255, 255, 255),
+    400: rgb(255, 255, 255),
+    500: rgb(255, 255, 255),
+    600: rgb(255, 255, 255),
+    700: rgb(255, 255, 255),
+    800: rgb(255, 255, 255),
+    900: rgb(255, 255, 255),
+  ),
+);
+
+$accent-palette: (
+  50: white,
+  100: white,
+  200: white,
+  300: white,
+  500: white,
+  700: white,
+  900: white,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    500: white,
+    700: white,
+    900: white,
+  ),
+);
+
+$warn-palette: (
+  50: #fce4ec,
+  100: #f8bbd0,
+  200: #f48fb1,
+  300: #f06292,
+  400: #ec407a,
+  500: #ee0056,
+  600: #d81b60,
+  700: #c2185b,
+  800: #ad1457,
+  900: #880e4f,
+  contrast: (
+    50: #ffffff,
+    100: #ffffff,
+    200: #ffffff,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$review-reveal-primary: mat.define-palette($primary-palette);
+$review-reveal-accent: mat.define-palette($accent-palette);
+$review-reveal-warn: mat.define-palette($warn-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+
+$review-reveal-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $review-reveal-primary,
+      accent: $review-reveal-accent,
+      warn: $review-reveal-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($review-reveal-theme);

@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import '../../../theme.scss';
+
+.form__menu {
+  animation: slideToLoad 1s linear;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  animation: slide 1.2s linear;
+}

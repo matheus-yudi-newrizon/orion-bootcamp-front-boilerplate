@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "boilerplate-frontend-orion-bootcamp": {
+    "review-reveal-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/boilerplate-frontend-orion-bootcamp",
+            "outputPath": "dist/review-reveal-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -31,23 +31,28 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.scss",
-              "node_modules/bootstrap/scss/bootstrap-grid.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 }
               ],
               "outputHashing": "all"
@@ -64,13 +69,16 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "disableHostCheck": true
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "boilerplate-frontend-orion-bootcamp:build:production"
+              "browserTarget": "review-reveal-web:build:production"
             },
             "development": {
-              "browserTarget": "boilerplate-frontend-orion-bootcamp:build:development"
+              "browserTarget": "review-reveal-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "boilerplate-frontend-orion-bootcamp:build"
+            "browserTarget": "review-reveal-web:build"
           }
         },
         "test": {
@@ -105,10 +113,14 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
+              "cypress/**/*.ts",
               "src/**/*.ts",
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
@@ -116,6 +128,7 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": "57c88e8a-c949-49ee-9940-799b434f5254"
   }
 }

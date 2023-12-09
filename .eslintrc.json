@@ -12,9 +12,11 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
       ],
       "rules": {
+        "@typescript-eslint/no-empty-interface": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -30,7 +32,39 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "constructors": "no-public"
+            }
+          }
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": [
+          "error",
+          {
+            "allowArgumentsExplicitlyTypedAsAny": true
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 150,
+            "tabWidth": 2,
+            "ignoreComments": true,
+            "ignoreUrls": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreRegExpLiterals": true
+          }
+        ],
+        "no-trailing-spaces": "error",
+        "prettier/prettier": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error"
       }
     },
     {
@@ -41,7 +75,10 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:@angular-eslint/template/accessibility"
       ],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/click-events-have-key-events": "off",
+        "@angular-eslint/template/interactive-supports-focus": "off"
+      }
     }
   ]
 }

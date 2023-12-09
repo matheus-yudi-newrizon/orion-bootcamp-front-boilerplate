@@ -1,0 +1,60 @@
+@import '../../../colors';
+
+.return-confirmation__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
+  text-align: center;
+  height: 50vh;
+
+  &__txt-success {
+    & h4 {
+      color: var(--foundation-gray-scale-white, $text-color);
+      font-family: Roboto;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 0.12px;
+    }
+
+    & p {
+      color: var(--foundation-gray-scale-white, $text-color);
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+  &__button-play {
+    display: flex;
+    width: 523px;
+    padding: 6px 6px 6px 8px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+::ng-deep {
+  .mat-mdc-raised-button .mat-mdc-button-touch-target {
+    cursor: url("../../../assets/icons/mini-pointer-2.png"), auto;
+  }
+
+  .mat-mdc-raised-button .mdc-button__label,
+  .mat-mdc-outlined-button .mdc-button__label {
+    margin-top: 3px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .return-confirmation__section {
+    &__button-play {
+      width: 90%;
+    }
+  }
+}

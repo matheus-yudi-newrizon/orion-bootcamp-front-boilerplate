@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<section class="panel__loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
+<div class="game" *ngIf="!isLoading">
+  <section class="game__page__challenge">
+    <div class="game__page__challenge__header">
+      <div class="game__page__challenge__header__wrap">
+        <h2 class="game__page__challenge__header__wrap__title">Guess the review!</h2>
+        <p class="game__page__challenge__header__wrap__record">
+          Your record: <span class="movies">{{ gameData?.record }}</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="game__page__challenge__review">
+      <h3 class="game__page__challenge__review__title">{{ review.title }}</h3>
+      <div class="game__page__challenge__review__wrapper">
+        <p class="game__page__challenge__review__text" [innerHTML]="review.text"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="drop-down-section">
+    <div class="drop-down-wrapper">
+      <div class="upper-part">
+        <div class="lives">
+          <p>Lives:</p>
+          <ng-container *ngFor="let item of lives">
+            <img [src]="item ? 'assets/icons/icon-filled-heart.svg' : 'assets/icons/icon-empty-heart.svg'" alt="vidas restantes" />
+          </ng-container>
+
+          <p class="lives-number">x{{ gameData?.lives }}</p>
+        </div>
+        <p class="combo">Current combo: {{ gameData?.combo }}</p>
+      </div>
+
+      <div class="form-wrapper">
+        <form class="example-form">
+          <mat-form-field>
+            <mat-label>Guess the movie</mat-label>
+            <mat-icon matSuffix>search</mat-icon>
+            <input type="text" placeholder="" aria-label="Number" matInput [formControl]="guessTitle" [matAutocomplete]="auto" (click)="onMovieClick($any($event))" (input)="onMovieInput($any($event))" (blur)="onMovieBlur()" />
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onMovieSelected($event)" [displayWith]="displayWith">
+              <mat-option class="dropdown__option" *ngFor="let option of options" [value]="option">
+                <p>{{ option.title }}</p>
+                <p>({{ option.releaseDate | date: 'yyyy' }})</p>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+        <button (click)="sendReply()" mat-flat-button color="primary" [disabled]="!canSubmit">GUESS</button>
+      </div>
+    </div>
+  </section>
+</div>

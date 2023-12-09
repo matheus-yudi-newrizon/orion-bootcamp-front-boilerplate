@@ -1,0 +1,9 @@
+module.exports = {
+  singleQuote: true,
+  trailingComma: 'none',
+  arrowParens: 'avoid',
+  tabWidth: 2,
+  useTabs: false,
+  printWidth: 150,
+  endOfLine: 'auto'
+};

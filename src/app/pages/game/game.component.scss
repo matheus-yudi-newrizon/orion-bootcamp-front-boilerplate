@@ -1,0 +1,553 @@
+@import '../../../spacing';
+@import '../../../colors';
+
+.game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: gameSlide 0.8s ease-out;
+}
+
+.dropdown__option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lives-number {
+  font-weight: 900;
+}
+
+.game__page {
+  &__challenge {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 158px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: #25252f;
+    color: $text-color;
+    width: 800px;
+    padding: 40px;
+    text-align: left;
+    box-sizing: border-box;
+
+    &__header {
+      position: relative;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+
+      &__wrap {
+        display: flex;
+        position: absolute;
+        flex-wrap: wrap;
+        top: -58px !important;
+        justify-content: space-between;
+        width: 100%;
+
+        &__title {
+          color: $accent-color;
+          font-feature-settings:
+            'clig' off,
+            'liga' off;
+          font-family: Roboto;
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          width: 285px;
+        }
+
+        &__record {
+          color: $text-color;
+          font-feature-settings:
+            'clig' off,
+            'liga' off !important;
+          font-family: Roboto !important;
+          font-size: 20px !important;
+          font-style: normal !important;
+          font-weight: 500 !important;
+          line-height: normal !important;
+          margin-bottom: 20px;
+          margin-top: 7px;
+
+          .movies {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+
+    &__review {
+      &__wrapper {
+        height: 300px;
+        overflow-y: auto;
+      }
+      &__text {
+        font-feature-settings:
+          'clig' off,
+          'liga' off;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: justify;
+        padding: 0 21px 21px 0px;
+      }
+
+      &__title {
+        font-weight: 500;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.drop-down-section {
+  width: 800px;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+  cursor: url(../../../assets/icons/mouse-hover.png), auto;
+}
+
+@media screen and (max-width: 916px) {
+  .game {
+    .game__page {
+      &__challenge {
+        width: 80%;
+      }
+    }
+    .drop-down-section {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 783px) {
+  .game {
+    .game__page {
+      &__challenge {
+        width: 80%;
+        &__header {
+          &__wrap {
+            justify-content: center;
+            text-align: center;
+          }
+        }
+
+        &__review {
+          margin-top: 0px;
+
+          &__title {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 652px) {
+
+  .game {
+    .game__page {
+      &__challenge {
+        width: 80%;
+        &__header {
+          &__wrap {
+            justify-content: center;
+            text-align: center;
+          }
+        }
+
+        &__review {
+          margin-top: 50px;
+
+          &__text {
+            height: 250px;
+          }
+
+          &__title {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+
+@media screen and (max-width: 575px) {
+  .game__page__challenge__review__text {
+    height: 230px;
+  }
+
+  .game {
+    &__page {
+      &__challenge {
+        width: 90% !important;
+
+        &__review {
+          &__title {
+            text-align: center;
+          }
+
+          &__text {
+            margin: 0 10px;
+          }
+        }
+
+        &__header {
+          &__wrap {
+            width: 98%;
+            &__title {
+              font-size: 32px;
+              text-align: center;
+            }
+
+            &__record {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .drop-down-section {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 483px) {
+
+  .game {
+    &__page {
+      &__challenge {
+        width: 90% !important;
+
+        &__review {
+          margin-top: 66px !important;
+          &__title {
+            text-align: center;
+            width: 238px;
+            margin: 0 auto;
+            width: 180px;
+            margin-bottom: 22px;
+          }
+
+          &__text {
+            margin: 0 10px;
+            height: 200px !important ;
+          }
+        }
+
+        &__header {
+          justify-content: center;
+          &__wrap {
+            width: 90%;
+            &__title {
+              font-size: 32px;
+              text-align: center;
+              margin-bottom: 0px;
+              top: -53px !important;
+            }
+
+            &__record {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 361px) {
+  .game {
+    .game__page {
+      &__challenge {
+        width: 100%;
+        height: 435px;
+        padding: 12px 16px;
+
+        &__header {
+          &__wrap {
+            transform: translateY(28px);
+
+            &__title {
+              font-size: 32px;
+              text-align: center;
+              margin-bottom: 2px;
+            }
+
+            &__record {
+              .movies {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+
+        &__review {
+          margin-top: 78px !important;
+
+          &__text {
+            overflow-x: hidden;
+            padding: 5px;
+            text-align: center;
+            margin-top: 0px;
+            height: 211px !important;
+          }
+
+          &__title {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+            width: 155px;
+            margin-bottom: 22px;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 292px) {
+
+  .game {
+    .game__page {
+      &__challenge {
+        width: 100%;
+        height: 435px;
+        padding: 12px 16px;
+
+        &__header {
+          &__wrap {
+            transform: translateY(28px);
+
+            &__title {
+              font-size: 29px;
+              text-align: center;
+              margin-bottom: 2px;
+            }
+
+            &__record {
+              .movies {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+
+        &__review {
+          margin-top: 88px !important;
+
+          &__text {
+            overflow-x: hidden;
+            padding: 5px;
+            text-align: center;
+            margin-top: 0px;
+            height: 211px !important;
+          }
+
+          &__title {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+            width: 155px;
+            margin-bottom: 12px;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.drop-down-wrapper {
+  background-color: $background-color;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 40px 20px;
+  box-sizing: border-box;
+
+  .upper-part {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .lives {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      color: $text-color;
+      margin-bottom: 20px;
+    }
+
+    .lives-number {
+      display: none;
+    }
+
+    .combo {
+      color: $text-color;
+      font-size: 14px;
+    }
+  }
+
+  .form-wrapper {
+    display: flex;
+    width: 100%;
+    gap: $spacing-unit;
+
+    .example-form {
+      width: 100%;
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
+    button {
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+      height: 56px;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-form-field-icon-suffix>.mat-icon {
+    padding: 12px;
+    box-sizing: content-box;
+    color: $text-color;
+  }
+
+  .mat-mdc-unelevated-button .mat-mdc-button-touch-target {
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+
+  .mat-mdc-unelevated-button .mdc-button__label {
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  .drop-down-wrapper {
+    padding: 30px;
+  }
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+    .lives {
+      order: 2;
+    }
+
+
+    .combo {
+      margin-bottom: $spacing-unit;
+      order: 1;
+    }
+  }
+
+  .form-wrapper {
+    flex-direction: column;
+
+    .example-form {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 418px) {
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+
+    .lives :not(:first-child):not(:nth-child(2)) {
+      display: none;
+    }
+
+    .lives-number {
+      display: block !important;
+    }
+
+    .combo {
+      text-align: center;
+    }
+  }
+
+  .form-wrapper {
+
+    .example-form {
+
+      mat-form-field {
+        mat-label {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 361px) {
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+
+    .combo {
+      text-align: center;
+    }
+  }
+}
+
+@media screen and (max-width: 275px) {
+
+  .upper-part {
+    flex-direction: column;
+    align-items: center;
+
+    .combo {
+      text-align: center;
+    }
+  }
+
+  .form-wrapper {
+
+    .example-form {
+
+      mat-form-field {
+        mat-label {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .mdc-list-item__primary-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  p:last-child {
+    color: #6B6B83 !important;
+  }
+}

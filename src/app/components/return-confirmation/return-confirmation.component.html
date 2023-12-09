@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+
+<section class="panel__loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
+<section class="return-confirmation__section" *ngIf="!isLoading">
+  <div class="return-confirmation__section__icon-check">
+    <img src="assets/icons/{{ imgURL }}" alt="Imagem representando sucesso no registro" />
+  </div>
+  <div class="return-confirmation__section__txt-success">
+    <h4>{{ titlePageSuccess }}</h4>
+    <p>{{ belowTheTitle }}</p>
+  </div>
+  <button class="return-confirmation__section__button-play" (click)="return()" mat-raised-button color="primary" type="submit">
+    {{ labelButton }}
+  </button>
+</section>

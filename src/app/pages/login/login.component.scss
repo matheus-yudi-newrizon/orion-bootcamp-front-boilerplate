@@ -1,0 +1,295 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+@import '../../../theme.scss';
+@import '../../../colors';
+@import '../../../spacing';
+
+app-navbar {
+  animation: slide 1.2s linear;
+}
+
+.title-login {
+  & h1 {
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 20px;
+    color: $text-color;
+    line-height: 54px;
+    margin-top: -53px;
+  }
+
+  & p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+    color: $text-color;
+  }
+}
+
+.login-page {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__title {
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+  }
+
+  &__width {
+    width: 100%;
+    animation: slideToLoad 1s linear;
+    // Cores personalizadas para o campo de entrada
+    --mdc-filled-text-field-active-indicator-color: #6002ee;
+    --mdc-filled-text-field-hover-active-indicator-color: #6002ee;
+
+    &__icon {
+      padding: 12px;
+      box-sizing: content-box;
+      color: $text-color;
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+    }
+
+    &__label {
+      color: $input-text-color;
+      cursor: url('../../../assets/icons/mouse-hover.png'), auto;
+    }
+
+    &__login-error {
+      color: $error-text-color;
+      position: absolute;
+      text-align: center;
+      margin-left: 160px;
+      margin-top: -70px;
+    }
+  }
+
+  &__width:hover {
+    cursor: url('../../../assets/icons/mouse-hover.png'), auto;
+  }
+
+  ::ng-deep {
+
+    .mat-mdc-raised-button {
+      border-radius: 4px !important;
+      margin-bottom: 80px;
+    }
+
+    .mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field__input,
+    .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+      cursor: url('../../../assets/icons/mouse-hover.png'), auto;
+    }
+
+    .mat-mdc-raised-button {
+      border-radius: 0px;
+      margin-bottom: 80px;
+    }
+
+    .mat-mdc-raised-button .mat-mdc-button-touch-target {
+      cursor: url(../../../assets/icons/mini-pointer-2.png), auto;
+    }
+
+    .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
+      cursor: url(../../../assets/icons/mouse-hover.png), auto;
+    }
+
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+      cursor: url(../../../assets/icons/mouse-hover.png), auto;
+    }
+  }
+
+  &__checkbox-page {
+    margin: 18px -8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__checkbox {
+      // Cores do checkbox forçadas para sobrescrever o tema
+      // Cores do checkbox no estado não selecionado
+      --mdc-checkbox-unselected-icon-color: #6200ee;
+      --mdc-checkbox-unselected-pressed-icon-color: #5300e8;
+      --mdc-checkbox-unselected-hover-icon-color: #5300e8;
+      --mdc-checkbox-unselected-focus-icon-color: #6200ee;
+      --mdc-checkbox-unselected-focus-state-layer-color: #6200ee;
+      --mdc-checkbox-unselected-hover-state-layer-color: #6200ee;
+      --mdc-checkbox-unselected-pressed-state-layer-color: #6200ee;
+
+      // Cor do checkmark
+      --mdc-checkbox-selected-checkmark-color: #ffffff;
+
+      // Cores do checkbox no estado selecionado
+      --mdc-checkbox-selected-icon-color: #6002ee;
+      --mdc-checkbox-selected-focus-icon-color: #6002ee;
+      --mdc-checkbox-selected-pressed-icon-color: #5300e8;
+
+      // Cor do remember me
+      --mdc-theme-text-primary-on-background: rgb(255, 255, 255);
+    }
+
+    &__password-recovery {
+      background-color: transparent;
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      color: $text-color;
+      margin-right: 8px;
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+    }
+
+    &__checkbox:hover {
+      cursor: url('../../../assets/icons/mini-pointer-2.png'), auto !important;
+      border-radius: 10px !important;
+    }
+
+    ::ng-deep {
+      .mdc-checkbox__background {
+        border-radius: 0px !important;
+      }
+
+      .mdc-label {
+        font-weight: 500 !important;
+        font-size: 16px;
+        cursor: url('../../../assets/icons/mouse-hover.png'), auto !important;
+      }
+
+      .mdc-checkbox {
+        cursor: url('../../../assets/icons/mini-pointer-2.png'), auto !important;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  gap: $spacing-unit;
+  justify-content: center;
+  align-items: center;
+  animation: slideToLoad 1s linear;
+
+  & p {
+    color: $text-color;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: url('../../../assets/icons/mouse-hover.png'), auto;
+    margin-bottom: 30px;
+  }
+
+  & a {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    color: $text-color;
+    border: 1px solid $text-color;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: url('../../../assets/icons/mini-pointer-2.png'), auto;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .title-login {
+    h1 {
+      font-size: 40px;
+      font-weight: 500;
+      text-align: center;
+      // padding: 0 20px;
+      color: $text-color;
+      line-height: 54px;
+      margin-top: -60px;
+    }
+
+    & p {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 30px;
+      text-align: center;
+      color: $text-color;
+    }
+  }
+
+  .login-page {
+    &__width {
+      width: 100%;
+
+      &__button {
+        width: 100%;
+        margin-bottom: 269px;
+      }
+
+      &__login-error {
+        color: #ee0056;
+        position: relative;
+        text-align: left;
+        margin-top: -39px;
+        margin-bottom: 30px;
+        margin-left: 0px;
+      }
+    }
+
+    &__checkbox-page {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+
+      &__checkbox {
+        position: absolute;
+        margin-top: 55px;
+        animation: anotherSlide 1s linear;
+      }
+
+      &__password-recovery {
+        position: absolute;
+        display: flex;
+        margin-top: -30px;
+        margin-left: 10px;
+        animation: anotherSlide 1s linear;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 361px) {
+  .title-login {
+    h1 {
+      font-size: 30px;
+      font-weight: 800;
+      text-align: center;
+      // padding: 0 20px;
+      color: $text-color;
+      line-height: 54px;
+    }
+
+    & p {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 30px;
+      text-align: center;
+      color: $text-color;
+    }
+  }
+
+  .login-page {
+    &__checkbox-page {
+      &__checkbox {
+        margin-top: 55px;
+      }
+
+      &__password-recovery {
+        margin-top: -30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import '../../../../colors';
+
+.navbar-page {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 40px;
+
+  &__logo {
+    height: 35px;
+    margin: 0 0 0 40px;
+  }
+
+  .logo-cursor {
+    cursor: url('../../../../assets/icons/mini-pointer-2.png'), auto;
+  }
+
+  &__right-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 40px;
+    margin-bottom: 232.16px;
+
+    &__play {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      text-decoration: none;
+      color: $text-color;
+      background-color: transparent;
+      gap: 10px;
+      border: 1px solid $text-color;
+      padding: 2px 12px 0px 12px;
+      border-radius: 4px;
+      cursor: url('../../../../assets/icons/cursor-question-mark.png'), auto;
+
+      & p {
+        padding: 7.8px 0;
+        cursor: url('../../../../assets/icons/cursor-question-mark.png'), auto;
+      }
+    }
+
+    &__play:hover {
+      border: 1px solid $accent-color;
+
+      & img {
+        filter: invert(50%) sepia(100%) saturate(78) hue-rotate(262deg);
+        cursor: url('../../../../assets/icons/cursor-question-mark.png'), auto;
+      }
+    }
+
+    &__logout {
+      border: 1px solid $text-color;
+      padding: 9px;
+      border-radius: 4px;
+      line-height: 1px;
+    }
+  }
+}
+
+::ng-deep {
+  & .mat-typography p {
+    margin: 0;
+  }
+}
+
+.sign-up-page-navbar {
+  margin-top: 120px;
+  margin-bottom: 68px;
+
+  .logout {
+    display: none;
+  }
+
+  .navbar-page__logo {
+    margin: 0 auto;
+  }
+}
+
+.start-game-page {
+  .navbar-page__right-icons {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+    .navbar-page {
+
+      &__right-icons {
+        margin-right: 0;
+
+        &__play {
+          padding: 8px 8px;
+          font-size: 0;
+          gap: 0;
+        }
+
+        & img {
+          margin-left: 1px;
+        }
+      }
+    }
+  }
+
+
+@media screen and (max-width: 500px) {
+  .start-game-page {
+    .navbar-page__right-icons__play {
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .start-game-page {
+    .navbar-page__logo {
+      margin: 0;
+    }
+
+    .navbar-page__right-icons{
+      margin-right: 0;
+    }
+  }
+}

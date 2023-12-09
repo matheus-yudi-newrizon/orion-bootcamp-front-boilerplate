@@ -1,0 +1,25 @@
+<section class="panel__loading" *ngIf="isLoading">
+  <mat-spinner color="primary" diameter="50"></mat-spinner>
+</section>
+
+<section class="panel-form" *ngIf="!isLoading">
+  <div class="panel-form__title">
+    <h4>Create your account</h4>
+    <p>Fill the requested field to create your account:</p>
+  </div>
+
+  <div class="panel-form__container">
+    <form class="panel-form__container__form" [formGroup]="registerForm" #content (submit)="submit()">
+      <mat-form-field class="panel-form__container__form__item">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput color="primary" formControlName="email" (change)="storeFormValue()" autocomplete="email" required>
+        <mat-error *ngIf="email?.errors?.['pattern']">Please enter a valid email address</mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Email is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <app-password-requirement (passwordValueChanged)="getPassword($event, $event)"></app-password-requirement>
+    </form>
+  </div>
+
+  <button (click)="createAccount()" [disabled]="!registerForm.valid" class="form__button form__button--disabled" mat-raised-button color="primary" type="submit">CREATE MY ACCOUNT</button>
+</section>

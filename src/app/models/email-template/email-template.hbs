@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        border-collapse: separate;
+        margin: 0 auto;
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: 15px;
+        color: #ffffff;
+      }
+
+      a,
+      a:link,
+      a:hover {
+        text-decoration: none;
+      }
+
+      h1,
+      h2 {
+        color: #4d4e65 !important;
+      }
+
+      .email__template__apresentation {
+        background-color: #ffffff;
+      }
+
+      .email__template__apresentation__img {
+        padding: 0;
+        padding-bottom: 10px;
+      }
+
+      .email__template__link {
+        background-color: #3b5bfd0d;
+        padding: 10px, 47px, 10px, 47px;
+        border-radius: 45px;
+        max-width: 555px; /* Defina o valor desejado para a largura máxima */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .email__template__link__text {
+        color: #6200ee;
+      }
+
+      .email__template__button {
+        padding: 6px, 6px, 6px, 8px;
+        text-align: center;
+        border-radius: 4px;
+        background-color: #6200ee;
+        width: 565px;
+      }
+
+      .email__template__footer {
+        margin-top: 40px;
+      }
+
+      .email__template__footer__text {
+        padding: 20px;
+        text-align: center;
+        color: #d0d2df;
+        border-top: 1px solid #dddddd;
+      }
+
+      .email__template__footer__text__end {
+        border-top: 1px solid #dddddd;
+      }
+
+      .ExternalClass {
+        width: 100%;
+      }
+    </style>
+    <title>ReviewReveal: Password Reset</title>
+  </head>
+
+  <body>
+    <table class="email__template" role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td align="center" style="padding: 20px">
+          <table class="email__template__apresentation" role="presentation" width="600" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="email__template__apresentation__img">
+                <a><img src="https://i.imgur.com/PLWEKeH.png" title="source: imgur.com" /></a>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="border-top: 1px solid #dddddd">
+                <h1>Hey, {{username}}</h1>
+                <p style="color: #4d4e65">
+                  Looks like you forgot your password. To recover, click <b>'Recover your password'</b> or <b>copy the link below:</b>
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td class="email__template__link">
+                <a alt="Link" style="vertical-align: middle"><img src="https://i.imgur.com/RiabXqQ.png" title="source: imgur.com" /></a>
+                <a class="email__template__link__text" href="{{link}}" target="_blank"><b>{{link}}</b></a>
+              </td>
+            </tr>
+          </table>
+
+          <table style="margin-top: 35px">
+            <tr>
+              <td class="email__template__button">
+                <a style="color: #ffffff" href="{{link}}" target="_blank"><b>RECOVER YOUR PASSWORD</b></a>
+              </td>
+            </tr>
+          </table>
+
+          <table class="email__template__footer" role="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td class="email__template__footer__text">
+                <p style="font-size: 14px; height: 18px; color: #9494af">If you didn't request to recover your password, please ignore this email.</p>
+                <p style="font-size: 10px; color: #9494af; text-align: center">
+                  For your safety, do not forward this email to anyone.<br />
+                  <br />
+                  Need help?<br />
+                  <br />
+                  Contact our support team by sending an email to bellatriximdb@gmail.com<br />
+                  <br />
+                  About the Review | Reveal<br />
+                  <br />
+                  The Game Review | Reveal is an online tool that uses the IMDb database to create an interactive guessing game, where users can test
+                  and improve their knowledge about cinema, while having fun and competing.
+                </p>
+              </td>
+            </tr>
+
+            <table style="margin-top: 20px" ole="presentation" width="600" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td class="email__template__footer__text__end">
+                  <p style="font-size: 10px; color: #9494af">New Rizon. Todos os direitos reservados.</p>
+                </td>
+              </tr>
+            </table>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

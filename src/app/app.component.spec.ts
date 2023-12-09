@@ -3,10 +3,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent]
+    })
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -14,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'boilerplate-frontend-orion-bootcamp'`, () => {
+  it(`should have as title 'review-reveal-web'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('boilerplate-frontend-orion-bootcamp');
+    expect(app.title).toEqual('review-reveal-web');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('boilerplate-frontend-orion-bootcamp app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('review-reveal-web app is running!');
   });
 });
