@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ErrorResponse, SuccessResponse } from 'src/app/models/http/interface';
 import { lastValueFrom } from 'rxjs';
 
@@ -46,10 +46,6 @@ interface ResetPasswordRequest {
   confirmPassword: string;
 }
 
-interface StartGameRequest {
-  token: string;
-}
-
 interface StartGameResponse
   extends SuccessResponse<{
     lives: number;
@@ -57,10 +53,6 @@ interface StartGameResponse
     combo: number;
     isActive: boolean;
   }> {}
-
-interface GenerateReviewRequest {
-  token: string;
-}
 
 export interface GenerateReviewResponse
   extends SuccessResponse<{
@@ -88,7 +80,6 @@ export interface SendReplyResponse
 
 export interface UploadMoviesRequest {
   title: string;
-  token: string;
 }
 
 export interface UploadMoviesResponse extends Omit<SuccessResponse, 'data'> {
@@ -101,6 +92,10 @@ interface ConfirmEmailRequest {
 }
 
 interface ConfirmEmailResponse extends Omit<SuccessResponse, 'data'> {}
+
+interface RefreshTokenResponse extends Omit<SuccessResponse, 'data'> {
+  data: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -147,11 +142,15 @@ export class UserService extends RequestService {
   /**
    * Função responsável por realizar o login de usuário
    * @param data os dados do usuário qualquer
-   * @returns uma Promise contendo os dados do novo usuário
+   * @returns uma Promise contendo os dados do login
    */
   public async login(data: LoginRequest): Promise<LoginResponse> {
     try {
-      return await lastValueFrom(this.httpClient.post<LoginResponse>(this.BASE_URL + '/auth/login/', data));
+      return await lastValueFrom(
+        this.httpClient.post<LoginResponse>(this.BASE_URL + '/auth/login/', data, {
+          withCredentials: true
+        })
+      );
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -180,14 +179,11 @@ export class UserService extends RequestService {
 
   /**
    * Função responsável por iniciar o jogo.
-   * @param data token do usuário necessário para iniciar o jogo
    * @returns Promise contendo os dados do jogo
    */
-  public async startGame(data: StartGameRequest): Promise<StartGameResponse> {
+  public async startGame(): Promise<StartGameResponse> {
     try {
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
-
-      return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', null, { headers }));
+      return await lastValueFrom(this.httpClient.post<StartGameResponse>(this.BASE_URL + '/games/new/', null));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -199,14 +195,11 @@ export class UserService extends RequestService {
 
   /**
    * Função responsável por gerar uma nova review a cada token fornecido
-   * @param data o token necessário para gerar a review
    * @returns Promise contendo a review
    */
-  public async generateReview(data: GenerateReviewRequest): Promise<GenerateReviewResponse> {
+  public async generateReview(): Promise<GenerateReviewResponse> {
     try {
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
-
-      return await lastValueFrom(this.httpClient.get<GenerateReviewResponse>(this.BASE_URL + '/reviews/random/', { headers }));
+      return await lastValueFrom(this.httpClient.get<GenerateReviewResponse>(this.BASE_URL + '/reviews/random/'));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -221,11 +214,9 @@ export class UserService extends RequestService {
    * @param data os dados contendo id da review e resposta
    * @returns Promise que devolve se a resposta está correta e os dados do jogo
    */
-  public async sendReply(data: SendReplyRequest, token: string): Promise<SendReplyResponse> {
+  public async sendReply(data: SendReplyRequest): Promise<SendReplyResponse> {
     try {
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-      return await lastValueFrom(this.httpClient.put<SendReplyResponse>(this.BASE_URL + '/games/answer/', data, { headers }));
+      return await lastValueFrom(this.httpClient.put<SendReplyResponse>(this.BASE_URL + '/games/answer/', data));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -242,9 +233,7 @@ export class UserService extends RequestService {
    */
   public async uploadMovies(data: UploadMoviesRequest): Promise<UploadMoviesResponse> {
     try {
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${data.token}`);
-
-      return await lastValueFrom(this.httpClient.get<UploadMoviesResponse>(`${this.BASE_URL}/movies?title=${data.title}`, { headers }));
+      return await lastValueFrom(this.httpClient.get<UploadMoviesResponse>(`${this.BASE_URL}/movies?title=${data.title}`));
     } catch (error) {
       const errorResponse: ErrorResponse = {
         success: false,
@@ -266,6 +255,26 @@ export class UserService extends RequestService {
       const errorResponse: ErrorResponse = {
         success: false,
         message: 'An error occurred while confirming the email. Try again later.'
+      };
+      throw errorResponse;
+    }
+  }
+
+  /**
+   * Realiza a atualização do token de acesso
+   * @returns uma Promise contendo um novo token de acesso
+   */
+  public async refreshToken(): Promise<RefreshTokenResponse> {
+    try {
+      return await lastValueFrom(
+        this.httpClient.post<RefreshTokenResponse>(this.BASE_URL + '/auth/refresh-token/', null, {
+          withCredentials: true
+        })
+      );
+    } catch (error) {
+      const errorResponse: ErrorResponse = {
+        success: false,
+        message: 'An error occurred while refreshing token. Try again later.'
       };
       throw errorResponse;
     }

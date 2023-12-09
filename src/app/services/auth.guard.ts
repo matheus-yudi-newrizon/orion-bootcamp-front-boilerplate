@@ -21,6 +21,6 @@ export class AuthGuard {
       return true;
     }
 
-    return this.router.navigate(['/access-denied'], { replaceUrl: true });
+    return this.tokenService.logout();
   }
 }

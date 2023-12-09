@@ -14,6 +14,8 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
 import { ConfirmEmailComponent } from './components/confirm-email /confirm-email.component';
 import { ConfirmEmailFailureComponent } from './components/confirm-email-failure/confirm-email-failure.component';
 import { AuthGuard } from './services/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 const routes: Routes = [
   {
@@ -80,6 +82,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }]
 })
 export class AppRoutingModule {}
